@@ -1,0 +1,17 @@
+<div class="announcement-bar color-accent">
+  <p class="announcement-text">{{ section.settings.text | upcase }}</p>
+</div>
+
+{% schema %}
+{
+  "name": "Announcement-bar",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "default": "Tax free - free shipping within norway / worldwide shipping",
+      "label": "Announcement Bar"
+    }
+  ]
+}
+{% endschema %}

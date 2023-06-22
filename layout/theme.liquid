@@ -5,9 +5,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kayani</title>
     {{ content_for_header }}
+    {% style %}
+      :root {
+       --font-body-family: {{ settings.body_font }};
+        --font-heading-family:{{ settings.header_font }};
+        --page-width: {{ settings.page_width }}px;
+        --logo-width: {{ settings.logo_width }}px;
+        --collections-width: {{ settings.collections_width }}px;
+        --color-dark:{{ settings.color_dark }};
+        --color-light:{{ settings.color_light }};
+        --color-accent:{{ settings.color_accent }};
+        --color-beige:{{ settings.color_beige }};
+        --color-brown:{{ settings.color_brown }};
+        --breakpoint: {{ settings.breakpoint }}px;
+        --font-body-size: 24px;
+        --font-color: #F9EDEB;
+        --font-heading-size: 48px;
+        --fadeOff: left 0s 0.4s, opacity 0.4s;
+        --fadeOn: left 0s, opacity 0.4s;
+      }
+
+      /* Reset */
+      *,
+      *::before,
+      *::after {
+        box-sizing: inherit;
+      }
+
+      html {
+        box-sizing: border-box;
+        height: 100%;
+      }
+
+
+      body {
+        max-width: 1920px;
+        min-height: 100%;
+        margin: 0;
+        font-size:var(--font-body-size);
+        background-color:var(--color-accent)
+      }
+
+      img,
+      svg {
+        display: block;
+        width: 100%;
+      }
+
+      button,
+      input,
+      select,
+      textarea {
+        outline: none;
+        border: none;
+        background: transparent;
+      }
+
+      a {
+        text-decoration: none;
+        color: var(--color-dark)
+      }
+
+      li {
+        list-style: none;
+      }
+    {% endstyle %}
+
+    {{ 'base.css' | asset_url | stylesheet_tag }}
   </head>
   <body>
-    {% section 'header' %}
+    {% sections 'header-group' %}
     {{ content_for_layout }}
   </body>
 </html>

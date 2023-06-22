@@ -1,8 +1,104 @@
-<h1>Header</h1>
+<nav class="width">
+  <button class="menu-bar">
+    {% render 'icon-menu' %}
+  </button>
+  <a href="/" class="header-logo">
+    <img
+      src="{{ settings.logo | image_url }}"
+      width="{{ section.settings.logo_width }}"
+      height="auto"
+      alt="{{ shop.name }}"
+      loading="lazy"
+    >
+  </a>
+
+  <a href="#" class="mobile-cart">
+    <i>
+      {% render 'icon-cart' %}
+    </i>
+  </a>
+
+  <div class="header-nav">
+    <ul class="header-links">
+      {% for link in section.settings.navigation.links %}
+        <li class="header-nav-item">
+          <a class="header-nav-anchor" href="{{ link.url }}">
+            {%- if link.title == 'Shop' -%}
+              <div>{{ link.title }}</div>
+              <div>
+                {% render 'icon-caret' %}
+              </div>
+              {%- continue -%}
+            {%- endif -%}
+            {{ link.title }}
+          </a>
+
+          {% if link.links != blank %}
+            <ul class="header-sub">
+              {% for child in link.links %}
+                <li class="header-sub-item">
+                  <a href="{{ child.url }}" class="header-sub-anchor">
+                    {{ child.title }}
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+    <ul class="header-icons">
+      <li>
+        <a href="#">{% render 'icon-search' %}</a>
+      </li>
+      <li>
+        <a href="#">
+          {% render 'icon-profile' %}
+        </a>
+      </li>
+      <li class="cart">
+        <a href="#">CART</a>
+        <span>{% render 'icon-cart' %}</span>
+        <span class="cart-count">0</span>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="header-nav-overlay"></div>
+
+{% style %}
+  @media(min-width:950px){
+
+    .header-logo{
+      max-width:{{ settings.logo_width }}px;
+    }
+  }
+{% endstyle %}
+
+<script>
+  document.querySelector('.menu-bar').addEventListener('click', function () {
+    document.querySelector('.header').classList.toggle('nav-active');
+    console.log('Clicked');
+  });
+
+  document.querySelector('.header-nav-overlay').addEventListener('click', function () {
+    document.querySelector('.header').classList.remove('nav-active');
+  });
+</script>
 
 {% schema %}
 {
   "name": "Header",
-  "settings": []
+  "tag": "header",
+  "class": "header",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "navigation",
+      "label": "Navigation menu",
+      "default": "main-menu"
+    }
+  ]
 }
 {% endschema %}

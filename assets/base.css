@@ -1,0 +1,241 @@
+/* Announcement */
+
+.announcement-bar {
+  height: 25px;
+  width: 100%;
+  display: grid;
+  place-content: center;
+  color: var(--color-light);
+  background-color: var(--color-beige);
+}
+.announcement-text {
+  display: none;
+}
+
+@media (min-width: 800px) {
+  .announcement-bar {
+    height: 50px;
+    width: 100%;
+    display: grid;
+    place-content: center;
+  }
+
+  .announcement-text {
+    display: block;
+  }
+}
+
+/* Header */
+
+header {
+  padding: 9px 0;
+  border-bottom: 1px solid #cccccc;
+  text-transform: uppercase;
+  background-color: var(--color-light);
+}
+header .width {
+  width: min(95%, var(--page-width));
+  margin-inline: auto;
+}
+.header-logo {
+  display: block;
+  max-width: 128px;
+}
+header nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header-links li:first-child a {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.header-links li:first-child a svg {
+  width: 8px;
+}
+nav svg {
+  width: 24px;
+  height: 24px;
+}
+.mobile-cart {
+  display: block;
+}
+
+.header-nav-overlay {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 9;
+  opacity: 0;
+  left: -100%;
+  transition: var(--fadeOff);
+}
+@media (min-width: 950px) {
+  .header-links,
+  .header-icons li.cart,
+  .header-icons {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+  }
+  nav svg {
+    width: 17px;
+    height: 17px;
+  }
+  .header-icons li.cart {
+    font-size: 17px;
+    gap: 7px;
+  }
+
+  .header-nav-overlay {
+    display: none;
+  }
+  .menu-bar,
+  .mobile-cart {
+    display: none;
+  }
+}
+.nav-active .header-nav-overlay {
+  left: 0;
+  opacity: 1;
+  transition: var(--fadeOn);
+}
+@media (min-width: 950px) {
+  .nav-active .header-nav-overlay {
+    display: none;
+  }
+}
+
+.header-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  overflow: auto;
+  background: var(--color-accent);
+  width: 90%;
+  max-width: 300px;
+  z-index: 10;
+  transform: translateX(-100%);
+  transition: 0.4s transform;
+}
+
+@media (min-width: 950px) {
+  .header-nav {
+    position: static;
+    display: inline-flex;
+    align-items: center;
+    gap: 50px;
+    width: auto;
+    max-width: none;
+    height: auto;
+    overflow: initial;
+    background: transparent;
+    transform: none;
+  }
+}
+
+.nav-active .header-nav {
+  transform: none;
+}
+
+/* edit */
+.header-nav-item {
+  padding: 20px;
+  border-bottom: 1px solid gray;
+}
+
+@media (min-width: 950px) {
+  .header-nav-item {
+    padding: 0;
+    border: none;
+    position: relative;
+  }
+}
+
+.header-nav-anchor {
+  display: block;
+  color: var(--color-dark);
+  font-size: 20px;
+}
+
+@media (min-width: 950px) {
+  .header-nav-anchor {
+    display: inline-block;
+    padding: 20px 0;
+    margin: -20px 0;
+    font-size: 18px;
+  }
+}
+
+.header-sub {
+  padding: 0 20px;
+  margin-top: 15px;
+}
+
+@media (min-width: 950px) {
+  .header-sub {
+    position: absolute;
+    top: 100%;
+    transform: translateX(-50%);
+    background: var(--color-light);
+    border-radius: 20px;
+    width: 220px;
+    padding: 20px;
+    opacity: 0;
+    left: -9999px;
+    transition: var(--fadeOff);
+    box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.header-sub:before {
+  display: block;
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: var(--color-accent);
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  top: 0;
+  left: 50%;
+  box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.2);
+  z-index: -1;
+}
+
+.header-sub:after {
+  width: 44px;
+  height: 16px;
+  background: var(--color-accent);
+  top: 0;
+  left: 50%;
+  margin-left: -22px;
+  content: '';
+  position: absolute;
+}
+
+@media (min-width: 950px) {
+  .header-nav-anchor:hover + .header-sub,
+  .header-sub:hover {
+    left: 50%;
+    opacity: 1;
+    transition: var(--fadeOn);
+  }
+}
+
+.header-sub-item {
+  display: block;
+}
+
+.header-sub-anchor {
+  color: gray;
+  transition: 0.2s color;
+}
+
+.header-sub-anchor:hover {
+  color: gray;
+}

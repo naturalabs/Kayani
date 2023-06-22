@@ -1,0 +1,19 @@
+{
+  "current": {
+    "logo": "shopify:\/\/shop_images\/logo.png",
+    "logo_width": 230,
+    "color_dark": "#141414",
+    "color_light": "#ffffff",
+    "color_accent": "#F9EDEB",
+    "color_beige": "#B2967D",
+    "color_brown": "#5A3B21",
+    "header_font": "cardo_n4",
+    "secondary_font": "unna_n4",
+    "page_width": 1450,
+    "large_width": 1720,
+    "breakpoint": 800,
+    "content_for_index": [
+
+    ]
+  }
+}

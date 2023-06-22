@@ -2,10 +2,130 @@
   {
     "name": "theme_info",
     "theme_name": "Kayani",
-    "theme_version": "1",
+    "theme_version": "8.0.1",
     "theme_author": "Raphael Jay Bernardo",
-    "theme_documentation_url": "https://www.naturalabs.io/",
-    "theme_support_url": "https://www.naturalabs.io/",
-    "theme_support_email": "https://www.naturalabs.io/"
+    "theme_documentation_url": "https:\/\/help.shopify.com\/manual\/online-store\/themes",
+    "theme_support_url": "https:\/\/support.shopify.com\/"
+  },
+  {
+    "name": "Logo",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo"
+      },
+      {
+        "type": "range",
+        "id": "logo_width",
+        "min": 50,
+        "max": 300,
+        "step": 10,
+        "default": 230,
+        "unit": "px",
+        "label": "Logo width"
+      }
+    ]
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Primary Colors"
+      },
+      {
+        "type": "color",
+        "id": "color_dark",
+        "default": "#141414",
+        "label": "Dark"
+      },
+      {
+        "type": "color",
+        "id": "color_light",
+        "default": "#ffffff",
+        "label": "Light"
+      },
+      {
+        "type": "color",
+        "id": "color_accent",
+        "default": "#F9EDEB",
+        "label": "Accent"
+      },
+      {
+        "type": "header",
+        "content": "Secondary Colors"
+      },
+      {
+        "type": "color",
+        "id": "color_beige",
+        "default": "#B2967D",
+        "label": "Beige"
+      },
+      {
+        "type": "color",
+        "id": "color_brown",
+        "default": "#5A3B21",
+        "label": "Brown"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Primary Font"
+      },
+      {
+        "type": "font_picker",
+        "id": "header_font",
+        "default": "cardo_n4",
+        "label": "Primary Font"
+      },
+      {
+        "type": "header",
+        "content": "Secondary"
+      },
+      {
+        "type": "font_picker",
+        "id": "secondary_font",
+        "default": "unna_n4",
+        "label": "Secondary Font",
+        "info": "Body Text Font"
+      }
+    ]
+  },
+  {
+    "name": "Layout",
+    "settings": [
+      {
+        "type": "range",
+        "id": "page_width",
+        "label": "Page width",
+        "default": 1400,
+        "min": 800,
+        "max": 1750,
+        "step": 50
+      },
+      {
+        "type": "range",
+        "id": "large_width",
+        "label": "Collections width",
+        "default": 1720,
+        "min": 800,
+        "max": 1800,
+        "step": 20
+      },
+      {
+        "type": "range",
+        "id": "breakpoint",
+        "label": "Breakpoint",
+        "default": 800,
+        "min": 0,
+        "max": 2000,
+        "step": 100
+      }
+    ]
   }
 ]
