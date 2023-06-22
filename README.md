@@ -1,2 +1,3 @@
 # Kayani
-Kayani shopify theme
+
+Kayani Theme
