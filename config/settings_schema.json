@@ -4,8 +4,8 @@
     "theme_name": "Kayani",
     "theme_version": "8.0.1",
     "theme_author": "Raphael Jay Bernardo",
-    "theme_documentation_url": "https:\/\/help.shopify.com\/manual\/online-store\/themes",
-    "theme_support_url": "https:\/\/support.shopify.com\/"
+    "theme_documentation_url": "https://help.shopify.com/manual/online-store/themes",
+    "theme_support_url": "https://support.shopify.com/"
   },
   {
     "name": "Logo",
@@ -89,7 +89,7 @@
       },
       {
         "type": "font_picker",
-        "id": "secondary_font",
+        "id": "body_font",
         "default": "unna_n4",
         "label": "Secondary Font",
         "info": "Body Text Font"

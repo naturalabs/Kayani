@@ -7,8 +7,8 @@
     {{ content_for_header }}
     {% style %}
       :root {
-       --font-body-family: {{ settings.body_font }};
-        --font-heading-family:{{ settings.header_font }};
+       --font-body-family: {{ settings.body_font.family }};
+        --font-heading-family:{{ settings.header_font.family }};
         --page-width: {{ settings.page_width }}px;
         --logo-width: {{ settings.logo_width }}px;
         --collections-width: {{ settings.collections_width }}px;
@@ -44,6 +44,10 @@
         margin: 0;
         font-size:var(--font-body-size);
         background-color:var(--color-accent)
+      }
+
+      h1,h2,h3{
+        font-family:var(--font-heading-family)
       }
 
       img,

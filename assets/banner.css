@@ -19,6 +19,7 @@ section.banner {
   margin-inline: auto;
   grid-area: header;
   text-align: center;
+  font-family: 'Cardo', serif;
 }
 
 .banner .image-container {
