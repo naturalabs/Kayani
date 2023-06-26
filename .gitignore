@@ -1,5 +1,6 @@
 # OS generated files #
 ######################
+.gitignore
 .DS_Store
 .DS_Store?
 ._*
@@ -7,3 +8,8 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
+node_modules
+gulpfile.js
+styles/*
+package-lock.json
+package.json
