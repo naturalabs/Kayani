@@ -81,18 +81,22 @@
   }
 
   @media screen and (min-width: 750px) {
+
     .list-menu__item--link {
       padding-bottom: 0.5rem;
       padding-top: 0.5rem;
+    }
+    .desktop-nav{
+      display:flex;
     }
   }
 </style>
 
 {%- style -%}
-  .header {
+  /* .header {
     padding-top: {{ section.settings.padding_top | times: 0.5 | round: 0 }}px;
     padding-bottom: {{ section.settings.padding_bottom | times: 0.5 | round: 0 }}px;
-  }
+  } */
 
   .section-header {
     position: sticky; /* This is for fixing a Safari z-index issue. PR #2147 */
@@ -105,12 +109,12 @@
     }
   }
 
-  @media screen and (min-width: 990px) {
+  /* @media screen and (min-width: 990px) {
     .header {
       padding-top: {{ section.settings.padding_top }}px;
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
-  }
+  } */
 {%- endstyle -%}
 
 <script src="{{ 'details-disclosure.js' | asset_url }}" defer="defer"></script>
@@ -418,6 +422,7 @@
 
     {%- if section.settings.menu != blank -%}
       {%- if section.settings.menu_type_desktop == 'dropdown' -%}
+    
         <nav class="header__inline-menu">
           <ul class="list-menu list-menu--inline" role="list">
             {%- for link in section.settings.menu.links -%}
@@ -467,6 +472,7 @@
             {%- endfor -%}
           </ul>
         </nav>
+     
       {%- else -%}
         <nav class="header__inline-menu">
           <ul class="list-menu list-menu--inline" role="list">
@@ -621,8 +627,9 @@
           </div>
         </details>
       </details-modal>
+    
 
-      {%- if shop.customer_accounts_enabled -%}
+    
         <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="header__icon header__icon--account link focus-inset{% if section.settings.menu != blank %} small-hide{% endif %}">
           {% render 'icon-account' %}
           <span class="visually-hidden">
@@ -635,8 +642,8 @@
             -%}
           </span>
         </a>
-      {%- endif -%}
-
+    
+<p>CART</p>
       <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
         {%- liquid
           if cart == empty
@@ -656,6 +663,7 @@
         {%- endif -%}
       </a>
     </div>
+    
   </header>
 </{% if section.settings.sticky_header_type != 'none' %}sticky-header{% else %}div{% endif %}>
 

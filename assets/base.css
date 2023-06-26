@@ -137,8 +137,10 @@ body:has(.section-header .drawer-menu) .announcement-bar-section .page-width {
 
 @media screen and (min-width: 990px) {
   .header:not(.drawer-menu).page-width {
-    padding-left: 5rem;
-    padding-right: 5rem;
+    /* padding-left: 5rem;
+    padding-right: 5rem; */
+    padding-left: 0;
+    padding-right: 0;
   }
 
   .page-width--narrow {
@@ -2310,6 +2312,9 @@ product-info .loading-overlay:not(.hidden) ~ *,
 @media screen and (min-width: 990px) {
   .header {
     grid-template-columns: 1fr auto 1fr;
+    font-size: 18px;
+    text-transform: uppercase;
+    height: 77px;
   }
 
   .header--top-left,
@@ -2329,7 +2334,7 @@ product-info .loading-overlay:not(.hidden) ~ *,
 
   .header--middle-left {
     grid-template-areas: 'heading navigation icons';
-    grid-template-columns: auto auto 1fr;
+    grid-template-columns: 1fr auto auto;
     column-gap: 2rem;
   }
 
@@ -2450,7 +2455,8 @@ product-info .loading-overlay:not(.hidden) ~ *,
 .header__icons {
   display: flex;
   grid-area: icons;
-  justify-self: end;
+  justify-self: center;
+  align-items: center;
 }
 
 .header__icons .shopify-app-block {
