@@ -8,11 +8,34 @@
   endif
 -%}
 
+<style>
+  .announcement-bar {
+    height: 25px;
+  }
+  .announcement-bar__message {
+    display: none;
+  }
+  @media (min-width: 950px) {
+    .announcement-bar {
+      display: grid;
+      align-content: center;
+      padding: 0;
+      height: 50px;
+    }
+    .announcement-bar__message {
+      font-size: 24px;
+      font-weight: bold;
+      display: block;
+      height: 100%;
+    }
+  }
+</style>
+
 <div
   class="utility-bar color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_line_separator and section.blocks.size > 0 %} utility-bar--bottom-border{% elsif section.settings.show_line_separator and section.settings.show_social and social_icons%} utility-bar--bottom-border-social-only{% endif %}"
   {{ block.shopify_attributes }}
 >
-  <div class="page-width{% if section.settings.show_social and social_icons %} utility-bar__grid{% endif %}">
+  <div class="{% if section.settings.show_social and social_icons %} utility-bar__grid{% endif %}">
     {%- if section.settings.show_social and social_icons -%}
       {%- render 'social-icons' -%}
     {%- endif -%}
