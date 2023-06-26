@@ -33,7 +33,7 @@
   }
 
   .header__heading-logo {
-    max-width: {{ settings.logo_width }}px;
+    max-width: {{ settings.logo_width | times: 0.55 }}px;
   }
 
   {%- if section.settings.sticky_header_type == 'reduce-logo-size' -%}
@@ -41,8 +41,15 @@
       width: 75%;
     }
   {%- endif -%}
+  header .mobile,
+  header__icon--account  {
+    display:none;
+  }
 
   @media screen and (min-width: 990px) {
+    .header__heading-logo {
+      max-width: {{ settings.logo_width }}px;
+    }
     header-drawer {
       display: none;
     }
@@ -79,9 +86,13 @@
     padding-top: 1rem;
     line-height: calc(1 + 0.8 / var(--font-body-scale));
   }
+ 
 
   @media screen and (min-width: 750px) {
-
+    .header__heading-logo {
+      max-width: {{ settings.logo_width }}px;
+    }
+  
     .list-menu__item--link {
       padding-bottom: 0.5rem;
       padding-top: 0.5rem;
@@ -89,7 +100,14 @@
     .desktop-nav{
       display:flex;
     }
+    p.cart-text{
+      font-size: 14px;
+    }
+    {% comment %} .header__icon--account svg{
+      display: none;
+    } {% endcomment %}
   }
+
 </style>
 
 {%- style -%}
@@ -217,7 +235,7 @@
                     {%- endfor -%}
                   </ul>
                 </nav>
-                <div class="menu-drawer__utility-links">
+                <div class="menu-drawer__utility-links ">
                   {%- if shop.customer_accounts_enabled -%}
                     <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="menu-drawer__account link focus-inset h5">
                       {% render 'icon-account' %}
@@ -546,7 +564,7 @@
     {%- endif -%}
 
     <div class="header__icons">
-      <details-modal class="header__search">
+      <details-modal class="header__search mobile">
         <details>
           <summary class="header__icon header__icon--search header__icon--summary link focus-inset modal__toggle" aria-haspopup="dialog" aria-label="{{ 'general.search.search' | t }}">
             <span>
@@ -630,7 +648,7 @@
     
 
     
-        <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="header__icon header__icon--account link focus-inset{% if section.settings.menu != blank %} small-hide{% endif %}">
+        <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="mobile header__icon header__icon--account link focus-inset{% if section.settings.menu != blank %} small-hide{% endif %}">
           {% render 'icon-account' %}
           <span class="visually-hidden">
             {%- liquid
@@ -643,16 +661,15 @@
           </span>
         </a>
     
-<p>CART</p>
-      <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
-        {%- liquid
-          if cart == empty
-            render 'icon-cart-empty'
-          else
-            render 'icon-cart'
-          endif
-        -%}
-        <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
+<p class="cart-tex mobile">CART</p>
+
+      <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inse" id="cart-icon-bubble">
+  
+       {% render 'icon-cart' %}
+   
+        
+      
+        {% comment %} <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
         {%- if cart != empty -%}
           <div class="cart-count-bubble">
             {%- if cart.item_count < 100 -%}
@@ -660,9 +677,11 @@
             {%- endif -%}
             <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
           </div>
-        {%- endif -%}
+        {%- endif -%} {% endcomment %}
       </a>
+      <p style="padding-left:20px" class="mobile">{{ cart.item_count }}</p>
     </div>
+
     
   </header>
 </{% if section.settings.sticky_header_type != 'none' %}sticky-header{% else %}div{% endif %}>
