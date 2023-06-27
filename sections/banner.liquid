@@ -6,6 +6,7 @@
     padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
   }
 
+
   @media screen and (min-width: 750px) {
     .section-{{ section.id }}-padding {
       padding-top: {{ section.settings.padding_top }}px;
@@ -13,6 +14,11 @@
     }
   }
 {%- endstyle -%}
+<style>
+  .button {
+    border: 1px solid #141414;
+  }
+</style>
 
 {% assign scheme1 = settings.color_schemes | first %}
 
@@ -77,14 +83,19 @@
             {%- when 'button' -%}
               {%- if block.settings.button_label != blank -%}
                 <a
+                  style="display:flex; flex-direction:column"
                   {% if block.settings.button_link == blank %}
                     role="link" aria-disabled="true"
                   {% else %}
                     href="{{ block.settings.button_link }}"
                   {% endif %}
-                  class="button{% if block.settings.button_style_secondary %} button--secondary{% else %} button--primary{% endif %}"
-                  {{ block.shopify_attributes }}
                 >
+                  <button
+                    class="button{% if block.settings.button_style_secondary %} button--secondary{% else %} button--primary{% endif %}"
+                    {{ block.shopify_attributes }}
+                  >
+                    Arrow
+                  </button>
                   {{ block.settings.button_label | escape }}
                 </a>
               {%- endif -%}
@@ -97,7 +108,7 @@
 
 {% schema %}
 {
-  "name": "t:sections.image-with-text.name",
+  "name": "Banner with image",
   "class": "section",
   "disabled_on": {
     "groups": ["header", "footer"]
@@ -425,7 +436,7 @@
         {
           "type": "text",
           "id": "button_label",
-          "default": "Button label",
+          "default": "Shop Now",
           "label": "t:sections.image-with-text.blocks.button.settings.button_label.label",
           "info": "t:sections.image-with-text.blocks.button.settings.button_label.info"
         },
@@ -439,7 +450,7 @@
   ],
   "presets": [
     {
-      "name": "t:sections.image-with-text.presets.name",
+      "name": "Banner",
       "blocks": [
         {
           "type": "heading"
