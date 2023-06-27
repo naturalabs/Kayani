@@ -41,10 +41,8 @@
       width: 75%;
     }
   {%- endif -%}
-  header .mobile,
-  header__icon--account  {
-    display:none;
-  }
+
+
 
   @media screen and (min-width: 990px) {
     .header__heading-logo {
@@ -53,6 +51,8 @@
     header-drawer {
       display: none;
     }
+
+
   }
 
   .menu-drawer-container {
@@ -103,9 +103,9 @@
     p.cart-text{
       font-size: 14px;
     }
-    {% comment %} .header__icon--account svg{
-      display: none;
-    } {% endcomment %}
+    
+
+
   }
 
 </style>
@@ -564,7 +564,7 @@
     {%- endif -%}
 
     <div class="header__icons">
-      <details-modal class="header__search mobile">
+      <details-modal class="header__search header__inline-menu">
         <details>
           <summary class="header__icon header__icon--search header__icon--summary link focus-inset modal__toggle" aria-haspopup="dialog" aria-label="{{ 'general.search.search' | t }}">
             <span>
@@ -647,10 +647,10 @@
       </details-modal>
     
 
-    
-        <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="mobile header__icon header__icon--account link focus-inset{% if section.settings.menu != blank %} small-hide{% endif %}">
+    <div class="header__inline-menu">
+        <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="  header__icon header__icon--account link focus-inset{% if section.settings.menu != blank %} small-hide{% endif %}">
           {% render 'icon-account' %}
-          <span class="visually-hidden">
+          <span class="visually-hidden ">
             {%- liquid
               if customer
                 echo 'customer.account_fallback' | t
@@ -660,26 +660,16 @@
             -%}
           </span>
         </a>
+        </div>
+        <p class="cart-text header__inline-menu">CART</p>
     
-<p class="cart-tex mobile">CART</p>
-
-      <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inse" id="cart-icon-bubble">
+        <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset"
+         >
   
        {% render 'icon-cart' %}
-   
         
-      
-        {% comment %} <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
-        {%- if cart != empty -%}
-          <div class="cart-count-bubble">
-            {%- if cart.item_count < 100 -%}
-              <span aria-hidden="true">{{ cart.item_count }}</span>
-            {%- endif -%}
-            <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
-          </div>
-        {%- endif -%} {% endcomment %}
-      </a>
-      <p style="padding-left:20px" class="mobile">{{ cart.item_count }}</p>
+     </a>
+      <p style="padding-left:20px" class="header__inline-menu">{{ cart.item_count }}</p>
     </div>
 
     
