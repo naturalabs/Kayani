@@ -15,6 +15,7 @@
   .announcement-bar__message {
     display: none;
   }
+
   @media (min-width: 950px) {
     .announcement-bar {
       display: grid;
@@ -53,7 +54,7 @@
               class="announcement-bar__link link link--text focus-inset animate-arrow"
             >
           {%- endif -%}
-          <p class="announcement-bar__message h5">
+          <p class="announcement-bar__message">
             <span>{{ section.blocks.first.settings.text | escape | upcase }}</span>
             {%- if section.blocks.first.settings.link != blank -%}
               {% render 'icon-arrow' %}
