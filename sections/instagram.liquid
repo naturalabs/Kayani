@@ -1,0 +1,114 @@
+<section class="instagram">
+  <div class="instagram-container">
+    <p>Follow Us On</p>
+    <h2>INSTAGRAM</h2>
+    <div class="instagram-gallery">
+      <div>
+        <img src="{{'instagram-01.png' | asset_url}}" alt="">
+      </div>
+      <div>
+        <img src="{{'instagram-02.png' | asset_url}}" alt="">
+      </div>
+      <div>
+        <img src="{{'instagram-03.png' | asset_url}}" alt="">
+      </div>
+      <div>
+        <img src="{{'instagram-04.png' | asset_url}}" alt="">
+      </div>
+      <div>
+        <img src="{{'instagram-05.png' | asset_url}}" alt="">
+      </div>
+      <div>
+        <img src="{{'instagram-01.png' | asset_url}}" alt="">
+      </div>
+      <div>
+        <img src="{{'instagram-01.png' | asset_url}}" alt="">
+      </div>
+    </div>
+  </div>
+</section>
+{% style %}
+  section.instagram {
+    padding: 51px 0 40px;
+    width: min(95%, 414px);
+    text-align: center;
+    margin-inline: auto;
+  }
+
+  section.instagram p {
+    font-size: 16px;
+    margin-bottom: -10px;
+  }
+
+  section.instagram h2 {
+    margin-bottom: 18px;
+    color: var(--clr-secondary-brown);
+    font-size: 30px;
+  }
+
+  .instagram-gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal-width columns */
+    grid-gap: 15px; /* Adjust the gap between images as needed */
+    width: min(95%, 414px);
+    margin-inline: auto;
+  }
+
+  .big {
+    grid-row: span 2;
+    grid-column: span 2;
+  }
+  .instagram-gallery div img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .instagram-gallery div:nth-child(7) img {
+    display: none;
+  }
+  @media (min-width: 800px) {
+    section.instagram {
+      padding: 51px 0 40px;
+      width: min(95%, 1719px);
+
+      text-align: left;
+      margin-inline: auto;
+    }
+    .instagram-container {
+      margin-inline: auto;
+    }
+    section.instagram h2 {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    section.instagram p {
+      font-size: 16px;
+      margin-bottom: -15px;
+    }
+    .instagram-gallery {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      grid-gap: 20px;
+      width: min(100%, 1719px);
+      margin-inline: auto;
+      margin: 0;
+    }
+    .instagram-gallery div:nth-child(7) img {
+      display: block;
+    }
+
+    .instagram-gallery div:nth-child(3) {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+  }
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Instagram",
+  "settings": []
+}
+{% endschema %}

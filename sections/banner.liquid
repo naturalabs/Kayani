@@ -1,413 +1,210 @@
-{% comment %} {{ 'component-image-with-text.css' | asset_url | stylesheet_tag }} {% endcomment %}
-{{ 'banner.css' | asset_url | stylesheet_tag }}
+<section class="banner">
+  <div class="ellipse">
+    {% render 'ellipse' %}
+  </div>
+  <div class="blur-right">
+    {% render 'blur-right' %}
+  </div>
+  <div class="blur-left">
+    {% render 'blur-left' %}
+  </div>
+  <div class="banner-container">
+    <div class="banner-header">
+      <h1>Open Your World To Kayani</h1>
+    </div>
 
-<style></style>
-{%- style -%}
-  .section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    <div class="image-container">
+      <div class="image-left">
+        <img
+          src="{{  "banner-image-01.png" | asset_url }}"
+          alt="girl in dress"
+          loading="lazy"
+        >
+      </div>
+      <div class="image-right">
+        <img
+          src="{{"banner-image-02.png" | asset_url}}"
+          alt="girlindress"
+          loading="lazy"
+        >
+      </div>
+    </div>
+
+    <div class="text-container">
+      <p class="banner-text ">Let's make your summer travel story an unforgettable one</p>
+      <div class="banner-button">
+        <button>
+          {% render 'icon-upright' %}
+        </button>
+        <p>Shop Now</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% style %}
+  section.banner {
+    padding: 70px 0;
+    color: #1e1e1e;
+  }
+  .banner-container {
+    width: min(95%, 375px);
+    margin-inline: auto;
+    display: grid;
+    gap: 1rem;
+    grid-template-areas: 'header' 'images' 'text';
+    position: relative;
   }
 
-  @media screen and (min-width: 750px) {
-    .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
+  .banner-header {
+    max-width: 270px;
+    font-size: 36px;
+    font-weight: 400;
+    margin-bottom: 37px;
+    margin-inline: auto;
+    grid-area: header;
+    text-align: center;
+  }
+
+  .banner .image-container {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 6px;
+    margin-bottom: 37px;
+    margin-inline: auto;
+    grid-area: images;
+  }
+
+  .banner .image-left img {
+    width: min(100%, 162px);
+  }
+  .banner .image-right img {
+    width: min(100%, 206px);
+  }
+
+  .mobile-banner-button {
+    text-align: center;
+  }
+
+  .banner button {
+    text-align: center;
+    background-color: #f9edeb;
+    outline: none;
+    border: 1px solid #646464;
+    color: #646464;
+    width: 70px;
+    height: 70px;
+    margin-bottom: 6px;
+  }
+
+  .text-container {
+    font-size: 18px;
+    /* padding-bottom: 50px; */
+    text-align: center;
+    grid-area: text;
+    /* margin-bottom: 70px; */
+  }
+  p.banner-text {
+    line-height: 25px;
+    margin-bottom: 40px;
+  }
+
+  .ellipse,
+  .blur-right,
+  .blur-left {
+    display: none;
+  }
+
+  @media (min-width: 800px) {
+    section.banner {
+      position: relative;
+    }
+    .banner-container {
+      width: min(95%, 375px);
+      margin-inline: auto;
+      width: min(90%, 1626px);
+      grid-template-columns: 1fr 1.1fr;
+      gap: 1rem;
+      grid-template-areas: 'header images' 'text images';
+    }
+    .banner-header {
+      max-width: 700px;
+      display: flex;
+      font-size: 90px;
+      align-items: flex-end;
+      margin: 0;
+      text-align: left;
+      line-height: 90px;
+      letter-spacing: -2%;
+    }
+    .text-container {
+      max-width: 645px;
+      display: flex;
+      flex-direction: column;
+    }
+    .banner-text {
+      text-align: left;
+      font-size: 24px;
+    }
+    p.banner-text {
+      margin-bottom: 100px;
+    }
+    .banner-button {
+      text-align: center;
+      width: fit-content;
+      align-self: flex-end;
+    }
+    .banner-button button p {
+      text-align: center;
+    }
+    .banner-button button {
+      height: 100px;
+      width: 100px;
+    }
+    .banner-button button svg {
+      height: 56px;
+      width: 56px;
+    }
+    .ellipse {
+      display: block;
+      position: absolute;
+      z-index: -1;
+      top: 200px;
+      left: 100px;
+      width: 40%;
+      color: #c8c8c8;
+    }
+
+    .banner .image-container {
+      margin: 0;
+    }
+    .banner .image-left img,
+    .banner .image-right img {
+      width: 100%;
+    }
+
+    .banner .image-left {
+      width: min(100%, 368px);
+    }
+    .banner .image-right {
+      width: min(100%, 468px);
+    }
+    .blur-right {
+      display: block;
+      position: absolute;
+      top: -60px;
+      right: 0;
+      height: 250px;
+      opacity: 60%;
+    }
+    .blur-left {
+      display: block;
+      position: absolute;
+      bottom: 100px;
+      left: 0;
+      height: 250px;
+      opacity: 60%;
     }
   }
-{%- endstyle -%}
-
-<div class="page-width">
-  <section class="banner">
-    <div class="ellipse">
-      {% render 'ellipse' %}
-    </div>
-    <div class="blur-right">
-      {% render 'blur-right' %}
-    </div>
-    <div class="blur-left">
-      {% render 'blur-left' %}
-    </div>
-    <div class="banner-container">
-      <div class="banner-header">
-        <h1>Open Your World To Kayani</h1>
-      </div>
-
-      <div class="image-container">
-        <div class="image-left">
-          <img
-            src="{{  "banner-image-01.png" | asset_url }}"
-            alt="girl in dress"
-            loading="lazy"
-          >
-        </div>
-        <div class="image-right">
-          <img
-            src="{{"banner-image-02.png" | asset_url}}"
-            alt="girlindress"
-            loading="lazy"
-          >
-        </div>
-      </div>
-
-      <div class="text-container">
-        <p class="banner-text ">Let's make your summer travel story an unforgettable one</p>
-        <div class="banner-button">
-          <button>
-            {% render 'icon-upright' %}
-          </button>
-          <p>Shop Now</p>
-        </div>
-      </div>
-    </div>
-  </section>
-</div>
-
-{% schema %}
-{
-  "name": "Banner",
-  "class": "section",
-  "disabled_on": {
-    "groups": ["header", "footer"]
-  },
-  "settings": [
-    {
-      "type": "image_picker",
-      "id": "image",
-      "label": "t:sections.image-with-text.settings.image.label"
-    },
-    {
-      "type": "select",
-      "id": "height",
-      "options": [
-        {
-          "value": "adapt",
-          "label": "t:sections.image-with-text.settings.height.options__1.label"
-        },
-        {
-          "value": "small",
-          "label": "t:sections.image-with-text.settings.height.options__2.label"
-        },
-        {
-          "value": "medium",
-          "label": "t:sections.image-with-text.settings.height.options__3.label"
-        },
-        {
-          "value": "large",
-          "label": "t:sections.image-with-text.settings.height.options__4.label"
-        }
-      ],
-      "default": "adapt",
-      "label": "t:sections.image-with-text.settings.height.label"
-    },
-    {
-      "type": "select",
-      "id": "desktop_image_width",
-      "options": [
-        {
-          "value": "small",
-          "label": "t:sections.image-with-text.settings.desktop_image_width.options__1.label"
-        },
-        {
-          "value": "medium",
-          "label": "t:sections.image-with-text.settings.desktop_image_width.options__2.label"
-        },
-        {
-          "value": "large",
-          "label": "t:sections.image-with-text.settings.desktop_image_width.options__3.label"
-        }
-      ],
-      "default": "medium",
-      "label": "t:sections.image-with-text.settings.desktop_image_width.label",
-      "info": "t:sections.image-with-text.settings.desktop_image_width.info"
-    },
-    {
-      "type": "select",
-      "id": "layout",
-      "options": [
-        {
-          "value": "image_first",
-          "label": "t:sections.image-with-text.settings.layout.options__1.label"
-        },
-        {
-          "value": "text_first",
-          "label": "t:sections.image-with-text.settings.layout.options__2.label"
-        }
-      ],
-      "default": "image_first",
-      "label": "t:sections.image-with-text.settings.layout.label",
-      "info": "t:sections.image-with-text.settings.layout.info"
-    },
-    {
-      "type": "select",
-      "id": "desktop_content_position",
-      "options": [
-        {
-          "value": "top",
-          "label": "t:sections.image-with-text.settings.desktop_content_position.options__1.label"
-        },
-        {
-          "value": "middle",
-          "label": "t:sections.image-with-text.settings.desktop_content_position.options__2.label"
-        },
-        {
-          "value": "bottom",
-          "label": "t:sections.image-with-text.settings.desktop_content_position.options__3.label"
-        }
-      ],
-      "default": "top",
-      "label": "t:sections.image-with-text.settings.desktop_content_position.label"
-    },
-    {
-      "type": "select",
-      "id": "desktop_content_alignment",
-      "options": [
-        {
-          "value": "left",
-          "label": "t:sections.image-with-text.settings.desktop_content_alignment.options__1.label"
-        },
-        {
-          "value": "center",
-          "label": "t:sections.image-with-text.settings.desktop_content_alignment.options__2.label"
-        },
-        {
-          "value": "right",
-          "label": "t:sections.image-with-text.settings.desktop_content_alignment.options__3.label"
-        }
-      ],
-      "default": "left",
-      "label": "t:sections.image-with-text.settings.desktop_content_alignment.label"
-    },
-    {
-      "type": "select",
-      "id": "content_layout",
-      "options": [
-        {
-          "value": "no-overlap",
-          "label": "t:sections.image-with-text.settings.content_layout.options__1.label"
-        },
-        {
-          "value": "overlap",
-          "label": "t:sections.image-with-text.settings.content_layout.options__2.label"
-        }
-      ],
-      "default": "no-overlap",
-      "label": "t:sections.image-with-text.settings.content_layout.label"
-    },
-    {
-      "type": "color_scheme",
-      "id": "color_scheme",
-      "label": "t:sections.all.colors.label",
-      "default": "background-1"
-    },
-    {
-      "type": "header",
-      "content": "t:sections.all.animation.content"
-    },
-    {
-      "type": "select",
-      "id": "image_behavior",
-      "options": [
-        {
-          "value": "none",
-          "label": "t:sections.all.animation.image_behavior.options__1.label"
-        },
-        {
-          "value": "ambient",
-          "label": "t:sections.all.animation.image_behavior.options__2.label"
-        },
-        {
-          "value": "zoom-in",
-          "label": "t:sections.all.animation.image_behavior.options__4.label"
-        }
-      ],
-      "default": "none",
-      "label": "t:sections.all.animation.image_behavior.label"
-    },
-    {
-      "type": "header",
-      "content": "Mobile layout"
-    },
-    {
-      "type": "select",
-      "id": "mobile_content_alignment",
-      "options": [
-        {
-          "value": "left",
-          "label": "t:sections.image-with-text.settings.mobile_content_alignment.options__1.label"
-        },
-        {
-          "value": "center",
-          "label": "t:sections.image-with-text.settings.mobile_content_alignment.options__2.label"
-        },
-        {
-          "value": "right",
-          "label": "t:sections.image-with-text.settings.mobile_content_alignment.options__3.label"
-        }
-      ],
-      "default": "left",
-      "label": "t:sections.image-with-text.settings.mobile_content_alignment.label"
-    },
-    {
-      "type": "header",
-      "content": "t:sections.all.padding.section_padding_heading"
-    },
-    {
-      "type": "range",
-      "id": "padding_top",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_top",
-      "default": 36
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_bottom",
-      "default": 36
-    }
-  ],
-  "blocks": [
-    {
-      "type": "heading",
-      "name": "t:sections.image-with-text.blocks.heading.name",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "inline_richtext",
-          "id": "heading",
-          "default": "Open Your World To Kayani",
-          "label": "t:sections.image-with-text.blocks.heading.settings.heading.label"
-        },
-        {
-          "type": "select",
-          "id": "heading_size",
-          "options": [
-            {
-              "value": "h2",
-              "label": "t:sections.all.heading_size.options__1.label"
-            },
-            {
-              "value": "h1",
-              "label": "t:sections.all.heading_size.options__2.label"
-            },
-            {
-              "value": "h0",
-              "label": "t:sections.all.heading_size.options__3.label"
-            }
-          ],
-          "default": "h1",
-          "label": "t:sections.all.heading_size.label"
-        }
-      ]
-    },
-    {
-      "type": "caption",
-      "name": "t:sections.image-with-text.blocks.caption.name",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "text",
-          "id": "caption",
-          "default": "Add a tagline",
-          "label": "t:sections.image-with-text.blocks.caption.settings.text.label"
-        },
-        {
-          "type": "select",
-          "id": "text_style",
-          "options": [
-            {
-              "value": "subtitle",
-              "label": "t:sections.image-with-text.blocks.caption.settings.text_style.options__1.label"
-            },
-            {
-              "value": "caption-with-letter-spacing",
-              "label": "t:sections.image-with-text.blocks.caption.settings.text_style.options__2.label"
-            }
-          ],
-          "default": "caption-with-letter-spacing",
-          "label": "t:sections.image-with-text.blocks.caption.settings.text_style.label"
-        },
-        {
-          "type": "select",
-          "id": "text_size",
-          "options": [
-            {
-              "value": "small",
-              "label": "t:sections.image-with-text.blocks.caption.settings.caption_size.options__1.label"
-            },
-            {
-              "value": "medium",
-              "label": "t:sections.image-with-text.blocks.caption.settings.caption_size.options__2.label"
-            },
-            {
-              "value": "large",
-              "label": "t:sections.image-with-text.blocks.caption.settings.caption_size.options__3.label"
-            }
-          ],
-          "default": "medium",
-          "label": "t:sections.image-with-text.blocks.caption.settings.caption_size.label"
-        }
-      ]
-    },
-    {
-      "type": "text",
-      "name": "t:sections.image-with-text.blocks.text.name",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "richtext",
-          "id": "text",
-          "default": "<p>Lets make your summer travel story an unforgettable one</p>",
-          "label": "t:sections.image-with-text.blocks.text.settings.text.label"
-        },
-        {
-          "type": "select",
-          "id": "text_style",
-          "options": [
-            {
-              "value": "body",
-              "label": "t:sections.image-with-text.blocks.text.settings.text_style.options__1.label"
-            },
-            {
-              "value": "subtitle",
-              "label": "t:sections.image-with-text.blocks.text.settings.text_style.options__2.label"
-            }
-          ],
-          "default": "body",
-          "label": "t:sections.image-with-text.blocks.text.settings.text_style.label"
-        }
-      ]
-    },
-    {
-      "type": "button",
-      "name": "t:sections.image-with-text.blocks.button.name",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "text",
-          "id": "button_label",
-          "default": "Shop Now",
-          "label": "t:sections.image-with-text.blocks.button.settings.button_label.label",
-          "info": "t:sections.image-with-text.blocks.button.settings.button_label.info"
-        },
-        {
-          "type": "url",
-          "id": "button_link",
-          "label": "t:sections.image-with-text.blocks.button.settings.button_link.label"
-        }
-      ]
-    }
-  ],
-  "presets": [
-    {
-      "name": "Banner"
-    }
-  ]
-}
-{% endschema %}
+{% endstyle %}

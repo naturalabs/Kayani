@@ -1,0 +1,143 @@
+<section class="trending">
+  <div class="trending-image-wrapper">
+    <img
+      class="trending-image"
+      src="{{'trending.png' |asset_url }}"
+      alt=""
+    >
+  </div>
+  <div class="trending-text-container">
+    <h2>See What's Trending</h2>
+    <p class="trending-text">
+      Check out KAYANI's must-have featured product! Designed with the modern woman in mind, it's a unique and
+      eye-catching piece that combines trendiness with timelessness. Feel confident and powerful with this high-quality
+      item, perfect for any occasion from a night out to a formal event.
+    </p>
+    <div class="button-wrapper">
+      <button>
+        {% render 'icon-upright' %}
+      </button>
+      <p>Shop Now</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  section.trending {
+    background-color: #d5d5d7;
+    padding-bottom: 40px;
+  }
+
+  .trending-image-wrapper {
+    overflow: hidden;
+    max-width: 414px;
+    margin-inline: auto;
+  }
+  .trending-image {
+    max-height: 390px;
+    background-size: cover;
+    background-position: center left;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    margin-bottom: 40px;
+  }
+
+  .trending-text-container {
+    width: min(95%, 374px);
+    background: #d5d5d7;
+    margin-inline: auto;
+  }
+
+  .trending-text-container h2 {
+    font-family: var(--ff-secondary);
+    font-size: 30px;
+    font-weight: 400;
+  }
+
+  .trending-text-container .trending-text {
+    font-size: 16px;
+    margin-bottom: 20px;
+    line-height: 22px;
+  }
+
+  .trending-text-container .button-wrapper {
+    color: #646464;
+    /* border: 1px solid red; */
+    width: fit-content;
+    margin-inline: auto;
+  }
+
+  .trending-text-container .button-wrapper p {
+    margin: 0;
+  }
+
+  .trending-text-container .button-wrapper button {
+    width: 70px;
+    height: 70px;
+    border: 1px solid #646464;
+    background-color: transparent;
+    margin-bottom: 6px;
+    margin-inline: auto;
+  }
+  @media (min-width: 800px) {
+    .trending {
+      background-image: url('{{ 'trending.png' | asset_url }}');
+      background-size: cover;
+      background-position: center;
+      min-height: 859px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      max-width: 1921px;
+      /* width: auto; */
+      /* width: min(100%, 1921px); */
+
+      margin-inline: auto;
+    }
+    .trending-image-wrapper img {
+      display: none;
+    }
+    .trending-text-container {
+      background-color: transparent;
+      color: var(--clr-primary-white);
+      width: min(100%, 622px);
+      display: flex;
+      flex-direction: column;
+      color: #ffffff;
+    }
+    .trending .button-wrapper {
+      text-align: center;
+      margin-inline: unset;
+      align-self: flex-end;
+      color: #ffffff;
+    }
+    .trending-text-container {
+      margin-top: 108px;
+      margin-right: 200px;
+    }
+
+    .trending-text-container h2 {
+      font-size: 48px;
+      line-height: 60px;
+      letter-spacing: 0.02em;
+      color: #ffffff;
+    }
+    .trending-text-container .trending-text {
+      font-size: 24px;
+      line-height: 34px;
+    }
+    .trending-text-container .button-wrapper button {
+      color: #ffffff;
+      height: 100px;
+      width: 100px;
+      border-color: #ffffff;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Trending",
+  "settings": []
+}
+{% endschema %}
