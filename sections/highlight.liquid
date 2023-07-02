@@ -1,7 +1,13 @@
 <section class="trending">
   <div class="trending-image">
     {%- if section.settings.highlight_image != blank -%}
-      {{ section.settings.highlight_image | image_url }}
+      <img
+        src="{{ section.settings.highlight_image | image_url }}"
+        width="auto"
+        height="auto"
+        alt=""
+        loading="lazy"
+      >
     {%- else -%}
       <img
         src="{{ 'trending.png' | asset_url }}"
@@ -67,7 +73,6 @@
 
   .trending-text-container .button-wrapper {
     color: #646464;
-    /* border: 1px solid red; */
     width: fit-content;
     margin-inline: auto;
   }
