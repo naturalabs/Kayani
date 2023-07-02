@@ -3,6 +3,9 @@
   --alpha-button-border: 1;
   --alpha-link: 0.85;
   --alpha-badge-border: 0.1;
+
+  --clr-primary-white: #fff;
+  --clr-primary-dark: #1e1e1e;
 }
 
 .product-card-wrapper .card,
@@ -70,7 +73,7 @@
   --shadow-opacity: var(--media-shadow-opacity);
   --shadow-visible: var(--media-shadow-visible);
 }
-// custom width
+/* custom width */
 .full-width {
   width: min(95%, var(--full-width));
   margin: 0 auto;

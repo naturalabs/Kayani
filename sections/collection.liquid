@@ -1,158 +1,74 @@
-{% comment %} {{ 'collection.css' | asset_url | stylesheet_tag }} {% endcomment %}
+{{ 'base.css' | asset_url | stylesheet_tag }}
+{{ 'collection.css' | asset_url | stylesheet_tag }}
 
-{% style %}
-  section.hot-pick__container {
-    width: min(95%, 374px);
-    margin-inline: auto;
-  }
-  section.hot-pick .card {
-    min-height: 500px;
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    margin-bottom: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    padding-bottom: 50px;
-    border-radius: 5px;
-    text-align: center;
-
-    position: relative;
-  }
-
-  .card__image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-  }
-
-  .card__image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -99;
-  }
-
-  .hot-pick .card__elements {
-    z-index: 1;
-  }
-
-  .hot-pick .card__elements h2 {
-    font-weight: 700;
-    font-size: 30px;
-    color: var(--clr-primary-white);
-    margin-bottom: 25px;
-  }
-
-  .hot-pick .card__elements button {
-    font-size: 20px;
-    font-family: inherit;
-    padding: 13px 42px;
-    border-radius: 0;
-    outline: none;
-    color: var(--clr-primary-dark);
-    border: none;
-    width: 211px;
-  }
-  .hot-pick__blur-right {
-    display: none;
-  }
-
-  @media (min-width: 800px) {
-    section.hot-pick {
-      position: relative;
-    }
-
-    section.hot-pick__container {
-      gap: 60px;
-      width: min(90%, 1435px);
-      margin-inline: auto;
-    }
-    .hot-pick .card-container {
-      display: flex;
-      gap: 60px;
-    }
-
-    section.hot-pick .card {
-      flex: 1;
-      min-height: 659px;
-      background-size: cover;
-      background-position: center center;
-      background-repeat: no-repeat;
-      margin-bottom: 40px;
-      display: flex;
-      justify-content: center;
-      align-items: flex-end;
-      padding-bottom: 50px;
-      border-radius: 5px;
-    }
-
-    .hot-pick .card__elements button {
-      max-width: 251px;
-    }
-    .hot-pick__blur-right {
-      display: block;
-      position: absolute;
-      right: 0;
-      bottom: -250px;
-      opacity: 60%;
-    }
-  }
-{% endstyle %}
-
-<section class="hot-pick">
+<section class="hot-pick full-width">
   <div class="hot-pick__blur-right">
     {% render 'blur-right' %}
   </div>
-  <div class="hot-pick__container">
+  <div
+    class="
+      hot-pick__container {% if section.settings.page_width == 'full-width' %}full-width
+      {% elsif section.settings.page_width == 'fixed-width' %}fixed-width
+      {% elsif section.settings.page_width == 'custom-width' %}custom-width
+      {% endif %}
+    "
+  >
     <div class="card-container">
       <div class="card">
         <div class="card__image">
-          {%- if section.settings.image != blank -%}
-            {{ section.settings.left_image | image_url | loading: 'lazy' }}
+          {%- if section.settings.bestseller != blank -%}
+            {{ section.settings.bestseller | image_url }}
           {%- else -%}
-            <img src="{{ 'hot-01.png' | asset_url }}" alt="">
+            <img
+              src="{{ 'hot-01.png' | asset_url }}"
+              width="440"
+              height="auto"
+              alt="example"
+              loading="lazy"
+            >
           {%- endif -%}
         </div>
         <div class="card__elements">
-          <h2>{{ section.settings.bestsellers_title }}</h2>
-          <a href="{{ section.settings.bestsellers_link }}"
-            ><button>{{ section.settings.bestsellers_button_text }}</button></a
-          >
+          <h2>Best Sellers</h2>
+          <a href="{{ section.settings.bestsellers_link }}"><button>Shop Bestseller</button></a>
         </div>
       </div>
       <div class="card">
         <div class="card__image">
-          {%- if section.settings.image != blank -%}
-            {{ section.settings.left_image | image_url | loading: 'lazy' }}
+          {%- if section.settings.new_arrivals != blank -%}
+            {{ section.settings.new_arrivals | image_url }}
           {%- else -%}
-            <img src="{{ 'hot-02.png' | asset_url }}" alt="">
+            <img
+              src="{{ 'hot-02.png' | asset_url }}"
+              width="440"
+              height="auto"
+              alt="example"
+              loading="lazy"
+            >
           {%- endif -%}
         </div>
         <div class="card__elements ">
-          <h2>{{ section.settings.new_arrivals_title }}</h2>
-          <a href="{{ section.settings.new_arrivals_link }}"
-            ><button>{{ section.settings.new_arrivals_button_text }}</button></a
-          >
+          <h2>New Arrivals</h2>
+          <a href="{{ section.settings.new_arrivals_link }}"><button>Shop Arrivals</button></a>
         </div>
       </div>
       <div class="card">
         <div class="card__image">
-          {%- if section.settings.image != blank -%}
-            {{ section.settings.left_image | image_url | loading: 'lazy' }}
+          {%- if section.settings.dress_collection != blank -%}
+            {{ section.settings.dress_collection | image_url }}
           {%- else -%}
-            <img src="{{ 'hot-03.png' | asset_url }}" alt="">
+            <img
+              src="{{ 'hot-03.png' | asset_url }}"
+              width="440"
+              height="auto"
+              alt="example"
+              loading="lazy"
+            >
           {%- endif -%}
         </div>
         <div class="card__elements ">
-          <h2>{{ section.settings.dress_collection_title }}</h2>
-          <a href="{{ section.settings.dress_collection_link }}"
-            ><button>{{ section.settings.dress_collection_button_text }}</button></a
-          >
+          <h2>Dress Collection</h2>
+          <a href="{{ section.settings.dress_collection_link }}"><button>Shop Dress</button></a>
         </div>
       </div>
     </div>
@@ -164,57 +80,57 @@
   "name": "Collection",
   "settings": [
     {
-      "type": "text",
-      "label": "Bestsellers Title",
-      "id": "bestsellers_title",
-      "default": "Bestsellers"
+      "type": "image_picker",
+      "label": "Best Seller Image",
+      "id": "bestseller"
     },
-    {
-      "type": "text",
-      "label": "Bestsellers Button Text",
-      "id": "bestsellers_button_text",
-      "default": "Shop Bestsellers"
-    },
+
     {
       "type": "url",
       "label": "Bestsellers Button Link",
       "id": "bestsellers_link"
     },
-
     {
-      "type": "text",
-      "label": "New Arrivals Title",
-      "id": "new_arrivals_title",
-      "default": "New Arrivals"
+      "type": "image_picker",
+      "label": "New Arrival Image",
+      "id": "new_arrival"
     },
 
-    {
-      "type": "text",
-      "label": "New Arrivals Button Text",
-      "id": "new_arrivals_button_text",
-      "default": "Shop New Arrivals"
-    },
     {
       "type": "url",
       "label": "New Arrivals Button Link",
       "id": "new_arrivals_link"
     },
     {
-      "type": "text",
-      "label": "Dress Collection Title",
-      "id": "dress_collection_title",
-      "default": "Dress Collection"
+      "type": "image_picker",
+      "label": "Dress Collection Image",
+      "id": "dress_collection"
     },
-    {
-      "type": "text",
-      "label": "Dress Collection Button Text",
-      "id": "dress_collection_button_text",
-      "default": "Shop Dress Collection"
-    },
+
     {
       "type": "url",
       "label": "Dress Collection Button Link",
       "id": "dress_collection_link"
+    },
+    {
+      "type": "select",
+      "label": "Page Width",
+      "id": "page_width",
+      "options": [
+        {
+          "value": "full-width",
+          "label": "Full Width"
+        },
+        {
+          "value": "fixed-width",
+          "label": "Fixed Width"
+        },
+        {
+          "value": "custom-width",
+          "label": "Custom Width"
+        }
+      ],
+      "default": "custom-width"
     }
   ]
 }
