@@ -1,7 +1,7 @@
 <section class="trending">
   <div class="trending-image">
-    {%- if section.settings.image != blank -%}
-      {{ section.settings.right_image | image_url }}
+    {%- if section.settings.highlight_image != blank -%}
+      {{ section.settings.highlight_image | image_url }}
     {%- else -%}
       <img
         src="{{ 'trending.png' | asset_url }}"
@@ -16,14 +16,6 @@
   <div class="trending-text-container">
     <h2>{{ section.settings.header }}</h2>
     <p class="trending-text">{{ section.settings.text }}</p>
-    {% comment %}
-      <div class="button-wrapper">
-        <a href="{{ section.settings.button_link }}">
-          {% render 'icon-upright' %}
-          <p>{{ section.settings.button_text }}</p>
-        </a>
-      </div>
-    {% endcomment %}
     <div class="highlight-button">
       <a href="{{ section.settings.shop_link }}">
         {% render 'icon-upright' %}
@@ -198,13 +190,8 @@
   "settings": [
     {
       "type": "image_picker",
-      "id": "background_image",
-      "label": "Background Image"
-    },
-    {
-      "type": "image_picker",
-      "id": "image",
-      "label": "Trending Image"
+      "id": "highlight_image",
+      "label": "Highlight Image"
     },
     {
       "type": "text",
