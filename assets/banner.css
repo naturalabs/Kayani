@@ -157,6 +157,21 @@
     width: -moz-fit-content;
     width: fit-content;
     align-self: flex-end;
-    padding-right: 50px;
+    margin-right: 50px;
+  }
+  .banner .banner__button p {
+    font-size: 24px;
+    margin: 0;
+  }
+  .banner .banner__button a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(100, 100, 100, 0.5294117647);
+    width: 100px;
+    height: 100px;
+  }
+  .banner .banner__button a svg {
+    color: #646464;
   }
 }
