@@ -1,21 +1,34 @@
 <section class="trending">
-  {% comment %} <div class="trending-image-wrapper"> {% endcomment %}
   <div class="trending-image">
     {%- if section.settings.image != blank -%}
-      {{ section.settings.left_image | image_url | loading: 'lazy' }}
+      {{ section.settings.right_image | image_url }}
     {%- else -%}
-      <img src="{{ 'trending.png' | asset_url }}" alt="">
+      <img
+        src="{{ 'trending.png' | asset_url }}"
+        width="auto"
+        height="auto"
+        alt="example"
+        loading="lazy"
+      >
     {%- endif -%}
   </div>
 
   <div class="trending-text-container">
     <h2>{{ section.settings.header }}</h2>
     <p class="trending-text">{{ section.settings.text }}</p>
-    <div class="button-wrapper">
-      <a href="{{ section.settings.button_link }}">
+    {% comment %}
+      <div class="button-wrapper">
+        <a href="{{ section.settings.button_link }}">
+          {% render 'icon-upright' %}
+          <p>{{ section.settings.button_text }}</p>
+        </a>
+      </div>
+    {% endcomment %}
+    <div class="highlight-button">
+      <a href="{{ section.settings.shop_link }}">
         {% render 'icon-upright' %}
-        <p>{{ section.settings.button_text }}</p>
       </a>
+      <p>Shop Now</p>
     </div>
   </div>
 </section>
@@ -24,31 +37,28 @@
   section.trending {
     background-color: #d5d5d7;
     padding-bottom: 40px;
-
+  }
+  .trending-image {
+    height: 390px;
+    width: auto;
+    overflow: hidden;
     position: relative;
   }
 
-  .trending-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-  }
-
   .trending-image img {
+    position: absolute;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    z-index: -1;
+    object-position: left;
+    top: 0;
   }
 
   .trending-text-container {
     width: min(95%, 374px);
     background: #d5d5d7;
     margin-inline: auto;
-    z-index:2;
+    z-index: 2;
   }
 
   .trending-text-container h2 {
@@ -82,58 +92,103 @@
     margin-bottom: 6px;
     margin-inline: auto;
   }
+
+  .highlight-button {
+    outline: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .highlight-button a {
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #64646487;
+    width: 70px;
+    height: 70px;
+  }
+  .highlight-button a svg {
+    color: #646464;
+  }
   @media (min-width: 800px) {
-    .trending {
-      background-image: url('{{ section.settings.image | img_url: 'master' }}');
-      background-size: cover;
-      background-position: center;
-      min-height: 859px;
+    section.trending {
+      position: relative;
+      min-height: 860px;
+      width: 100%;
+      background-color: transparent;
       display: flex;
       align-items: center;
       justify-content: flex-end;
-      max-width: 1921px;
-      /* width: auto; */
-      /* width: min(100%, 1921px); */
-
-      margin-inline: auto;
     }
-    .trending-image-wrapper img {
-      display: none;
+    .trending-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -1;
     }
     .trending-text-container {
       background-color: transparent;
       color: var(--clr-primary-white);
-      width: min(100%, 622px);
+      width: min(100%, 650px);
       display: flex;
       flex-direction: column;
-      color: #ffffff;
+      margin-inline: unset;
+      margin-top: 130px;
+      margin-right: 244px;
     }
     .trending .button-wrapper {
       text-align: center;
       margin-inline: unset;
       align-self: flex-end;
-      color: #ffffff;
-    }
-    .trending-text-container {
-      margin-top: 108px;
-      margin-right: 200px;
     }
 
     .trending-text-container h2 {
       font-size: 48px;
+      font-family: Unna;
+      font-style: normal;
+      font-weight: 700;
       line-height: 60px;
-      letter-spacing: 0.02em;
-      color: #ffffff;
+      letter-spacing: -0.96px;
+      color: var(--clr-primary-white);
+      font-family: var(--font-body-family);
+      margin: 0;
     }
     .trending-text-container .trending-text {
       font-size: 24px;
-      line-height: 34px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 140%;
     }
     .trending-text-container .button-wrapper button {
       color: #ffffff;
       height: 100px;
       width: 100px;
-      border-color: #ffffff;
+    }
+    .highlight-button {
+      outline: none;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+    .highlight-button p {
+      font-size: 24px;
+      margin: 0;
+    }
+    .highlight-button a {
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--clr-primary-white);
+      width: 100px;
+      height: 100px;
+    }
+    .highlight-button a svg {
+      color: var(--clr-primary-white);
     }
   }
 </style>
