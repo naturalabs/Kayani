@@ -1,3 +1,64 @@
+{% schema %}
+{
+  "name": "Collection",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Bestsellers Title",
+      "id": "bestsellers_title",
+      "default": "Bestsellers"
+    },
+    {
+      "type": "text",
+      "label": "Bestsellers Button Text",
+      "id": "bestsellers_button_text",
+      "default": "Shop Bestsellers"
+    },
+    {
+      "type": "url",
+      "label": "Bestsellers Button Link",
+      "id": "bestsellers_link"
+    },
+
+    {
+      "type": "text",
+      "label": "New Arrivals Title",
+      "id": "new_arrivals_title",
+      "default": "New Arrivals"
+    },
+
+    {
+      "type": "text",
+      "label": "New Arrivals Button Text",
+      "id": "new_arrivals_button_text",
+      "default": "Shop New Arrivals"
+    },
+    {
+      "type": "url",
+      "label": "New Arrivals Button Link",
+      "id": "new_arrivals_link"
+    },
+    {
+      "type": "text",
+      "label": "Dress Collection Title",
+      "id": "dress_collection_title",
+      "default": "Dress Collection"
+    },
+    {
+      "type": "text",
+      "label": "Dress Collection Button Text",
+      "id": "dress_collection_button_text",
+      "default": "Shop Dress Collection"
+    },
+    {
+      "type": "url",
+      "label": "Dress Collection Button Link",
+      "id": "dress_collection_link"
+    }
+  ]
+}
+{% endschema %}
+
 <section class="hot-pick">
   <div class="hot-pick-blur-right">
     {% render 'blur-right' %}
@@ -5,21 +66,48 @@
   <div class="hot-pick-container">
     <div class="card-container">
       <div class="card">
+        <div class="card-image">
+          {%- if section.settings.image != blank -%}
+            {{ section.settings.left_image | image_url | loading: 'lazy' }}
+          {%- else -%}
+            <img src="{{ 'hot-01.png' | asset_url }}" alt="">
+          {%- endif -%}
+        </div>
         <div class="card-elements">
-          <h2>Bestsellers</h2>
-          <button>Shop Bestseller</button>
+          <h2>{{ section.settings.bestsellers_title }}</h2>
+          <a href="{{ section.settings.bestsellers_link }}"
+            ><button>{{ section.settings.bestsellers_button_text }}</button></a
+          >
         </div>
       </div>
       <div class="card">
+        <div class="card-image">
+          {%- if section.settings.image != blank -%}
+            {{ section.settings.left_image | image_url | loading: 'lazy' }}
+          {%- else -%}
+            <img src="{{ 'hot-02.png' | asset_url }}" alt="">
+          {%- endif -%}
+        </div>
         <div class="card-elements ">
-          <h2>New Arrivals</h2>
-          <button>Shop Bestseller</button>
+          <h2>{{ section.settings.new_arrivals_title }}</h2>
+          <a href="{{ section.settings.new_arrivals_link }}"
+            ><button>{{ section.settings.new_arrivals_button_text }}</button></a
+          >
         </div>
       </div>
       <div class="card">
+        <div class="card-image">
+          {%- if section.settings.image != blank -%}
+            {{ section.settings.left_image | image_url | loading: 'lazy' }}
+          {%- else -%}
+            <img src="{{ 'hot-03.png' | asset_url }}" alt="">
+          {%- endif -%}
+        </div>
         <div class="card-elements ">
-          <h2>Dress Collection</h2>
-          <button>Shop Dress</button>
+          <h2>{{ section.settings.dress_collection_title }}</h2>
+          <a href="{{ section.settings.dress_collection_link }}"
+            ><button>{{ section.settings.dress_collection_button_text }}</button></a
+          >
         </div>
       </div>
     </div>
@@ -43,18 +131,37 @@
     padding-bottom: 50px;
     border-radius: 5px;
     text-align: center;
+
+    position: relative;
   }
 
-  .hot-pick .card:nth-child(1) {
-    background-image: url('{{ "hot-01.png" | asset_url }}');
+  .card-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
 
+  .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -99;
+  }
+
+  /* .hot-pick .card:nth-child(1) {
+    background-image: url('{{ "hot-01.png" | asset_url }}');
   }
   .hot-pick .card:nth-child(2) {
     background-image: url('{{ "hot-02.png" | asset_url }}');
-
   }
   .hot-pick .card:nth-child(3) {
     background-image: url('{{ "hot-03.png" | asset_url }}');
+  } */
+  .hot-pick .card-elements {
+    z-index: 1;
   }
 
   .hot-pick .card-elements h2 {
@@ -78,7 +185,7 @@
     display: none;
   }
 
-  @media(min-width: 800px) {
+  @media (min-width: 800px) {
     section.hot-pick {
       position: relative;
     }
@@ -116,14 +223,6 @@
       right: 0;
       bottom: -250px;
       opacity: 60%;
-
     }
   }
 {% endstyle %}
-
-{% schema %}
-{
-  "name": "Hot Picks",
-  "settings": []
-}
-{% endschema %}

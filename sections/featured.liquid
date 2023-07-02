@@ -1,254 +1,76 @@
-<section class="featured-products">
-  <div class="ellipse">
-    {% render 'ellipse' %}
-  </div>
-  <div class="featured-blur-left">
-    {% render 'blur-left' %}
-  </div>
-  <div class="featured-header">
-    <h2 class="text-center">Looks You'll Love</h2>
-  </div>
-  <div class="featured-container">
-    <div class="featured-card">
-      <div class="featured-button">
-        <button class="left">
-          {% render 'icon-left' %}
-        </button>
-        <button class="right">
-          {% render 'icon-right' %}
-        </button>
+<div class="featured-product-slider">
+  <div class="slider-wrapper">
+    {% for product in collections.featured.products %}
+      <div class="slide">
+        <a href="{{ product.url }}">
+          <img src="{{ product.featured_image.src }}" alt="{{ product.title }}">
+          <h3>{{ product.title }}</h3>
+          <p>{{ product.price | money }}</p>
+        </a>
       </div>
-      <div class="featured-details">
-        <p>Nadine belted dress - Regal Onyx</p>
-        <div class="featured-ratings">
-          <p>1.999,00 kr</p>
-          <div class="rating-container">
-            {% render 'icon-rating' %}
-            {% render 'icon-rating' %}
-            {% render 'icon-rating' %}
-            {% render 'icon-rating' %}
-            {% render 'icon-rating' %}
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="featured-card desktop"></div>
-    <div class="featured-card desktop"></div>
-    <div class="featured-card desktop"></div>
+    {% endfor %}
   </div>
-</section>
-
-{% style %}
-  .featured-products {
-    padding: 33px 0 50px;
-  }
-
-  .featured-products h2 {
-    margin-bottom: 20px;
-    font-weight: 700;
-    font-family: var(--ff-secondary);
-    font-size: 30px;
-    text-align: center;
-  }
-
-  .featured-card {
-    width: min(90%, 374px);
-    margin-inline: auto;
-    background-image: url('{{ 'featured-products-01.png' | asset_url }}');
-    min-height: 528px;
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .featured-button {
-    margin-top: 189px;
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-  }
-
-  .featured-button button {
-    border: 1px solid #646464;
-    height: 65px;
-    width: 65px;
-    outline: none;
-    background-color: transparent; /* Removed background color */
-  }
-
-  .featured-button button svg {
-    width: 36px;
-    height: 36px;
-  }
-
-  .featured-details {
-    background-color: var(--clr-primary-white);
-    width: 100%;
-    padding: 20px;
-    font-size: 20px;
-
-  }
-
-
-
-  .featured-ratings {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 38px;
-  }
-
-  .featured-ratings p {
-    font-size: 24px;
-    letter-spacing: -2%;
-    line-height: 34px;
-  }
-
-  .featured-button-container-desktop {
-    display: none;
-  }
-
-  .featured-card.desktop {
-    display: none;
-  }
-
-  .featured-products .ellipse,
-  .featured-blur-left {
-    display: none;
-  }
-
-  @media(min-width: 800px) {
-    .featured-details {
-      background-color: var(--clr-primary-white);
-      width: 100%;
-      padding: 20px;
-      font-size: 20px;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-    .show {
-      display: block;
-      opacity: 1;
-    }
-
-
-    /* .hidden {
-      display: none;
-    } */
-
-    section.featured-products {
-      width: min(90%, 1720px);
-      margin-inline: auto;
-      padding: 140px 0 164px;
-      position: relative;
-    }
-
-    section.featured-products .ellipse svg {
-      height: 170px;
-      position: absolute;
-      top: 0;
-      left: -300px;
-    }
-
-    .featured-card.desktop {
-      display: block;
-    }
-
-    .featured-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .featured-products h2 {
-      text-align: left;
-    }
-
-    .featured-button button {
-      border: 1px solid #646464;
-      height: 65px;
-      width: 65px;
-      outline: none;
-      margin-bottom: 29px;
-      background-color: transparent;
-    }
-
-    .featured-button button svg {
-      width: 56px;
-      height: 56px;
-      color: #646464;
-    }
-
-    .featured-container {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      max-width: 1720px; /* Corrected typo from 'maw-width' to 'max-width' */
-      gap: 40px;
-    }
-
-    .featured-button {
-      position: absolute;
-      width: 150px;
-      top: -70px;
-      right: 0;
-    }
-
-    .featured-button-container-desktop {
-      display: flex;
-      gap: 30px;
-    }
-
-    .featured-container .featured-card {
-      width: 100%;
-      min-height: 562px;
-      justify-content: flex-end;
-    }
-
-    .featured-button-container-desktop button {
-      height: 100px;
-      width: 100px;
-    }
-
-    .featured-products .ellipse {
-      display: block;
-      position: absolute;
-      top: 70px;
-      left: 320px;
-    }
-
-    .featured-blur-left {
-      display: block;
-      position: absolute;
-      left: -100px;
-      bottom: -250px;
-      z-index: -1;
-      opacity: 60%;
-    }
-  }
-{% endstyle %}
+  <div class="slider-controls">
+    <button class="prev-button">Previous</button>
+    <button class="next-button">Next</button>
+  </div>
+</div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const card = document.querySelector('.featured-card');
-    const details = document.querySelector('.featured-details');
+  // Get slider elements
+  const sliderWrapper = document.querySelector('.slider-wrapper');
+  const prevButton = document.querySelector('.prev-button');
+  const nextButton = document.querySelector('.next-button');
 
-    card.addEventListener('mouseover', function () {
-      details.classList.add('show');
-    });
+  // Set initial position
+  let position = 0;
 
-    card.addEventListener('mouseout', function () {
-      details.classList.remove('show');
-    });
+  // Set slide width
+  const slideWidth = 300; // Adjust the value according to your design
+
+  // Get total number of slides
+  const totalSlides = document.querySelectorAll('.slide').length;
+
+  // Adjust slider wrapper width based on the number of slides
+  sliderWrapper.style.width = `${slideWidth * totalSlides}px`;
+
+  // Slide to the previous position
+  prevButton.addEventListener('click', () => {
+    if (position > 0) {
+      position--;
+      sliderWrapper.style.transform = `translateX(-${slideWidth * position}px)`;
+    }
+  });
+
+  // Slide to the next position
+  nextButton.addEventListener('click', () => {
+    if (position < totalSlides - 1) {
+      position++;
+      sliderWrapper.style.transform = `translateX(-${slideWidth * position}px)`;
+    }
   });
 </script>
 
-{% schema %}
-{
-  "name": "Featured",
-  "settings": []
-}
-{% endschema %}
+<style>
+  .featured-product-slider {
+    /* Add any styles for the slider container */
+  }
+
+  .slider-wrapper {
+    display: flex;
+    overflow: hidden;
+    /* Add any styles for the slider wrapper */
+  }
+
+  .slide {
+    flex: 0 0 auto;
+    width: 300px; /* Adjust the value according to your design */
+    margin-right: 20px;
+    /* Add any styles for individual slides */
+  }
+
+  .slider-controls {
+    margin-top: 10px;
+    /* Add any styles for the slider controls */
+  }
+</style>

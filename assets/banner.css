@@ -1,9 +1,11 @@
-section.banner {
-  padding: 70px 0;
+.banner {
+  padding: 60px 0;
   color: #1e1e1e;
 }
-
-.banner-container {
+.banner__ellipse, .banner__blur-right, .banner__blur-left {
+  display: none;
+}
+.banner__container {
   width: min(95%, 375px);
   margin-left: auto;
   margin-right: auto;
@@ -13,19 +15,16 @@ section.banner {
   grid-template-areas: "header" "images" "text";
   position: relative;
 }
-
-.banner-header {
+.banner__header {
   max-width: 270px;
   font-size: 36px;
   font-weight: 400;
-  margin-bottom: 37px;
   margin-left: auto;
   margin-right: auto;
   grid-area: header;
   text-align: center;
 }
-
-.banner .image-container {
+.banner__image-container {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
@@ -35,54 +34,44 @@ section.banner {
   margin-right: auto;
   grid-area: images;
 }
-
-.banner .image-left img {
+.banner__image-left img {
   width: min(100%, 162px);
 }
-
-.banner .image-right img {
+.banner__image-right img {
   width: min(100%, 206px);
 }
-
-.mobile-banner-button {
+.banner__text-container {
+  font-size: 18px;
   text-align: center;
+  grid-area: text;
 }
-
-.banner button {
-  text-align: center;
+.banner__text {
+  line-height: 25px;
+  margin-bottom: 40px;
+  margin-top: 0;
+}
+.banner__button {
   background-color: #f9edeb;
+  color: #646464;
   outline: none;
+}
+.banner__button a {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border: 1px solid #646464;
   color: #646464;
   width: 70px;
   height: 70px;
-  margin-bottom: 6px;
 }
-
-.text-container {
-  font-size: 18px;
-  /* padding-bottom: 50px; */
-  text-align: center;
-  grid-area: text;
-  /* margin-bottom: 70px; */
-}
-
-p.banner-text {
-  line-height: 25px;
-  margin-bottom: 40px;
-}
-
-.ellipse,
-.blur-right,
-.blur-left {
-  display: none;
-}
-
 @media (min-width: 800px) {
-  section.banner {
+  .banner .banner {
     position: relative;
   }
-  .banner-container {
+  .banner .banner__container {
     width: min(95%, 375px);
     margin-left: auto;
     margin-right: auto;
@@ -91,46 +80,7 @@ p.banner-text {
     gap: 1rem;
     grid-template-areas: "header images" "text images";
   }
-  .banner-header {
-    max-width: 700px;
-    display: flex;
-    font-size: 90px;
-    align-items: flex-end;
-    margin: 0;
-    text-align: left;
-    line-height: 90px;
-    letter-spacing: -2%;
-  }
-  .text-container {
-    max-width: 645px;
-    display: flex;
-    flex-direction: column;
-  }
-  .banner-text {
-    text-align: left;
-    font-size: 24px;
-  }
-  p.banner-text {
-    margin-bottom: 100px;
-  }
-  .banner-button {
-    text-align: center;
-    width: -moz-fit-content;
-    width: fit-content;
-    align-self: flex-end;
-  }
-  .banner-button button p {
-    text-align: center;
-  }
-  .banner-button button {
-    height: 100px;
-    width: 100px;
-  }
-  .banner-button button svg {
-    height: 56px;
-    width: 56px;
-  }
-  .ellipse {
+  .banner .banner__ellipse {
     display: block;
     position: absolute;
     z-index: -1;
@@ -139,20 +89,7 @@ p.banner-text {
     width: 40%;
     color: #c8c8c8;
   }
-  .banner .image-container {
-    margin: 0;
-  }
-  .banner .image-left img,
-  .banner .image-right img {
-    width: 100%;
-  }
-  .banner .image-left {
-    width: min(100%, 368px);
-  }
-  .banner .image-right {
-    width: min(100%, 468px);
-  }
-  .blur-right {
+  .banner .banner__blur-right {
     display: block;
     position: absolute;
     top: -60px;
@@ -160,12 +97,61 @@ p.banner-text {
     height: 250px;
     opacity: 0.6;
   }
-  .blur-left {
+  .banner .banner__blur-left {
     display: block;
     position: absolute;
     bottom: 100px;
     left: 0;
     height: 250px;
     opacity: 0.6;
+  }
+  .banner .banner__container {
+    width: min(95%, 375px);
+    margin-left: auto;
+    margin-right: auto;
+    width: min(90%, 1626px);
+    grid-template-columns: 1fr 1.1fr;
+    gap: 1rem;
+    grid-template-areas: "header images" "text images";
+  }
+  .banner .banner__header {
+    max-width: 650px;
+    display: flex;
+    align-items: flex-end;
+    margin: 0;
+    text-align: left;
+    line-height: 90px;
+  }
+  .banner .banner__header h1 {
+    font-size: 72px;
+    letter-spacing: -2%;
+    margin: 0;
+  }
+  .banner .banner__image-container {
+    margin: 0;
+  }
+  .banner .banner__image-left img {
+    width: min(100%, 368px);
+    width: 100%;
+  }
+  .banner .banner__image-right img {
+    width: min(100%, 468px);
+    width: 100%;
+  }
+  .banner .banner__text-container {
+    max-width: 650px;
+    display: flex;
+    flex-direction: column;
+  }
+  .banner .banner__text {
+    text-align: left;
+    font-size: 24px;
+  }
+  .banner .banner__button {
+    text-align: center;
+    width: -moz-fit-content;
+    width: fit-content;
+    align-self: flex-end;
+    padding-right: 50px;
   }
 }

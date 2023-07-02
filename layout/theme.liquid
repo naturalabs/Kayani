@@ -104,7 +104,13 @@
         --media-shadow-blur-radius: {{ settings.media_shadow_blur }}px;
         --media-shadow-visible: {% if settings.media_shadow_opacity > 0 %}1{% else %}0{% endif %};
 
+        /* PAGE WIDTHS */
         --page-width: {{ settings.page_width | divided_by: 10 }}rem;
+        --full-width: {{ settings.full_width }}px;
+        --fixed-width: {{ settings.fixed_width }}px;
+        --custom-width: {{ settings.custom_width }}px;
+
+
         --page-width-margin: {% if settings.page_width == '1600' %}2{% else %}0{% endif %}rem;
 
         --product-card-image-padding: {{ settings.card_image_padding | divided_by: 10.0 }}rem;

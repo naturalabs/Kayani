@@ -4,8 +4,40 @@
     "theme_name": "Kayani",
     "theme_version": "10.0.0",
     "theme_author": "Shopify",
-    "theme_documentation_url": "https:\/\/help.shopify.com\/manual\/online-store\/themes",
-    "theme_support_url": "https:\/\/support.shopify.com\/"
+    "theme_documentation_url": "https://help.shopify.com/manual/online-store/themes",
+    "theme_support_url": "https://support.shopify.com/"
+  },
+  {
+    "name": "Page Width",
+    "settings": [
+      {
+        "type": "range",
+        "label": "Full width",
+        "id": "full_width",
+        "min": 1700,
+        "max": 2200,
+        "step": 10,
+        "default": 1920
+      },
+      {
+        "type": "range",
+        "label": "Fixed width",
+        "id": "fixed_width",
+        "min": 900,
+        "max": 1600,
+        "step": 10,
+        "default": 1430
+      },
+      {
+        "type": "range",
+        "label": "Custom width",
+        "id": "custom_width",
+        "min": 900,
+        "max": 1800,
+        "step": 10,
+        "default": 1720
+      }
+    ]
   },
   {
     "name": "t:settings_schema.logo.name",

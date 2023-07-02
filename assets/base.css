@@ -70,6 +70,22 @@
   --shadow-opacity: var(--media-shadow-opacity);
   --shadow-visible: var(--media-shadow-visible);
 }
+// custom width
+.full-width {
+  width: min(95%, var(--full-width));
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+.fixed-width {
+  width: min(95%, var(--fixed-width));
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+.custom-width {
+  width: min(95%, var(--custom-width));
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
 
 /* base */
 

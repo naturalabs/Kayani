@@ -1,0 +1,199 @@
+<style>
+  .dawn-product-slider {
+    max-width: 1600px;
+    margin: auto;
+    padding: 0 20px;
+    padding-bottom: 32px;
+    margin-top: 55px;
+  }
+
+  .dawn-product-slider img {
+    width: 100%;
+  }
+
+  .dawn-product-slider .carousel-cell {
+    background: #fff;
+    border-radius: 16px;
+    margin: auto;
+    padding: 18px;
+    margin: 12px;
+    width: calc(32% - 10px);
+  }
+
+  .product-btn {
+    width: 100%;
+  }
+
+  .dawn-product-slider a {
+    color: black;
+    text-decoration: none;
+  }
+
+  .dawn-product-slider a:hover {
+    text-decoration: underline;
+  }
+
+  .dawn-product-slider a.title,
+  .dawn-product-slider a.price {
+    margin: 0;
+  }
+
+  .dawn-product-slider .flickity-button .flickity-prev-next-button.previous,
+  .dawn-product-slider .flickity-button .flickity-prev-next-button.next {
+    background: red;
+    color: white;
+  }
+
+  .dawn-product-slider:focus-visible,
+  .dawn-product-slider.carousel.focus-visible {
+    outline: unset;
+    outline-offset: unset;
+    box-shadow: unset;
+  }
+
+  @media only screen and (max-width: 767px) {
+    .dawn-product-slider .carousel-cell {
+      width: calc(50% - 10px);
+    }
+  }
+
+  @media only screen and (max-width: 479px) {
+    .dawn-product-slider .carousel-cell {
+      width: calc(100% - 10px);
+    }
+  }
+</style>
+
+<!-- CSS -->
+<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+
+<!-- JavaScript -->
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+
+<div class="collection page-width">
+  <div class="title-wrapper-with-link">
+    <h2 class="title{% if section.settings.title == blank %} title--no-heading{% endif %}">
+      {{ section.settings.title | escape }}
+    </h2>
+  </div>
+</div>
+
+<div class="dawn-product-slider">
+  <div class="carousel">
+    {% for block in section.blocks %}
+      {% assign product = all_products[block.settings.product_item] %}
+      <div class="carousel-cell">
+        <a href="{{ product.url }}">
+          <img
+            data-flickity-lazyload="{{ product.featured_image | img_url: 'master' }}"
+            border="0"
+            alt="{{ product.title }}"
+          >
+          <p class="title">{{ product.title }}</p>
+          <p class="price">{{ product.price | money }}</p>
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% assign nav_range = section.settings.navigation_amount %}
+{% style %}
+    @media only screen and (min-width: 1201px) {
+      {% if nav_range == 2 %}
+        .dawn-product-slider .carousel-cell {
+          width: calc(49% - 10px);
+        }
+      {% elsif nav_range == 3 %}
+        .dawn-product-slider .carousel-cell {
+          width: calc(32% - 10px);
+        }
+      {% elsif nav_range == 4 %}
+        .dawn-product-slider .carousel-cell {
+          width: calc(24% - 10px);
+        }
+      {% endif %}
+    }
+    @media(max-width:900px){
+      .dawn-product-slider .carousel-cell {
+        width:100%;
+  }
+    }
+    .flickity-page-dots .dot {
+      background: {{ section.settings.navigation_color }};
+    }
+    .flickity-button-icon {
+      color: {{ section.settings.navigation_color }};
+    }
+{% endstyle %}
+
+<script>
+  let elem = document.querySelector('.dawn-product-slider .carousel');
+  let flkty = new Flickity(elem, {
+    contain: true,
+    imagesLoaded: true,
+    lazyLoad: 2,
+    wrapAround: true,
+    pageDots: false
+  });
+
+  {% if request.design_mode %}
+  document.addEventListener("shopify:section:load", function(event) {
+    let elem = document.querySelector('.dawn-product-slider .carousel');
+    let flkty = new Flickity(elem, {
+      contain: true,
+      imagesLoaded: true,
+      lazyLoad: 2,
+      wrapAround: true,
+      pageDots: false
+    });
+  });
+  {% endif %}
+</script>
+
+{% schema %}
+{
+  "name": "Products slider",
+  "settings": [
+    {
+      "type": "range",
+      "id": "navigation_amount",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 3,
+      "label": "Change the number of cards in view"
+    },
+    {
+      "type": "color",
+      "id": "navigation_color",
+      "label": "Change color of the pagination, navigation, scrollbar"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "default": "Products slider",
+      "label": "Title"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Product card",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product_item",
+          "label": "Choose the product you want to display"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product slider",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

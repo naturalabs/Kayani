@@ -3,27 +3,26 @@
     <p>Follow Us On</p>
     <h2>INSTAGRAM</h2>
     <div class="instagram-gallery">
-      <div>
-        <img src="{{'instagram-01.png' | asset_url}}" alt="">
-      </div>
-      <div>
-        <img src="{{'instagram-02.png' | asset_url}}" alt="">
-      </div>
-      <div>
-        <img src="{{'instagram-03.png' | asset_url}}" alt="">
-      </div>
-      <div>
-        <img src="{{'instagram-04.png' | asset_url}}" alt="">
-      </div>
-      <div>
-        <img src="{{'instagram-05.png' | asset_url}}" alt="">
-      </div>
-      <div>
-        <img src="{{'instagram-01.png' | asset_url}}" alt="">
-      </div>
-      <div>
-        <img src="{{'instagram-01.png' | asset_url}}" alt="">
-      </div>
+      {% if settings.instagram_collection != null %}
+        {% for product in collections[settings.instagram_collection].products limit: 6 %}
+          <div>
+            <img src="{{ product.featured_image | img_url: 'master' }}" alt="">
+          </div>
+        {% endfor %}
+      {% else %}
+        {% for i in (1..7) %}
+          {% if settings['image_' | append: i] != null %}
+            <div>
+              <img src="{{ settings['image_' | append: i] | img_url: 'master' }}" alt="">
+            </div>
+          {% endif %}
+        {% endfor %}
+        {% if settings.fallback_image != null %}
+          <div>
+            <img src="{{ settings.fallback_image | img_url: 'master' }}" alt="">
+          </div>
+        {% endif %}
+      {% endif %}
     </div>
   </div>
 </section>
@@ -109,6 +108,61 @@
 {% schema %}
 {
   "name": "Instagram",
-  "settings": []
+  "settings": [
+    {
+      "type": "collection",
+      "label": "Instagram Collection",
+      "id": "instagram_collection",
+      "info": "Select the collection containing Instagram images."
+    },
+    {
+      "type": "image_picker",
+      "label": "Fallback Image",
+      "id": "fallback_image",
+      "info": "Select a fallback image if no collection is selected."
+    },
+    {
+      "type": "image_picker",
+      "label": "Image 1",
+      "id": "image_1",
+      "info": "Select image 1."
+    },
+    {
+      "type": "image_picker",
+      "label": "Image 2",
+      "id": "image_2",
+      "info": "Select image 2."
+    },
+    {
+      "type": "image_picker",
+      "label": "Image 3",
+      "id": "image_3",
+      "info": "Select image 3."
+    },
+    {
+      "type": "image_picker",
+      "label": "Image 4",
+      "id": "image_4",
+      "info": "Select image 4."
+    },
+    {
+      "type": "image_picker",
+      "label": "Image 5",
+      "id": "image_5",
+      "info": "Select image 5."
+    },
+    {
+      "type": "image_picker",
+      "label": "Image 6",
+      "id": "image_6",
+      "info": "Select image 6."
+    },
+    {
+      "type": "image_picker",
+      "label": "Image 7",
+      "id": "image_7",
+      "info": "Select image 7."
+    }
+  ]
 }
 {% endschema %}

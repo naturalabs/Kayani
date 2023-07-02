@@ -1,210 +1,123 @@
-<section class="banner">
-  <div class="ellipse">
+{{ 'base.css' | asset_url | stylesheet_tag }}
+{{ 'banner.css' | asset_url | stylesheet_tag }}
+
+<section class="banner full-width">
+  <div class="banner__ellipse">
     {% render 'ellipse' %}
   </div>
-  <div class="blur-right">
+  <div class="banner__blur-right">
     {% render 'blur-right' %}
   </div>
-  <div class="blur-left">
+  <div class="banner__blur-left">
     {% render 'blur-left' %}
   </div>
-  <div class="banner-container">
-    <div class="banner-header">
-      <h1>Open Your World To Kayani</h1>
+  <div class="banner__container">
+    <div class="banner__header">
+      <h1>{{ section.settings.header }}</h1>
     </div>
 
-    <div class="image-container">
-      <div class="image-left">
-        <img
-          src="{{  "banner-image-01.png" | asset_url }}"
-          alt="girl in dress"
-          loading="lazy"
-        >
+    <div
+      class="
+        banner__image-container
+        {% if section.settings.page_width == 'full-width' %}banner__image-container--full-width
+        {% elsif section.settings.page_width == 'fixed-width' %}banner__image-container--fixed-width
+        {% elsif section.settings.page_width == 'custom-width' %}banner__image-container--custom-width
+        {% endif %}
+      "
+    >
+      <div class="banner__image-left">
+        {%- if section.settings.image != blank -%}
+          {{ section.settings.left_image | image_url }}
+        {%- else -%}
+          <img
+            src="{{ 'banner-image-01.png' | asset_url }}"
+            width="368"
+            height="auto"
+            alt="example"
+            loading="lazy"
+          >
+        {%- endif -%}
       </div>
-      <div class="image-right">
-        <img
-          src="{{"banner-image-02.png" | asset_url}}"
-          alt="girlindress"
-          loading="lazy"
-        >
+
+      <div class="banner__image-right">
+        {%- if section.settings.image != blank -%}
+          {{ section.settings.right_image | image_url }}
+        {%- else -%}
+          <img
+            src="{{ 'banner-image-02.png' | asset_url }}"
+            width="468"
+            height="auto"
+            alt="example"
+            loading="lazy"
+          >
+        {%- endif -%}
       </div>
     </div>
 
-    <div class="text-container">
-      <p class="banner-text ">Let's make your summer travel story an unforgettable one</p>
-      <div class="banner-button">
-        <button>
+    <div class="banner__text-container">
+      <p class="banner__text">{{ section.settings.text }}</p>
+      <div class="banner__button">
+        <a href="{{ section.settings.shop_link }}" style="color: gray">
           {% render 'icon-upright' %}
-        </button>
+        </a>
         <p>Shop Now</p>
       </div>
     </div>
   </div>
 </section>
 
-{% style %}
-  section.banner {
-    padding: 70px 0;
-    color: #1e1e1e;
-  }
-  .banner-container {
-    width: min(95%, 375px);
-    margin-inline: auto;
-    display: grid;
-    gap: 1rem;
-    grid-template-areas: 'header' 'images' 'text';
-    position: relative;
-  }
-
-  .banner-header {
-    max-width: 270px;
-    font-size: 36px;
-    font-weight: 400;
-    margin-bottom: 37px;
-    margin-inline: auto;
-    grid-area: header;
-    text-align: center;
-  }
-
-  .banner .image-container {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 6px;
-    margin-bottom: 37px;
-    margin-inline: auto;
-    grid-area: images;
-  }
-
-  .banner .image-left img {
-    width: min(100%, 162px);
-  }
-  .banner .image-right img {
-    width: min(100%, 206px);
-  }
-
-  .mobile-banner-button {
-    text-align: center;
-  }
-
-  .banner button {
-    text-align: center;
-    background-color: #f9edeb;
-    outline: none;
-    border: 1px solid #646464;
-    color: #646464;
-    width: 70px;
-    height: 70px;
-    margin-bottom: 6px;
-  }
-
-  .text-container {
-    font-size: 18px;
-    /* padding-bottom: 50px; */
-    text-align: center;
-    grid-area: text;
-    /* margin-bottom: 70px; */
-  }
-  p.banner-text {
-    line-height: 25px;
-    margin-bottom: 40px;
-  }
-
-  .ellipse,
-  .blur-right,
-  .blur-left {
-    display: none;
-  }
-
-  @media (min-width: 800px) {
-    section.banner {
-      position: relative;
+{% schema %}
+{
+  "name": "Banner",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Header",
+      "id": "header",
+      "default": "Open Your World To Kayani"
+    },
+    {
+      "type": "text",
+      "label": "Text",
+      "id": "text",
+      "default": "Let's make your summer travel story an unforgettable one"
+    },
+    {
+      "type": "url",
+      "label": "Shop Link",
+      "id": "shop_link",
+      "default": "/collections/all"
+    },
+    {
+      "type": "image_picker",
+      "label": "Left Image",
+      "id": "left_image"
+    },
+    {
+      "type": "image_picker",
+      "label": "Right Image",
+      "id": "right_image"
+    },
+    {
+      "type": "select",
+      "label": "Page Width",
+      "id": "page_width",
+      "options": [
+        {
+          "value": "full-width",
+          "label": "Full Width"
+        },
+        {
+          "value": "fixed-width",
+          "label": "Fixed Width"
+        },
+        {
+          "value": "custom-width",
+          "label": "Custom Width"
+        }
+      ],
+      "default": "full-width"
     }
-    .banner-container {
-      width: min(95%, 375px);
-      margin-inline: auto;
-      width: min(90%, 1626px);
-      grid-template-columns: 1fr 1.1fr;
-      gap: 1rem;
-      grid-template-areas: 'header images' 'text images';
-    }
-    .banner-header {
-      max-width: 700px;
-      display: flex;
-      font-size: 90px;
-      align-items: flex-end;
-      margin: 0;
-      text-align: left;
-      line-height: 90px;
-      letter-spacing: -2%;
-    }
-    .text-container {
-      max-width: 645px;
-      display: flex;
-      flex-direction: column;
-    }
-    .banner-text {
-      text-align: left;
-      font-size: 24px;
-    }
-    p.banner-text {
-      margin-bottom: 100px;
-    }
-    .banner-button {
-      text-align: center;
-      width: fit-content;
-      align-self: flex-end;
-    }
-    .banner-button button p {
-      text-align: center;
-    }
-    .banner-button button {
-      height: 100px;
-      width: 100px;
-    }
-    .banner-button button svg {
-      height: 56px;
-      width: 56px;
-    }
-    .ellipse {
-      display: block;
-      position: absolute;
-      z-index: -1;
-      top: 200px;
-      left: 100px;
-      width: 40%;
-      color: #c8c8c8;
-    }
-
-    .banner .image-container {
-      margin: 0;
-    }
-    .banner .image-left img,
-    .banner .image-right img {
-      width: 100%;
-    }
-
-    .banner .image-left {
-      width: min(100%, 368px);
-    }
-    .banner .image-right {
-      width: min(100%, 468px);
-    }
-    .blur-right {
-      display: block;
-      position: absolute;
-      top: -60px;
-      right: 0;
-      height: 250px;
-      opacity: 60%;
-    }
-    .blur-left {
-      display: block;
-      position: absolute;
-      bottom: 100px;
-      left: 0;
-      height: 250px;
-      opacity: 60%;
-    }
-  }
-{% endstyle %}
+  ]
+}
+{% endschema %}
