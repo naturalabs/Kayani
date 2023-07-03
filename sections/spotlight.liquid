@@ -1,9 +1,14 @@
-<section class="fashion">
+{{ 'base.css' | asset_url | stylesheet_tag }}
+
+<section
+  class="    fashion"
+>
   <div class="fashion-blur-right">
     {% render 'blur-right' %}
   </div>
+
   <div class="fashion-mobile">
-    <h2>Fashion That Is Always Relevant</h2>
+    <h2>{{ section.settings.spotlight_header }}</h2>
     <div class="carousel" data-carousel>
       <button class="carousel-button prev" data-carousel-button="prev">
         {% render 'icon-left' %}
@@ -11,12 +16,30 @@
       <button class="carousel-button next" data-carousel-button="next">
         {% render 'icon-right' %}
       </button>
+
       <ul data-slides>
         <li class="slide">
-          <img src="{{ 'fashion-01.png' | asset_url }}" alt="Nature Image #1">
+          {%- if section.settings.main_image != blank -%}
+            <img
+              src="{{ section.settings.main_image | image_url }}"
+              width="auto"
+              height="auto"
+              alt=""
+              loading="lazy"
+            >
+          {%- else -%}
+            <img
+              src="{{ 'fashion-01.png' | asset_url }}"
+              width="auto"
+              height="auto"
+              alt="example"
+              loading="lazy"
+            >
+          {%- endif -%}
         </li>
       </ul>
     </div>
+
     <div class="button-wrapper ">
       <button>
         {% render 'icon-upright' %}
@@ -24,9 +47,36 @@
       <p>Shop Now</p>
     </div>
   </div>
-  <div class="fashion-desktop">
+
+  {% comment %} desktop {% endcomment %}
+  <div
+    class="
+      fashion-desktop  {% if section.settings.page_width == 'full-width' %}full-width
+      {% elsif section.settings.page_width == 'fixed-width' %}fixed-width
+      {% elsif section.settings.page_width == 'custom-width' %}custom-width
+      {% endif %}
+    "
+  >
     <div class="fashion-image-container">
-      <img src="{{ 'fashion-01.png' | asset_url }}" alt="">
+      <div class="fashion-image">
+        {%- if section.settings.main_image != blank -%}
+          <img
+            src="{{ section.settings.main_image | image_url }}"
+            width="auto"
+            height="auto"
+            alt=""
+            loading="lazy"
+          >
+        {%- else -%}
+          <img
+            src="{{ 'fashion-01.png' | asset_url }}"
+            width="auto"
+            height="auto"
+            alt="example"
+            loading="lazy"
+          >
+        {%- endif -%}
+      </div>
     </div>
 
     <div class="fashion-text-container">
@@ -42,10 +92,42 @@
 
       <div class="fashion-gallery">
         <div class="image-left">
-          <img src="{{ 'fashion-02.png' | asset_url }}" alt="">
+          {%- if section.spotlight_image_left != blank -%}
+            <img
+              src="{{ section.spotlight_image_left | image_url }}"
+              width="auto"
+              height="auto"
+              alt=""
+              loading="lazy"
+            >
+          {%- else -%}
+            <img
+              src="{{ 'fashion-02.png' | asset_url }}"
+              width="auto"
+              height="auto"
+              alt="example"
+              loading="lazy"
+            >
+          {%- endif -%}
         </div>
         <div class="image-right">
-          <img src="{{ 'fashion-03.png' | asset_url }}" alt="">
+          {%- if section.spotlight_image_right != blank -%}
+            <img
+              src="{{ section.spotlight_image_right | image_url }}"
+              width="auto"
+              height="auto"
+              alt=""
+              loading="lazy"
+            >
+          {%- else -%}
+            <img
+              src="{{ 'fashion-03.png' | asset_url }}"
+              width="auto"
+              height="auto"
+              alt="example"
+              loading="lazy"
+            >
+          {%- endif -%}
         </div>
       </div>
     </div>
@@ -182,11 +264,25 @@
       grid-gap: 43px;
     }
     .fashion-image-container {
-      /* min-width: 672px; */
-    }
-    .fashion-image-container img {
+      position: relative;
+      max-width: 670px;
       width: 100%;
     }
+    .fashion-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    .fashion-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
     .fashion-image-container img:nth-child(1) {
       margin-right: 42px;
     }
@@ -234,3 +330,58 @@
     }
   }
 {% endstyle %}
+
+{% schema %}
+{
+  "name": "Spotlight",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Spotlight Header",
+      "id": "spotlight_header",
+      "default": "Fashion That Is Always Relevant"
+    },
+    {
+      "type": "url",
+      "label": "Shop Link",
+      "id": "shop_link",
+      "default": "/collections/all"
+    },
+    {
+      "type": "image_picker",
+      "label": "Main Image",
+      "id": "main_image"
+    },
+    {
+      "type": "image_picker",
+      "label": "Spotlight Image Left",
+      "id": "spotlight_image_left"
+    },
+    {
+      "type": "image_picker",
+      "label": "Spotlight Image Right",
+      "id": "spotlight_image_right"
+    },
+    {
+      "type": "select",
+      "label": "Page Width",
+      "id": "page_width",
+      "options": [
+        {
+          "value": "full-width",
+          "label": "Full Width"
+        },
+        {
+          "value": "fixed-width",
+          "label": "Fixed Width"
+        },
+        {
+          "value": "custom-width",
+          "label": "Custom Width"
+        }
+      ],
+      "default": "full-width"
+    }
+  ]
+}
+{% endschema %}
