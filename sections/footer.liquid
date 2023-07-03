@@ -1,6 +1,15 @@
+{{ 'base.css' | asset_url | stylesheet_tag }}
+
 <footer>
-  <div class="footer-container">
-    <div class="ellipse">
+  <div
+    class="
+      footer-container {% if section.settings.page_width == 'full-width' %}full-width
+      {% elsif section.settings.page_width == 'fixed-width' %}fixed-width
+      {% elsif section.settings.page_width == 'custom-width' %}custom-width
+      {% endif %}
+    "
+  >
+    <div class="ellipse" style="color:white">
       {% render 'ellipse' %}
     </div>
     <div class="footer-text-desktop">
@@ -191,17 +200,21 @@
     footer .footer-container .ellipse {
       display: block;
       position: absolute;
+
       z-index: 1;
       top: -30px;
-      left: -100px;
+      left: -50px;
     }
     footer .footer-container .ellipse svg {
-      width: 95%;
-      position: absolute;
-      left: 50px;
+      width: 80%;
     }
+
     .footer-container form input {
       font-size: 20px;
+    }
+    .footer-container .form-button {
+      z-index: 2;
+      background-color: #b2967d;
     }
     .footer-text-desktop {
       flex: 1;
@@ -212,6 +225,7 @@
       overflow: hidden;
       display: grid;
       align-content: center;
+      z-index: 5;
     }
     /* .footer-image-desktop img {
       height: 100%;
@@ -240,6 +254,26 @@
       "label": "Footer Image (Desktop)",
       "id": "footer_image_desktop",
       "info": "Select an image for desktop view"
+    },
+    {
+      "type": "select",
+      "label": "Page Width",
+      "id": "page_width",
+      "options": [
+        {
+          "value": "full-width",
+          "label": "Full Width"
+        },
+        {
+          "value": "fixed-width",
+          "label": "Fixed Width"
+        },
+        {
+          "value": "custom-width",
+          "label": "Custom Width"
+        }
+      ],
+      "default": "fixed-width"
     }
   ]
 }
