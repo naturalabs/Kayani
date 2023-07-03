@@ -105,7 +105,7 @@ section.hot-pick .card {
     display: block;
     position: absolute;
     right: 0;
-    bottom: -700px;
+    bottom: -2500px;
     opacity: 0.6;
   }
 }
