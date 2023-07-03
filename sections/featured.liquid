@@ -1,231 +1,48 @@
-<section class="featured-products">
-  <div class="ellipse">
-    {% render 'ellipse' %}
-  </div>
-  <div class="featured-blur-left">
-    {% render 'blur-left' %}
-  </div>
-  <div class="featured-header">
-    <h2 class="text-center">Looks You'll Love</h2>
-  </div>
-  <div class="featured-container">
-    <div class="featured-card">
-      <div class="featured-button">
-        <button class="left">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+<script src="script.js" defer></script>
+{{ 'featured.css' | asset_url | stylesheet_tag }}
+
+<section class="featured">
+  {% comment %}
+    <div class="ellipse">
+      {% render 'ellipse' %}
+    </div>
+    <div class="featured-blur-left">
+      {% render 'blur-left' %}
+    </div>
+  {% endcomment %}
+  <div class="wrapper">
+    <div class="featured-header">
+      <h2 class="text-center">Looks You'll Love</h2>
+
+      <div class="featured-button desktop">
+        <button class="left" id="left">
           {% render 'icon-left' %}
         </button>
-        <button class="right">
+        <button class="right" id="right">
           {% render 'icon-right' %}
         </button>
-      </div>
-      <div class="featured-details">
-        <p>Nadine belted dress - Regal Onyx</p>
-        <div class="featured-ratings">
-          <p>1.999,00 kr</p>
-          <div class="rating-container">
-            {% render 'icon-rating' %}
-            {% render 'icon-rating' %}
-            {% render 'icon-rating' %}
-            {% render 'icon-rating' %}
-            {% render 'icon-rating' %}
-          </div>
-        </div>
+
+        {% comment %}
+          <i id="left" class="fa-solid fa-angle-left"></i>
+          <i id="right" class="fa-solid fa-angle-right"></i>
+        {% endcomment %}
       </div>
     </div>
-    <div class="featured-card desktop"></div>
-    <div class="featured-card desktop"></div>
-    <div class="featured-card desktop"></div>
+    <ul class="carousel">
+      <div class="featured-button mobile">
+        <i id="left" class="fa-solid fa-angle-left"></i>
+        <i id="right" class="fa-solid fa-angle-right"></i>
+      </div>
+      <li class="card"></li>
+      <li class="card">image</li>
+      <li class="card">image</li>
+      <li class="card">image</li>
+    </ul>
   </div>
 </section>
 
 {% style %}
-  .featured-products {
-    padding: 33px 0 50px;
-  }
-
-  .featured-products h2 {
-    margin-bottom: 20px;
-    font-weight: 700;
-    font-family: var(--ff-secondary);
-    font-size: 30px;
-    text-align: center;
-  }
-
-  .featured-card {
-    width: min(90%, 374px);
-    margin-inline: auto;
-    background-image: url('{{ 'featured-products-01.png' | asset_url }}');
-    min-height: 528px;
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .featured-button {
-    margin-top: 189px;
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-  }
-
-  .featured-button button {
-    border: 1px solid #646464;
-    height: 65px;
-    width: 65px;
-    outline: none;
-    background-color: transparent; /* Removed background color */
-  }
-
-  .featured-button button svg {
-    width: 36px;
-    height: 36px;
-  }
-
-  .featured-details {
-    background-color: var(--clr-primary-white);
-    width: 100%;
-    padding: 20px;
-    font-size: 20px;
-  }
-
-  .featured-ratings {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 38px;
-  }
-
-  .featured-ratings p {
-    font-size: 24px;
-    letter-spacing: -2%;
-    line-height: 34px;
-  }
-
-  .featured-button-container-desktop {
-    display: none;
-  }
-
-  .featured-card.desktop {
-    display: none;
-  }
-
-  .featured-products .ellipse,
-  .featured-blur-left {
-    display: none;
-  }
-
-  @media (min-width: 800px) {
-    .featured-details {
-      background-color: var(--clr-primary-white);
-      width: 100%;
-      padding: 20px;
-      font-size: 20px;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-    .show {
-      display: block;
-      opacity: 1;
-    }
-
-    /* .hidden {
-      display: none;
-    } */
-
-    section.featured-products {
-      width: min(90%, 1720px);
-      margin-inline: auto;
-      padding: 140px 0 164px;
-      position: relative;
-    }
-
-    section.featured-products .ellipse svg {
-      height: 170px;
-      position: absolute;
-      top: 0;
-      left: -300px;
-      z-index: -2;
-    }
-
-    .featured-card.desktop {
-      display: block;
-    }
-
-    .featured-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .featured-products h2 {
-      text-align: left;
-    }
-
-    .featured-button button {
-      border: 1px solid #646464;
-      height: 65px;
-      width: 65px;
-      outline: none;
-      margin-bottom: 29px;
-      background-color: transparent;
-    }
-
-    .featured-button button svg {
-      width: 56px;
-      height: 56px;
-      color: #646464;
-    }
-
-    .featured-container {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      max-width: 1720px; /* Corrected typo from 'maw-width' to 'max-width' */
-      gap: 40px;
-    }
-
-    .featured-button {
-      position: absolute;
-      width: 150px;
-      top: -70px;
-      right: 0;
-    }
-
-    .featured-button-container-desktop {
-      display: flex;
-      gap: 30px;
-    }
-
-    .featured-container .featured-card {
-      width: 100%;
-      min-height: 562px;
-      justify-content: flex-end;
-    }
-
-    .featured-button-container-desktop button {
-      height: 100px;
-      width: 100px;
-    }
-
-    .featured-products .ellipse {
-      display: block;
-      position: absolute;
-      top: 70px;
-      left: 320px;
-    }
-
-    .featured-blur-left {
-      display: block;
-      position: absolute;
-      left: -100px;
-      bottom: -250px;
-      z-index: -1;
-      opacity: 60%;
-    }
-  }
 {% endstyle %}
 
 <script>
@@ -241,6 +58,98 @@
       details.classList.remove('show');
     });
   });
+
+  const wrapper = document.querySelector('.wrapper');
+  const carousel = document.querySelector('.carousel');
+  const firstCardWidth = carousel.querySelector('.card').offsetWidth;
+  const arrowBtns = document.querySelectorAll('.wrapper button');
+  const carouselChildrens = [...carousel.children];
+
+  let isDragging = false,
+    isAutoPlay = true,
+    startX,
+    startScrollLeft,
+    timeoutId;
+
+  // Get the number of cards that can fit in the carousel at once
+  let cardPerView = Math.round(carousel.offsetWidth / firstCardWidth);
+
+  // Insert copies of the last few cards to beginning of carousel for infinite scrolling
+  carouselChildrens
+    .slice(-cardPerView)
+    .reverse()
+    .forEach((card) => {
+      carousel.insertAdjacentHTML('afterbegin', card.outerHTML);
+    });
+
+  // Insert copies of the first few cards to end of carousel for infinite scrolling
+  carouselChildrens.slice(0, cardPerView).forEach((card) => {
+    carousel.insertAdjacentHTML('beforeend', card.outerHTML);
+  });
+
+  // Scroll the carousel at appropriate postition to hide first few duplicate cards on Firefox
+  carousel.classList.add('no-transition');
+  carousel.scrollLeft = carousel.offsetWidth;
+  carousel.classList.remove('no-transition');
+
+  // Add event listeners for the arrow buttons to scroll the carousel left and right
+  arrowBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      carousel.scrollLeft += btn.id == 'left' ? -firstCardWidth : firstCardWidth;
+    });
+  });
+
+  const dragStart = (e) => {
+    isDragging = true;
+    carousel.classList.add('dragging');
+    // Records the initial cursor and scroll position of the carousel
+    startX = e.pageX;
+    startScrollLeft = carousel.scrollLeft;
+  };
+
+  const dragging = (e) => {
+    if (!isDragging) return; // if isDragging is false return from here
+    // Updates the scroll position of the carousel based on the cursor movement
+    carousel.scrollLeft = startScrollLeft - (e.pageX - startX);
+  };
+
+  const dragStop = () => {
+    isDragging = false;
+    carousel.classList.remove('dragging');
+  };
+
+  const infiniteScroll = () => {
+    // If the carousel is at the beginning, scroll to the end
+    if (carousel.scrollLeft === 0) {
+      carousel.classList.add('no-transition');
+      carousel.scrollLeft = carousel.scrollWidth - 2 * carousel.offsetWidth;
+      carousel.classList.remove('no-transition');
+    }
+    // If the carousel is at the end, scroll to the beginning
+    else if (Math.ceil(carousel.scrollLeft) === carousel.scrollWidth - carousel.offsetWidth) {
+      carousel.classList.add('no-transition');
+      carousel.scrollLeft = carousel.offsetWidth;
+      carousel.classList.remove('no-transition');
+    }
+
+    // Clear existing timeout & start autoplay if mouse is not hovering over carousel
+    clearTimeout(timeoutId);
+    if (!wrapper.matches(':hover')) autoPlay();
+  };
+
+  const autoPlay = () => {
+    if (window.innerWidth < 800 || !isAutoPlay) return; // Return if window is smaller than 800 or isAutoPlay is false
+    // Autoplay the carousel after every 2500 ms
+    timeoutId = setTimeout(() => (carousel.scrollLeft += firstCardWidth), 2500);
+  };
+  autoPlay();
+
+  carousel.addEventListener('mousedown', dragStart);
+  carousel.addEventListener('mousemove', dragging);
+  document.addEventListener('mouseup', dragStop);
+  carousel.addEventListener('scroll', infiniteScroll);
+  wrapper.addEventListener('mouseenter', () => clearTimeout(timeoutId));
+  wrapper.addEventListener('mouseleave', autoPlay);
 </script>
 
 {% schema %}
