@@ -1,8 +1,6 @@
 {{ 'base.css' | asset_url | stylesheet_tag }}
 
-<section
-  class="    fashion"
->
+<section class="fashion">
   <div class="fashion-blur-right">
     {% render 'blur-right' %}
   </div>
@@ -161,7 +159,10 @@
   .fashion .button-wrapper {
     color: #646464;
     font-size: 17px;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
   }
   .fashion .button-wrapper button {
     border-radius: 0;
@@ -169,6 +170,10 @@
     outline: none;
     border: 1px solid #646464;
     color: #646464;
+  }
+  .fashion-mobile h2 {
+    width: 270px;
+    margin: 0 auto 13px;
   }
   .fashion-text-container .text-button h2 {
     font-family: var(--ff-secondary);
@@ -243,10 +248,8 @@
     display: none;
   }
   @media (min-width: 800px) {
-    .fashion {
-      position: relative;
-    }
     section.fashion {
+      position: relative;
       max-width: 1438px;
       margin-inline: auto;
     }
@@ -265,7 +268,7 @@
     }
     .fashion-image-container {
       position: relative;
-      max-width: 670px;
+      width: 670px;
       width: 100%;
     }
     .fashion-image {
@@ -316,10 +319,13 @@
       height: 100px;
       margin-bottom: 10px;
       margin-top: 60px;
-      margin-left: 20px;
     }
-    .fashion .button-wrapper button p {
+    .fashion .button-wrapper {
+      padding-top: 40px;
+    }
+    .fashion .button-wrapper p {
       font-size: 24px;
+      margin-top: 0;
     }
     .fashion-blur-right {
       display: block;
