@@ -11,7 +11,23 @@
           collection today!
         </h2>
         <div class="footer-image-mobile">
-          <img src="{{ 'footer-image-mobile.png' | asset_url }}" alt="">
+          {%- if section.settings.footer_image_mobile != blank -%}
+            <img
+              src="{{ section.settings.footer_image_mobile | image_url }}"
+              width="auto"
+              height="auto"
+              alt=""
+              loading="lazy"
+            >
+          {%- else -%}
+            <img
+              src="{{ 'footer-image-mobile.png' | asset_url }}"
+              width="auto"
+              height="auto"
+              alt="example"
+              loading="lazy"
+            >
+          {%- endif -%}
         </div>
       </div>
 
@@ -58,7 +74,23 @@
     </div>
 
     <div class="footer-image-desktop">
-      <img src="{{ 'footer-image.png' | asset_url }}" alt="">
+      {%- if section.settings.footer_image_desktop != blank -%}
+        <img
+          src="{{ section.settings.footer_image_desktop | image_url }}"
+          width="auto"
+          height="auto"
+          alt=""
+          loading="lazy"
+        >
+      {%- else -%}
+        <img
+          src="{{ 'footer-image.png' | asset_url }}"
+          width="auto"
+          height="auto"
+          alt="example"
+          loading="lazy"
+        >
+      {%- endif -%}
     </div>
   </div>
 </footer>
@@ -206,7 +238,7 @@
     {
       "type": "image_picker",
       "label": "Footer Image (Desktop)",
-      "id": "footer_image",
+      "id": "footer_image_desktop",
       "info": "Select an image for desktop view"
     }
   ]
