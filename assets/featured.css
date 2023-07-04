@@ -156,15 +156,15 @@ section.featured {
   }
 } */
 @media screen and (max-width: 600px) {
+  section.featured .wrapper {
+    position: relative;
+    margin: 0 auto;
+  }
   section.featured {
     padding: 33px 0 70px;
   }
   .wrapper .carousel {
     grid-auto-columns: 100%;
-    position: relative;
-    width: 100%;
-    height: auto;
-    margin: 0 auto;
   }
   .featured-header h2 {
     font-size: 30px;
@@ -175,11 +175,15 @@ section.featured {
     display: none;
   }
   .featured-button.mobile {
-    margin: 0 auto;
     position: absolute;
-    top: 0;
     left: 0;
-    transform: translateX(-50%);
+    top: 60%;
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 2;
   }
   .carousel .card {
     height: 528px;
