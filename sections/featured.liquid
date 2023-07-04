@@ -1,48 +1,213 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
-<script src="script.js" defer></script>
 {{ 'featured.css' | asset_url | stylesheet_tag }}
 
 <section class="featured">
-  {% comment %}
-    <div class="ellipse">
-      {% render 'ellipse' %}
-    </div>
-    <div class="featured-blur-left">
-      {% render 'blur-left' %}
-    </div>
-  {% endcomment %}
   <div class="wrapper">
-    <div class="featured-header">
-      <h2 class="text-center">Looks You'll Love</h2>
+    <h2>Looks You'll Love</h2>
 
-      <div class="featured-button desktop">
-        <button class="left" id="left">
-          {% render 'icon-left' %}
-        </button>
-        <button class="right" id="right">
-          {% render 'icon-right' %}
-        </button>
-
-        {% comment %}
-          <i id="left" class="fa-solid fa-angle-left"></i>
-          <i id="right" class="fa-solid fa-angle-right"></i>
-        {% endcomment %}
-      </div>
+    <div class="left featured-button" id="left">
+      {% render 'icon-left' %}
     </div>
     <ul class="carousel">
-      <div class="featured-button mobile">
-        <button class="left" id="left">
-          {% render 'icon-left' %}
-        </button>
-        <button class="right" id="right">
-          {% render 'icon-right' %}
-        </button>
-      </div>
-      <li class="card">image</li>
-      <li class="card">image</li>
-      <li class="card">image</li>
-      <li class="card">image</li>
+      <li class="card">
+        <div class="featured-image">
+          {%- if section.settings.image != blank -%}
+            {{ section.settings['featured-image01'] | image_url }}
+          {%- else -%}
+            <img
+              src="{{ 'featured-image-01.png' | asset_url }}"
+              width="468"
+              height="auto"
+              alt="example"
+              loading="lazy"
+            >
+          {%- endif -%}
+        </div>
+        <div class="featured-details">
+          <p>Nadine belted dress - Regal Onyx</p>
+          <div class="featured-ratings">
+            <p>1.999,00 kr</p>
+            <div class="rating-container">
+              {% render 'icon-star' %}
+              {% render 'icon-star' %}
+              {% render 'icon-star' %}
+              {% render 'icon-star' %}
+              {% render 'icon-star' %}
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="card">
+        <div class="featured-image">
+          {%- if section.settings.image != blank -%}
+            {{ section.settings['featured-image02'] | image_url }}
+          {%- else -%}
+            <img
+              src="{{ 'featured-image-02.png' | asset_url }}"
+              width="468"
+              height="auto"
+              alt="example"
+              loading="lazy"
+            >
+          {%- endif -%}
+        </div>
+        <div class="featured-details">
+          <p>Nadine belted dress - Regal Onyx</p>
+          <div class="featured-ratings">
+            <p>1.999,00 kr</p>
+            <div class="rating-container">
+              {% render 'icon-star' %}
+              {% render 'icon-star' %}
+              {% render 'icon-star' %}
+              {% render 'icon-star' %}
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="card">
+        <div class="featured-image">
+          {%- if section.settings.image != blank -%}
+            {{ section.settings['featured-image01'] | image_url }}
+          {%- else -%}
+            <img
+              src="{{ 'featured-image-03.png' | asset_url }}"
+              width="468"
+              height="auto"
+              alt="example"
+              loading="lazy"
+            >
+          {%- endif -%}
+        </div>
+        <div class="featured-details">
+          <p>Nadine belted dress - Regal Onyx</p>
+          <div class="featured-ratings">
+            <p>1.999,00 kr</p>
+            <div class="rating-container">
+              {% render 'icon-star' %}
+              {% render 'icon-star' %}
+              {% render 'icon-star' %}
+              {% render 'icon-star' %}
+              {% render 'icon-star' %}
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="card">
+        <div class="featured-image">
+          {%- if section.settings.image != blank -%}
+            {{ section.settings['featured-image01'] | image_url }}
+          {%- else -%}
+            <img
+              src="{{ 'featured-image-01.png' | asset_url }}"
+              width="468"
+              height="auto"
+              alt="example"
+              loading="lazy"
+            >
+          {%- endif -%}
+        </div>
+        <div class="featured-details">
+          <p>Nadine belted dress - Regal Onyx</p>
+          <div class="featured-ratings">
+            <p>1.999,00 kr</p>
+            <div class="rating-container">
+              {% render 'icon-star' %}
+              {% render 'icon-star' %}
+              {% render 'icon-star' %}
+              {% render 'icon-star' %}
+              {% render 'icon-star' %}
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="card">
+        <div class="featured-image">
+          {%- if section.settings.image != blank -%}
+            {{ section.settings['featured-image02'] | image_url }}
+          {%- else -%}
+            <img
+              src="{{ 'featured-image-02.png' | asset_url }}"
+              width="468"
+              height="auto"
+              alt="example"
+              loading="lazy"
+            >
+          {%- endif -%}
+        </div>
+        <div class="featured-details">
+          <p>Nadine belted dress - Regal Onyx</p>
+          <div class="featured-ratings">
+            <p>1.999,00 kr</p>
+            <div class="rating-container">
+              {% render 'icon-star' %}
+              {% render 'icon-star' %}
+              {% render 'icon-star' %}
+              {% render 'icon-star' %}
+              {% render 'icon-star' %}
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="card">
+        <div class="featured-image">
+          {%- if section.settings.image != blank -%}
+            {{ section.settings['featured-image03'] | image_url }}
+          {%- else -%}
+            <img
+              src="{{ 'featured-image-03.png' | asset_url }}"
+              width="468"
+              height="auto"
+              alt="example"
+              loading="lazy"
+            >
+          {%- endif -%}
+        </div>
+        <div class="featured-details">
+          <p>Nadine belted dress - Regal Onyx</p>
+          <div class="featured-ratings">
+            <p>1.999,00 kr</p>
+            <div class="rating-container">
+              {% render 'icon-star' %}
+              {% render 'icon-star' %}
+              {% render 'icon-star' %}
+              {% render 'icon-star' %}
+              {% render 'icon-star' %}
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="card">
+        <div class="featured-image">
+          {%- if section.settings.image != blank -%}
+            {{ section.settings['featured-image01'] | image_url }}
+          {%- else -%}
+            <img
+              src="{{ 'featured-image-01.png' | asset_url }}"
+              width="468"
+              height="auto"
+              alt="example"
+              loading="lazy"
+            >
+          {%- endif -%}
+        </div>
+        <div class="featured-details">
+          <p>Nadine belted dress - Regal Onyx</p>
+          <div class="featured-ratings">
+            <p>1.999,00 kr</p>
+            <div class="rating-container">
+              {% render 'icon-star' %}
+              {% render 'icon-star' %}
+              {% render 'icon-star' %}
+              {% render 'icon-star' %}
+              {% render 'icon-star' %}
+            </div>
+          </div>
+        </div>
+      </li>
     </ul>
+    {% comment %} <i id="right" class="fa-solid fa-angle-right"></i> {% endcomment %}
+    <div class="right featured-button" id="right">
+      {% render 'icon-right' %}
+    </div>
   </div>
 </section>
 
@@ -51,7 +216,7 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    const card = document.querySelector('.featured-card');
+    const card = document.querySelector('.card');
     const details = document.querySelector('.featured-details');
 
     card.addEventListener('mouseover', function () {
@@ -66,7 +231,7 @@
   const wrapper = document.querySelector('.wrapper');
   const carousel = document.querySelector('.carousel');
   const firstCardWidth = carousel.querySelector('.card').offsetWidth;
-  const arrowBtns = document.querySelectorAll('.wrapper button');
+  const arrowBtns = document.querySelectorAll('.wrapper .featured-button');
   const carouselChildrens = [...carousel.children];
 
   let isDragging = false,
