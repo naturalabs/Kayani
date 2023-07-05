@@ -12,7 +12,7 @@
   <div class="mobile-fashion">
     <h2>Looks You'll Love</h2>
 
-    <div class="left fashion-button" id="left">
+    <div class="fashion-button left" id="left">
       {% render 'icon-left' %}
     </div>
 
@@ -38,7 +38,7 @@
             {{ section.settings['fashion-image01'] | image_url }}
           {%- else -%}
             <img
-              src="{{ 'fashion-01.png' | asset_url }}"
+              src="{{ 'fashion-02.png' | asset_url }}"
               width="468"
               height="auto"
               alt="example"
@@ -53,7 +53,7 @@
             {{ section.settings['fashion-image01'] | image_url }}
           {%- else -%}
             <img
-              src="{{ 'fashion-01.png' | asset_url }}"
+              src="{{ 'fashion-03.png' | asset_url }}"
               width="468"
               height="auto"
               alt="example"
@@ -160,41 +160,38 @@
 {% endstyle %}
 
 <script>
-  const wrapper = document.querySelector('.wrapper');
-  const carousel = document.querySelector('.carousel');
-  const arrowBtns = document.querySelectorAll('.wrapper i');
-  const firstCardWidth = carousel.querySelector('.card').offsetWidth;
+  document.addEventListener('DOMContentLoaded', function () {
+    const carousel = document.querySelector('.fashion-carousel');
+    const arrowBtns = document.querySelectorAll('.fashion-button');
+    const firstCardWidth = carousel.querySelector('.fashion-card').offsetWidth;
+    let isDragging = false;
+    let startX, scrollLeft;
 
-  let isDragging = false,
-    startX,
-    startScrollLeft;
+    arrowBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const direction = btn.id === 'left' ? -1 : 1;
+        carousel.scrollLeft += direction * firstCardWidth;
+      });
+    });
 
-  arrowBtns.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      carousel.scrollLeft += btn.id == 'left' ? -firstCardWidth : firstCardWidth;
+    carousel.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      startX = e.pageX - carousel.offsetLeft;
+      scrollLeft = carousel.scrollLeft;
+    });
+
+    carousel.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      e.preventDefault();
+      const x = e.pageX - carousel.offsetLeft;
+      const dragDistance = x - startX;
+      carousel.scrollLeft = scrollLeft - dragDistance;
+    });
+
+    document.addEventListener('mouseup', () => {
+      isDragging = false;
     });
   });
-
-  const dragStart = (e) => {
-    isDragging = true;
-    carousel.classList.add('dragging');
-    startX = e.pageX;
-    startScrollLeft = carousel.scrollLeft;
-  };
-
-  const dragging = (e) => {
-    if (!isDragging) return;
-    carousel.scrollLeft = startScrollLeft - (e.pageX - startX);
-  };
-
-  const dragStop = () => {
-    isDragging = false;
-    carousel.classList.remove('dragging');
-  };
-
-  carousel.addEventListener('mousedown', dragStart);
-  carousel.addEventListener('mousemove', dragging);
-  document.addEventListener('mouseup', dragStop);
 </script>
 
 {% schema %}

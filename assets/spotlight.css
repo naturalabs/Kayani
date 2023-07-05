@@ -9,6 +9,7 @@ section.fashion {
   width: min(90%, 374px);
   position: relative;
 }
+
 .mobile-fashion .fashion-button {
   top: 50%;
   position: absolute;
@@ -31,17 +32,21 @@ section.fashion {
   width: 36px;
   height: 36px;
 }
+
 .mobile-fashion h2 {
   font-size: 30px;
   margin-bottom: 20px;
   text-align: center;
 }
+
 .mobile-fashion .fashion-button.left {
   left: 0;
 }
+
 .mobile-fashion .fashion-button.right {
   right: 0;
 }
+
 .mobile-fashion .fashion-carousel {
   display: grid;
   grid-auto-flow: column;
@@ -50,7 +55,6 @@ section.fashion {
   scroll-snap-type: x mandatory;
   grid-gap: 16px;
   gap: 16px;
-  /* border-radius: 8px; */
   scroll-behavior: smooth;
   scrollbar-width: none;
 }
