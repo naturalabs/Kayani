@@ -9,14 +9,78 @@
   {% endcomment %}
 
   {% comment %} wrapper {% endcomment %}
-  <div class="fashion-mobile">
-    <h2>{{ section.settings.spotlight_header }}</h2>
+  <div class="mobile-fashion">
+    <h2>Looks You'll Love</h2>
 
-    <button class="fashion-button left" id="left">
+    <div class="left fashion-button" id="left">
       {% render 'icon-left' %}
-    </button>
+    </div>
+
     <ul class="fashion-carousel">
-      <li class="card">
+      <li class="fashion-card">
+        <div class="fashion-image">
+          {%- if section.settings.image != blank -%}
+            {{ section.settings['fashion-image01'] | image_url }}
+          {%- else -%}
+            <img
+              src="{{ 'fashion-01.png' | asset_url }}"
+              width="468"
+              height="auto"
+              alt="example"
+              loading="lazy"
+            >
+          {%- endif -%}
+        </div>
+      </li>
+      <li class="fashion-card">
+        <div class="fashion-image">
+          {%- if section.settings.image != blank -%}
+            {{ section.settings['fashion-image01'] | image_url }}
+          {%- else -%}
+            <img
+              src="{{ 'fashion-01.png' | asset_url }}"
+              width="468"
+              height="auto"
+              alt="example"
+              loading="lazy"
+            >
+          {%- endif -%}
+        </div>
+      </li>
+      <li class="fashion-card">
+        <div class="fashion-image">
+          {%- if section.settings.image != blank -%}
+            {{ section.settings['fashion-image01'] | image_url }}
+          {%- else -%}
+            <img
+              src="{{ 'fashion-01.png' | asset_url }}"
+              width="468"
+              height="auto"
+              alt="example"
+              loading="lazy"
+            >
+          {%- endif -%}
+        </div>
+      </li>
+    </ul>
+    {% comment %} <i id="right" class="fa-solid fa-angle-right"></i> {% endcomment %}
+    <div class="right fashion-button" id="right">
+      {% render 'icon-right' %}
+    </div>
+  </div>
+
+  {% comment %} desktop {% endcomment %}
+
+  <div
+    class="
+      fashion-desktop  {% if section.settings.page_width == 'full-width' %}full-width
+      {% elsif section.settings.page_width == 'fixed-width' %}fixed-width
+      {% elsif section.settings.page_width == 'custom-width' %}custom-width
+      {% endif %}
+    "
+  >
+    <div class="fashion-image-container">
+      <div class="fashion-image">
         {%- if section.settings.main_image != blank -%}
           <img
             src="{{ section.settings.main_image | image_url }}"
@@ -34,35 +98,25 @@
             loading="lazy"
           >
         {%- endif -%}
-      </li>
-    </ul>
-    <button class="fashion-button right" id="right">
-      {% render 'icon-right' %}
-    </button>
-
-    <div class="button-wrapper ">
-      <button>
-        {% render 'icon-upright' %}
-      </button>
-      <p>Shop Now</p>
+      </div>
     </div>
-  </div>
 
-  {% comment %} desktop {% endcomment %}
-  {% comment %}
-    <div
-      class="
-        fashion-desktop  {% if section.settings.page_width == 'full-width' %}full-width
-        {% elsif section.settings.page_width == 'fixed-width' %}fixed-width
-        {% elsif section.settings.page_width == 'custom-width' %}custom-width
-        {% endif %}
-      "
-    >
-      <div class="fashion-image-container">
-        <div class="fashion-image">
-          {%- if section.settings.main_image != blank -%}
+    <div class="fashion-text-container">
+      <div class="text-button">
+        <h2>Fashion That Is Always Relevant</h2>
+        <div class="button-wrapper">
+          <button>
+            {% render 'icon-upright' %}
+          </button>
+          <p>Shop Now</p>
+        </div>
+      </div>
+
+      <div class="fashion-gallery">
+        <div class="image-left">
+          {%- if section.spotlight_image_left != blank -%}
             <img
-              src="{{ section.settings.main_image | image_url }}"
+              src="{{ section.spotlight_image_left | image_url }}"
               width="auto"
               height="auto"
               alt=""
@@ -70,7 +124,26 @@
             >
           {%- else -%}
             <img
-              src="{{ 'fashion-01.png' | asset_url }}"
+              src="{{ 'fashion-02.png' | asset_url }}"
+              width="auto"
+              height="auto"
+              alt="example"
+              loading="lazy"
+            >
+          {%- endif -%}
+        </div>
+        <div class="image-right">
+          {%- if section.spotlight_image_right != blank -%}
+            <img
+              src="{{ section.spotlight_image_right | image_url }}"
+              width="auto"
+              height="auto"
+              alt=""
+              loading="lazy"
+            >
+          {%- else -%}
+            <img
+              src="{{ 'fashion-03.png' | asset_url }}"
               width="auto"
               height="auto"
               alt="example"
@@ -79,65 +152,50 @@
           {%- endif -%}
         </div>
       </div>
-
-      <div class="fashion-text-container">
-        <div class="text-button">
-          <h2>Fashion That Is Always Relevant</h2>
-          <div class="button-wrapper">
-            <button>
-              {% render 'icon-upright' %}
-            </button>
-            <p>Shop Now</p>
-          </div>
-        </div>
-
-        <div class="fashion-gallery">
-          <div class="image-left">
-            {%- if section.spotlight_image_left != blank -%}
-              <img
-                src="{{ section.spotlight_image_left | image_url }}"
-                width="auto"
-                height="auto"
-                alt=""
-                loading="lazy"
-              >
-            {%- else -%}
-              <img
-                src="{{ 'fashion-02.png' | asset_url }}"
-                width="auto"
-                height="auto"
-                alt="example"
-                loading="lazy"
-              >
-            {%- endif -%}
-          </div>
-          <div class="image-right">
-            {%- if section.spotlight_image_right != blank -%}
-              <img
-                src="{{ section.spotlight_image_right | image_url }}"
-                width="auto"
-                height="auto"
-                alt=""
-                loading="lazy"
-              >
-            {%- else -%}
-              <img
-                src="{{ 'fashion-03.png' | asset_url }}"
-                width="auto"
-                height="auto"
-                alt="example"
-                loading="lazy"
-              >
-            {%- endif -%}
-          </div>
-        </div>
-      </div>
     </div>
-  {% endcomment %}
+  </div>
 </section>
 
 {% style %}
 {% endstyle %}
+
+<script>
+  const wrapper = document.querySelector('.wrapper');
+  const carousel = document.querySelector('.carousel');
+  const arrowBtns = document.querySelectorAll('.wrapper i');
+  const firstCardWidth = carousel.querySelector('.card').offsetWidth;
+
+  let isDragging = false,
+    startX,
+    startScrollLeft;
+
+  arrowBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      carousel.scrollLeft += btn.id == 'left' ? -firstCardWidth : firstCardWidth;
+    });
+  });
+
+  const dragStart = (e) => {
+    isDragging = true;
+    carousel.classList.add('dragging');
+    startX = e.pageX;
+    startScrollLeft = carousel.scrollLeft;
+  };
+
+  const dragging = (e) => {
+    if (!isDragging) return;
+    carousel.scrollLeft = startScrollLeft - (e.pageX - startX);
+  };
+
+  const dragStop = () => {
+    isDragging = false;
+    carousel.classList.remove('dragging');
+  };
+
+  carousel.addEventListener('mousedown', dragStart);
+  carousel.addEventListener('mousemove', dragging);
+  document.addEventListener('mouseup', dragStop);
+</script>
 
 {% schema %}
 {

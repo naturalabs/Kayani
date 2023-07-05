@@ -1,41 +1,16 @@
 section.fashion {
-  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 33px 0 50px;
 }
 
-.fashion-mobile {
+.mobile-fashion {
+  height: 100%;
   width: min(90%, 374px);
-  margin-left: auto;
-  margin-right: auto;
   position: relative;
 }
-.fashion-mobile h2 {
-  font-size: 36px;
-  text-align: center;
-  margin-bottom: 13px;
-}
-.fashion-mobile .button-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 50px;
-}
-.fashion-mobile .button-wrapper button {
-  background-color: #fff;
-  border: 1px solid #646464;
-  height: 50px;
-  width: 50px;
-  cursor: pointer;
-  height: 65px;
-  width: 65px;
-  opacity: 0.7;
-  outline: #646464;
-}
-.fashion-mobile .button-wrapper button svg {
-  width: 36px;
-  height: 36px;
-}
-.fashion-mobile .fashion-button {
-  top: 45%;
+.mobile-fashion .fashion-button {
+  top: 50%;
   position: absolute;
   display: flex;
   justify-content: center;
@@ -51,26 +26,74 @@ section.fashion {
   outline: #646464;
   padding: 0;
   z-index: 5;
-  z-index: 4;
 }
-.fashion-mobile .fashion-button svg {
+.mobile-fashion .fashion-button svg {
   width: 36px;
   height: 36px;
 }
-.fashion-mobile .fashion-button.left {
+.mobile-fashion h2 {
+  font-size: 30px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.mobile-fashion .fashion-button.left {
   left: 0;
 }
-.fashion-mobile .fashion-button.right {
+.mobile-fashion .fashion-button.right {
   right: 0;
 }
-
-.fashion-carousel {
-  position: relative;
-  height: 420px;
-  /* margin-bottom: 50px; */
-  width: 100%;
+.mobile-fashion .fashion-carousel {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 100%;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  grid-gap: 16px;
+  gap: 16px;
+  /* border-radius: 8px; */
+  scroll-behavior: smooth;
+  scrollbar-width: none;
 }
-.fashion-carousel .card {
+
+.fashion-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.fashion-carousel.no-transition {
+  scroll-behavior: auto;
+}
+
+.fashion-carousel.dragging {
+  scroll-snap-type: none;
+  scroll-behavior: auto;
+}
+
+/* dragging */
+.fashion-carousel.dragging .fashion-card {
+  cursor: grab;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+.fashion-carousel :where(.fashion-card, .img) {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.fashion-carousel .fashion-card {
+  position: relative;
+  scroll-snap-align: start;
+  height: 528px;
+  list-style: none;
+  background: #fff;
+  cursor: pointer;
+  /* padding-bottom: 15px; */
+  flex-direction: column;
+}
+
+.fashion-image {
   position: absolute;
   top: 0;
   left: 0;
@@ -78,7 +101,8 @@ section.fashion {
   height: 100%;
   overflow: hidden;
 }
-.fashion-carousel .card img {
+
+.fashion-image img {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
@@ -86,8 +110,7 @@ section.fashion {
   z-index: -1;
 }
 
-.fashion-desktop,
-.fashion-blur-right {
+.fashion-desktop {
   display: none;
 }
 
@@ -103,7 +126,7 @@ section.fashion {
     display: flex;
     gap: 43px;
   }
-  .fashion .fashion-mobile {
+  .mobile-fashion {
     display: none;
   }
   .fashion.desktop {
