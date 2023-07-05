@@ -63,9 +63,15 @@
         </div>
       </li>
     </ul>
-    {% comment %} <i id="right" class="fa-solid fa-angle-right"></i> {% endcomment %}
     <div class="right fashion-button" id="right">
       {% render 'icon-right' %}
+    </div>
+
+    <div class="fashion-button-wrapper">
+      <a href="{{ section.settings.button_link }}">
+        {% render 'icon-upright' %}
+      </a>
+      <p>Shop Now</p>
     </div>
   </div>
 
@@ -104,10 +110,18 @@
     <div class="fashion-text-container">
       <div class="text-button">
         <h2>Fashion That Is Always Relevant</h2>
-        <div class="button-wrapper">
-          <button>
+        {% comment %}
+          <div class="button-wrapper">
+            <button>
+              {% render 'icon-upright' %}
+            </button>
+            <p>Shop Now</p>
+          </div>
+        {% endcomment %}
+        <div class="fashion-button-wrapper">
+          <a href="{{ section.settings.button_link }}">
             {% render 'icon-upright' %}
-          </button>
+          </a>
           <p>Shop Now</p>
         </div>
       </div>
