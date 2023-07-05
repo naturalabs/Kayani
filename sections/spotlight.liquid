@@ -1,62 +1,22 @@
 {{ 'base.css' | asset_url | stylesheet_tag }}
+{{ 'spotlight.css' | asset_url | stylesheet_tag }}
 
 <section class="fashion">
-  <div class="fashion-blur-right">
-    {% render 'blur-right' %}
-  </div>
+  {% comment %}
+    <div class="fashion-blur-right">
+      {% render 'blur-right' %}
+    </div>
+  {% endcomment %}
 
+  {% comment %} wrapper {% endcomment %}
   <div class="fashion-mobile">
     <h2>{{ section.settings.spotlight_header }}</h2>
-    <div class="carousel" data-carousel>
-      <button class="carousel-button prev" data-carousel-button="prev">
-        {% render 'icon-left' %}
-      </button>
-      <button class="carousel-button next" data-carousel-button="next">
-        {% render 'icon-right' %}
-      </button>
 
-      <ul data-slides>
-        <li class="slide">
-          {%- if section.settings.main_image != blank -%}
-            <img
-              src="{{ section.settings.main_image | image_url }}"
-              width="auto"
-              height="auto"
-              alt=""
-              loading="lazy"
-            >
-          {%- else -%}
-            <img
-              src="{{ 'fashion-01.png' | asset_url }}"
-              width="auto"
-              height="auto"
-              alt="example"
-              loading="lazy"
-            >
-          {%- endif -%}
-        </li>
-      </ul>
-    </div>
-
-    <div class="button-wrapper ">
-      <button>
-        {% render 'icon-upright' %}
-      </button>
-      <p>Shop Now</p>
-    </div>
-  </div>
-
-  {% comment %} desktop {% endcomment %}
-  <div
-    class="
-      fashion-desktop  {% if section.settings.page_width == 'full-width' %}full-width
-      {% elsif section.settings.page_width == 'fixed-width' %}fixed-width
-      {% elsif section.settings.page_width == 'custom-width' %}custom-width
-      {% endif %}
-    "
-  >
-    <div class="fashion-image-container">
-      <div class="fashion-image">
+    <button class="fashion-button left" id="left">
+      {% render 'icon-left' %}
+    </button>
+    <ul class="fashion-carousel">
+      <li class="card">
         {%- if section.settings.main_image != blank -%}
           <img
             src="{{ section.settings.main_image | image_url }}"
@@ -74,269 +34,109 @@
             loading="lazy"
           >
         {%- endif -%}
-      </div>
-    </div>
+      </li>
+    </ul>
+    <button class="fashion-button right" id="right">
+      {% render 'icon-right' %}
+    </button>
 
-    <div class="fashion-text-container">
-      <div class="text-button">
-        <h2>Fashion That Is Always Relevant</h2>
-        <div class="button-wrapper">
-          <button>
-            {% render 'icon-upright' %}
-          </button>
-          <p>Shop Now</p>
-        </div>
-      </div>
-
-      <div class="fashion-gallery">
-        <div class="image-left">
-          {%- if section.spotlight_image_left != blank -%}
-            <img
-              src="{{ section.spotlight_image_left | image_url }}"
-              width="auto"
-              height="auto"
-              alt=""
-              loading="lazy"
-            >
-          {%- else -%}
-            <img
-              src="{{ 'fashion-02.png' | asset_url }}"
-              width="auto"
-              height="auto"
-              alt="example"
-              loading="lazy"
-            >
-          {%- endif -%}
-        </div>
-        <div class="image-right">
-          {%- if section.spotlight_image_right != blank -%}
-            <img
-              src="{{ section.spotlight_image_right | image_url }}"
-              width="auto"
-              height="auto"
-              alt=""
-              loading="lazy"
-            >
-          {%- else -%}
-            <img
-              src="{{ 'fashion-03.png' | asset_url }}"
-              width="auto"
-              height="auto"
-              alt="example"
-              loading="lazy"
-            >
-          {%- endif -%}
-        </div>
-      </div>
+    <div class="button-wrapper ">
+      <button>
+        {% render 'icon-upright' %}
+      </button>
+      <p>Shop Now</p>
     </div>
   </div>
+
+  {% comment %} desktop {% endcomment %}
+  {% comment %}
+    <div
+      class="
+        fashion-desktop  {% if section.settings.page_width == 'full-width' %}full-width
+        {% elsif section.settings.page_width == 'fixed-width' %}fixed-width
+        {% elsif section.settings.page_width == 'custom-width' %}custom-width
+        {% endif %}
+      "
+    >
+      <div class="fashion-image-container">
+        <div class="fashion-image">
+          {%- if section.settings.main_image != blank -%}
+            <img
+              src="{{ section.settings.main_image | image_url }}"
+              width="auto"
+              height="auto"
+              alt=""
+              loading="lazy"
+            >
+          {%- else -%}
+            <img
+              src="{{ 'fashion-01.png' | asset_url }}"
+              width="auto"
+              height="auto"
+              alt="example"
+              loading="lazy"
+            >
+          {%- endif -%}
+        </div>
+      </div>
+
+      <div class="fashion-text-container">
+        <div class="text-button">
+          <h2>Fashion That Is Always Relevant</h2>
+          <div class="button-wrapper">
+            <button>
+              {% render 'icon-upright' %}
+            </button>
+            <p>Shop Now</p>
+          </div>
+        </div>
+
+        <div class="fashion-gallery">
+          <div class="image-left">
+            {%- if section.spotlight_image_left != blank -%}
+              <img
+                src="{{ section.spotlight_image_left | image_url }}"
+                width="auto"
+                height="auto"
+                alt=""
+                loading="lazy"
+              >
+            {%- else -%}
+              <img
+                src="{{ 'fashion-02.png' | asset_url }}"
+                width="auto"
+                height="auto"
+                alt="example"
+                loading="lazy"
+              >
+            {%- endif -%}
+          </div>
+          <div class="image-right">
+            {%- if section.spotlight_image_right != blank -%}
+              <img
+                src="{{ section.spotlight_image_right | image_url }}"
+                width="auto"
+                height="auto"
+                alt=""
+                loading="lazy"
+              >
+            {%- else -%}
+              <img
+                src="{{ 'fashion-03.png' | asset_url }}"
+                width="auto"
+                height="auto"
+                alt="example"
+                loading="lazy"
+              >
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endcomment %}
 </section>
 
 {% style %}
-  section.fashion {
-    max-width: 374px;
-    width: 100%;
-    margin-inline: auto;
-  }
-  .fashion h2 {
-    font-size: 36px;
-    line-height: 44px;
-    max-width: 371px;
-    margin-bottom: 13px;
-    text-align: center;
-  }
-
-  .fashion-image-wrapper {
-    margin-inline: auto;
-  }
-
-  .fashion .carousel {
-    width: min(90%, 374px);
-    position: relative;
-    min-height: 421px;
-    margin-inline: auto;
-    margin-bottom: 50px;
-  }
-  .fashion .button-wrapper {
-    color: #646464;
-    font-size: 17px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
-  .fashion .button-wrapper button {
-    border-radius: 0;
-    background-color: transparent;
-    outline: none;
-    border: 1px solid #646464;
-    color: #646464;
-  }
-  .fashion-mobile h2 {
-    width: 270px;
-    margin: 0 auto 13px;
-  }
-  .fashion-text-container .text-button h2 {
-    font-family: var(--ff-secondary);
-  }
-  .carousel > ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  .slide {
-    position: absolute;
-    inset: 0;
-    /* opacity: 0; */
-    /* transition: 200ms opacity ease-in-out; */
-    /* transition-delay: 200ms; */
-  }
-
-  .slide > img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-  }
-  .carousel-button {
-    position: absolute;
-    z-index: 2;
-    background: none;
-    border: none;
-    /* font-size: 4rem; */
-    top: 50%;
-    transform: translateY(-50%);
-    color: rgba(255, 255, 255, 0.5);
-    cursor: pointer;
-    border-radius: 0;
-    /* padding: 0 0.5rem; */
-    background-color: var(--clr-primary-white);
-    opacity: 0.5;
-    height: 65px;
-    width: 65px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .carousel-button svg {
-    height: 36px;
-    width: 36px;
-    color: #646464;
-  }
-
-  .carousel-button:hover,
-  .carousel-button:focus {
-    color: white;
-    background-color: rgba(0, 0, 0, 0.2);
-  }
-
-  .carousel-button:focus {
-    outline: 1px solid black;
-  }
-
-  .carousel-button.prev {
-    left: 0;
-  }
-
-  .carousel-button.next {
-    right: 0;
-  }
-  .fashion-desktop,
-  .fashion-blur-right {
-    display: none;
-  }
-  @media (min-width: 800px) {
-    section.fashion {
-      position: relative;
-      max-width: 1438px;
-      width: 100%;
-      margin-inline: auto;
-    }
-    .fashion-desktop {
-      display: flex;
-      gap: 43px;
-    }
-    .fashion .fashion-mobile {
-      display: none;
-    }
-    .fashion.desktop {
-      /* display: flex; */
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-gap: 43px;
-    }
-    .fashion-image-container {
-      position: relative;
-      width: 670px;
-      width: 100%;
-    }
-    .fashion-image {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-    }
-    .fashion-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: -1;
-    }
-
-    .fashion-image-container img:nth-child(1) {
-      margin-right: 42px;
-    }
-    .fashion-gallery {
-      display: flex;
-      justify-content: flex-end;
-      gap: 40px;
-    }
-    .fashion-gallery img {
-      width: min(100%, 352px);
-    }
-    .fashion-text-container {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    .fashion-text-container .text-button {
-      display: flex;
-      padding-top: 20px;
-    }
-    .fashion-text-container .text-button h2 {
-      font-size: 71px;
-      letter-spacing: -2%;
-      text-align: left;
-      min-width: 500px;
-      line-height: 72px;
-    }
-
-    .fashion-text-container .text-button button {
-      width: 100px;
-      height: 100px;
-      margin-bottom: 10px;
-      margin-top: 60px;
-    }
-    .fashion .button-wrapper {
-      padding-top: 40px;
-    }
-    .fashion .button-wrapper p {
-      font-size: 24px;
-      margin-top: 0;
-    }
-    .fashion-blur-right {
-      display: block;
-      position: absolute;
-      right: -230px;
-      bottom: -200px;
-      opacity: 60%;
-    }
-  }
 {% endstyle %}
 
 {% schema %}

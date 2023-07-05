@@ -1,0 +1,182 @@
+section.fashion {
+  width: 100%;
+}
+
+.fashion-mobile {
+  width: min(90%, 374px);
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+.fashion-mobile h2 {
+  font-size: 36px;
+  text-align: center;
+  margin-bottom: 13px;
+}
+.fashion-mobile .button-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+.fashion-mobile .button-wrapper button {
+  background-color: #fff;
+  border: 1px solid #646464;
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+  height: 65px;
+  width: 65px;
+  opacity: 0.7;
+  outline: #646464;
+}
+.fashion-mobile .button-wrapper button svg {
+  width: 36px;
+  height: 36px;
+}
+.fashion-mobile .fashion-button {
+  top: 45%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid #646464;
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+  height: 65px;
+  width: 65px;
+  opacity: 0.7;
+  outline: #646464;
+  padding: 0;
+  z-index: 5;
+  z-index: 4;
+}
+.fashion-mobile .fashion-button svg {
+  width: 36px;
+  height: 36px;
+}
+.fashion-mobile .fashion-button.left {
+  left: 0;
+}
+.fashion-mobile .fashion-button.right {
+  right: 0;
+}
+
+.fashion-carousel {
+  position: relative;
+  height: 420px;
+  /* margin-bottom: 50px; */
+  width: 100%;
+}
+.fashion-carousel .card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.fashion-carousel .card img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  z-index: -1;
+}
+
+.fashion-desktop,
+.fashion-blur-right {
+  display: none;
+}
+
+@media (min-width: 800px) {
+  section.fashion {
+    position: relative;
+    max-width: 1438px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .fashion-desktop {
+    display: flex;
+    gap: 43px;
+  }
+  .fashion .fashion-mobile {
+    display: none;
+  }
+  .fashion.desktop {
+    /* display: flex; */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 43px;
+  }
+  .fashion-image-container {
+    position: relative;
+    width: 670px;
+    width: 100%;
+  }
+  .fashion-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  .fashion-image img {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+    z-index: -1;
+  }
+  .fashion-image-container img:nth-child(1) {
+    margin-right: 42px;
+  }
+  .fashion-gallery {
+    display: flex;
+    justify-content: flex-end;
+    gap: 40px;
+  }
+  .fashion-gallery img {
+    width: min(100%, 352px);
+  }
+  .fashion-text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .fashion-text-container .text-button {
+    display: flex;
+    padding-top: 20px;
+  }
+  .fashion-text-container .text-button h2 {
+    font-size: 71px;
+    letter-spacing: -2%;
+    text-align: left;
+    min-width: 500px;
+    line-height: 72px;
+  }
+  .fashion-text-container .text-button button {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+    margin-top: 60px;
+  }
+  .fashion .button-wrapper {
+    padding-top: 40px;
+  }
+  .fashion .button-wrapper p {
+    font-size: 24px;
+    margin-top: 0;
+  }
+  .fashion-blur-right {
+    display: block;
+    position: absolute;
+    right: -230px;
+    bottom: -200px;
+    opacity: 0.6;
+  }
+}

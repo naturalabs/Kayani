@@ -42,12 +42,6 @@ section.featured {
   height: 36px;
 }
 
-/* slider icon */
-/* on click */
-.wrapper .featured-button:active {
-  /* transform: translateY(-50%) scale(0.85); */
-}
-
 .wrapper h2 {
   font-size: 30px;
   margin-bottom: 20px;
