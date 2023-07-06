@@ -1,15 +1,30 @@
 <style>
   .dawn-product-slider {
-    max-width: 380px;
+    width: min(90%, 380px);
     margin: auto;
   }
   .dawn-product-slider img {
     width: 100%;
   }
-  .dawn-product-slider .carousel-cell {
-    border-radius: 16px;
-    margin: auto;
+  .dawn-product-slider .carousel {
+    position: relative;
     max-width: 380px;
+    height: 420px;
+    margin: auto;
+  }
+  .dawn-product-slider .carousel-cell {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  .dawn-product-slider .carousel-cell img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    z-index: -1;
   }
   .product-btn {
     width: 100%;
@@ -25,9 +40,10 @@
   .dawn-product-slider a .price {
     margin: 0px;
   }
+
   .dawn-product-slider .flickity-button.flickity-prev-next-button.previous,
   .dawn-product-slider .flickity-button.flickity-prev-next-button.next {
-    background: red;
+    background: transparent;
     color: white;
   }
   .dawn-product-slider:focus-visible,
@@ -36,6 +52,130 @@
     outline-offset: unset;
     box-shadow: unset;
   }
+  .title-wrapper-with-link h2 {
+    margin: 0 auto;
+  }
+
+  .fashion-button-wrapper {
+    outline: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+  }
+  .fashion-button-wrapper p {
+    font-size: 17px;
+    margin: 0;
+  }
+  .fashion-button-wrapper a {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #646464;
+    width: 68px;
+    height: 68px;
+  }
+  .fashion-button-wrapper a svg {
+    color: #646464;
+    height: 38px;
+    width: 38px;
+  }
+
+  .fashion-desktop {
+    display: none;
+  }
+  @media (min-width: 900px) {
+    .dawn-product-slider {
+      display: none;
+    }
+    section.fashion {
+      position: relative;
+      max-width: 1438px;
+      width: 100%;
+      margin-inline: auto;
+    }
+    .fashion-desktop {
+      display: flex;
+      gap: 43px;
+    }
+    .mobile-fashion {
+      display: none;
+    }
+    .fashion.desktop {
+      /* display: flex; */
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 43px;
+    }
+    .fashion-image-container {
+      position: relative;
+      width: 670px;
+      width: 100%;
+    }
+    .fashion-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    .fashion-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    .fashion-image-container img:nth-child(1) {
+      margin-right: 42px;
+    }
+    .fashion-gallery {
+      display: flex;
+      justify-content: flex-end;
+      gap: 40px;
+    }
+    .fashion-gallery img {
+      width: min(100%, 352px);
+    }
+    .fashion-text-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .fashion-text-container .text-button {
+      display: flex;
+      padding-top: 20px;
+    }
+    .fashion-text-container .text-button h2 {
+      font-size: 71px;
+      letter-spacing: -2%;
+      text-align: left;
+      min-width: 500px;
+      line-height: 72px;
+    }
+
+    .fashion-text-container .text-button button {
+      width: 100px;
+      height: 100px;
+      margin-bottom: 10px;
+      margin-top: 60px;
+    }
+
+    .fashion-button-wrapper p {
+      font-size: 20px;
+    }
+    .fashion-button-wrapper a {
+      width: 100px;
+      height: 100px;
+    }
+    .fashion-button-wrapper a svg {
+      color: #646464;
+      height: 56px;
+      width: 56px;
+    }
+  }
 </style>
 
 <!-- CSS -->
@@ -43,49 +183,123 @@
 <!-- JavaScript -->
 <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 
-<div class="collection page-width">
-  <div class="title-wrapper-with-link">
-    <h2 class="title{% if section.settings.title == blank %} title--no-heading{% endif %}">
-      {{ section.settings.title | escape }}
-    </h2>
-  </div>
-</div>
-<div class="dawn-product-slider">
-  <div class="carousel">
-    {% for block in section.blocks %}
-      {% assign product = all_products[block.settings.product_item] %}
-      <div class="carousel-cell">
-        <a href="{{ product.url }}">
+<section class="fashion">
+  <div class="dawn-product-slider">
+    <div class="title-wrapper-with-link">
+      <h2>{{ section.settings.title | escape }}</h2>
+    </div>
+    <div class="carousel">
+      {% for block in section.blocks %}
+        {% assign product = all_products[block.settings.product_item] %}
+
+        <div class="carousel-cell">
+          {% comment %} <a href="{{ product.url }}"> {% endcomment %}
           <img data-flickity-lazyload="{{ product.featured_image | img_url: 'master' }}" border="0">
-        </a>
-      </div>
-    {% endfor %}
+          {% comment %} </a> {% endcomment %}
+        </div>
+      {% endfor %}
+    </div>
+    <div class="fashion-button-wrapper">
+      <a href="{{ section.settings.button_link }}">
+        {% render 'icon-upright' %}
+      </a>
+      <p>Shop Now</p>
+    </div>
   </div>
-</div>
-{% assign nav_range = section.settings.navigation_amount %}
-{% style %}
-  @media only screen and ( min-width: 1201px ) {
-  	{% if nav_range == 2 %}
-         .dawn-product-slider .carousel-cell {
-             width: calc(49% - 10px);
-         }
-  	{% elsif nav_range == 3 %}
-         .dawn-product-slider .carousel-cell {
-           width: calc(32% - 10px);
-         }
-  	{% elsif nav_range == 4 %}
-         .dawn-product-slider .carousel-cell {
-           width: calc(24% - 10px);
-          }
-  	{% endif %}
-     }
-     .flickity-page-dots .dot {
-     	background: {{ section.settings.navigation_color }};
-     }
-     .flickity-button-icon {
-     	color: {{ section.settings.navigation_color }};
-     }
-{% endstyle %}
+  {% comment %} Desktop {% endcomment %}
+  <div
+    class="
+      fashion-desktop  {% if section.settings.page_width == 'full-width' %}full-width
+      {% elsif section.settings.page_width == 'fixed-width' %}fixed-width
+      {% elsif section.settings.page_width == 'custom-width' %}custom-width
+      {% endif %}
+    "
+  >
+    <div class="fashion-image-container">
+      <div class="fashion-image">
+        {%- if section.settings.main_image != blank -%}
+          <img
+            src="{{ section.settings.main_image | image_url }}"
+            width="auto"
+            height="auto"
+            alt=""
+            loading="lazy"
+          >
+        {%- else -%}
+          <img
+            src="{{ 'fashion-01.png' | asset_url }}"
+            width="auto"
+            height="auto"
+            alt="example"
+            loading="lazy"
+          >
+        {%- endif -%}
+      </div>
+    </div>
+
+    <div class="fashion-text-container">
+      <div class="text-button">
+        <h2>Fashion That Is Always Relevant</h2>
+        {% comment %}
+          <div class="button-wrapper">
+            <button>
+              {% render 'icon-upright' %}
+            </button>
+            <p>Shop Now</p>
+          </div>
+        {% endcomment %}
+        <div class="fashion-button-wrapper">
+          <a href="{{ section.settings.button_link }}">
+            {% render 'icon-upright' %}
+          </a>
+          <p>Shop Now</p>
+        </div>
+      </div>
+
+      <div class="fashion-gallery">
+        <div class="image-left">
+          {%- if section.spotlight_image_left != blank -%}
+            <img
+              src="{{ section.spotlight_image_left | image_url }}"
+              width="auto"
+              height="auto"
+              alt=""
+              loading="lazy"
+            >
+          {%- else -%}
+            <img
+              src="{{ 'fashion-02.png' | asset_url }}"
+              width="auto"
+              height="auto"
+              alt="example"
+              loading="lazy"
+            >
+          {%- endif -%}
+        </div>
+        <div class="image-right">
+          {%- if section.spotlight_image_right != blank -%}
+            <img
+              src="{{ section.spotlight_image_right | image_url }}"
+              width="auto"
+              height="auto"
+              alt=""
+              loading="lazy"
+            >
+          {%- else -%}
+            <img
+              src="{{ 'fashion-03.png' | asset_url }}"
+              width="auto"
+              height="auto"
+              alt="example"
+              loading="lazy"
+            >
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <script>
   var elem = document.querySelector('.dawn-product-slider .carousel');
   var flkty = new Flickity( elem, {
@@ -108,19 +322,11 @@
   });
   {% endif %}
 </script>
+
 {% schema %}
 {
-  "name": "Products slider",
+  "name": "Spotlight",
   "settings": [
-    {
-      "type": "range",
-      "id": "navigation_amount",
-      "min": 2,
-      "max": 4,
-      "step": 1,
-      "default": 3,
-      "label": "Change the number of cards in view"
-    },
     {
       "type": "color",
       "id": "navigation_color",
@@ -129,7 +335,7 @@
     {
       "type": "text",
       "id": "title",
-      "default": "Products slider",
+      "default": "Looks You'll Love",
       "label": "t:sections.featured-collection.settings.title.label"
     }
   ],
@@ -148,7 +354,7 @@
   ],
   "presets": [
     {
-      "name": "Product slider",
+      "name": "Spotlight",
       "category": "Custom"
     }
   ]
