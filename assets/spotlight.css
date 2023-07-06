@@ -10,6 +10,12 @@ section.fashion {
   position: relative;
 }
 
+.mobile-fashion h2 {
+  font-size: 30px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
 .mobile-fashion .fashion-button {
   top: 40%;
   position: absolute;
@@ -33,12 +39,6 @@ section.fashion {
   height: 36px;
 }
 
-.mobile-fashion h2 {
-  font-size: 30px;
-  margin-bottom: 20px;
-  text-align: center;
-}
-
 .mobile-fashion .fashion-button.left {
   left: 0;
 }
@@ -48,6 +48,7 @@ section.fashion {
 }
 
 .mobile-fashion .fashion-carousel {
+  padding: 0;
   display: grid;
   grid-auto-flow: column;
   grid-auto-columns: 100%;
@@ -78,12 +79,6 @@ section.fashion {
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
-}
-
-.fashion-carousel :where(.fashion-card, .img) {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
 }
 
 .fashion-carousel .fashion-card {

@@ -1,263 +1,155 @@
-{{ 'base.css' | asset_url | stylesheet_tag }}
-{{ 'spotlight.css' | asset_url | stylesheet_tag }}
+<style>
+  .dawn-product-slider {
+    max-width: 380px;
+    margin: auto;
+  }
+  .dawn-product-slider img {
+    width: 100%;
+  }
+  .dawn-product-slider .carousel-cell {
+    border-radius: 16px;
+    margin: auto;
+    max-width: 380px;
+  }
+  .product-btn {
+    width: 100%;
+  }
+  .dawn-product-slider a {
+    color: black;
+    text-decoration: none;
+  }
+  .dawn-product-slider a .title:hover {
+    text-decoration: underline;
+  }
+  .dawn-product-slider a .title,
+  .dawn-product-slider a .price {
+    margin: 0px;
+  }
+  .dawn-product-slider .flickity-button.flickity-prev-next-button.previous,
+  .dawn-product-slider .flickity-button.flickity-prev-next-button.next {
+    background: red;
+    color: white;
+  }
+  .dawn-product-slider:focus-visible,
+  .dawn-product-slider .carousel:focus-visible {
+    outline: unset;
+    outline-offset: unset;
+    box-shadow: unset;
+  }
+</style>
 
-<section class="fashion">
-  {% comment %}
-    <div class="fashion-blur-right">
-      {% render 'blur-right' %}
-    </div>
-  {% endcomment %}
+<!-- CSS -->
+<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+<!-- JavaScript -->
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 
-  {% comment %} wrapper {% endcomment %}
-  <div class="mobile-fashion">
-    <h2>Looks You'll Love</h2>
-
-    <div class="fashion-button left" id="left">
-      {% render 'icon-left' %}
-    </div>
-
-    <ul class="fashion-carousel">
-      <li class="fashion-card">
-        <div class="fashion-image">
-          {%- if section.settings.image != blank -%}
-            {{ section.settings['fashion-image01'] | image_url }}
-          {%- else -%}
-            <img
-              src="{{ 'fashion-01.png' | asset_url }}"
-              width="468"
-              height="auto"
-              alt="example"
-              loading="lazy"
-            >
-          {%- endif -%}
-        </div>
-      </li>
-      <li class="fashion-card">
-        <div class="fashion-image">
-          {%- if section.settings.image != blank -%}
-            {{ section.settings['fashion-image01'] | image_url }}
-          {%- else -%}
-            <img
-              src="{{ 'fashion-02.png' | asset_url }}"
-              width="468"
-              height="auto"
-              alt="example"
-              loading="lazy"
-            >
-          {%- endif -%}
-        </div>
-      </li>
-      <li class="fashion-card">
-        <div class="fashion-image">
-          {%- if section.settings.image != blank -%}
-            {{ section.settings['fashion-image01'] | image_url }}
-          {%- else -%}
-            <img
-              src="{{ 'fashion-03.png' | asset_url }}"
-              width="468"
-              height="auto"
-              alt="example"
-              loading="lazy"
-            >
-          {%- endif -%}
-        </div>
-      </li>
-    </ul>
-    <div class="right fashion-button" id="right">
-      {% render 'icon-right' %}
-    </div>
-
-    <div class="fashion-button-wrapper">
-      <a href="{{ section.settings.button_link }}">
-        {% render 'icon-upright' %}
-      </a>
-      <p>Shop Now</p>
-    </div>
+<div class="collection page-width">
+  <div class="title-wrapper-with-link">
+    <h2 class="title{% if section.settings.title == blank %} title--no-heading{% endif %}">
+      {{ section.settings.title | escape }}
+    </h2>
   </div>
-
-  {% comment %} desktop {% endcomment %}
-
-  <div
-    class="
-      fashion-desktop  {% if section.settings.page_width == 'full-width' %}full-width
-      {% elsif section.settings.page_width == 'fixed-width' %}fixed-width
-      {% elsif section.settings.page_width == 'custom-width' %}custom-width
-      {% endif %}
-    "
-  >
-    <div class="fashion-image-container">
-      <div class="fashion-image">
-        {%- if section.settings.main_image != blank -%}
-          <img
-            src="{{ section.settings.main_image | image_url }}"
-            width="auto"
-            height="auto"
-            alt=""
-            loading="lazy"
-          >
-        {%- else -%}
-          <img
-            src="{{ 'fashion-01.png' | asset_url }}"
-            width="auto"
-            height="auto"
-            alt="example"
-            loading="lazy"
-          >
-        {%- endif -%}
+</div>
+<div class="dawn-product-slider">
+  <div class="carousel">
+    {% for block in section.blocks %}
+      {% assign product = all_products[block.settings.product_item] %}
+      <div class="carousel-cell">
+        <a href="{{ product.url }}">
+          <img data-flickity-lazyload="{{ product.featured_image | img_url: 'master' }}" border="0">
+        </a>
       </div>
-    </div>
-
-    <div class="fashion-text-container">
-      <div class="text-button">
-        <h2>Fashion That Is Always Relevant</h2>
-        {% comment %}
-          <div class="button-wrapper">
-            <button>
-              {% render 'icon-upright' %}
-            </button>
-            <p>Shop Now</p>
-          </div>
-        {% endcomment %}
-        <div class="fashion-button-wrapper">
-          <a href="{{ section.settings.button_link }}">
-            {% render 'icon-upright' %}
-          </a>
-          <p>Shop Now</p>
-        </div>
-      </div>
-
-      <div class="fashion-gallery">
-        <div class="image-left">
-          {%- if section.spotlight_image_left != blank -%}
-            <img
-              src="{{ section.spotlight_image_left | image_url }}"
-              width="auto"
-              height="auto"
-              alt=""
-              loading="lazy"
-            >
-          {%- else -%}
-            <img
-              src="{{ 'fashion-02.png' | asset_url }}"
-              width="auto"
-              height="auto"
-              alt="example"
-              loading="lazy"
-            >
-          {%- endif -%}
-        </div>
-        <div class="image-right">
-          {%- if section.spotlight_image_right != blank -%}
-            <img
-              src="{{ section.spotlight_image_right | image_url }}"
-              width="auto"
-              height="auto"
-              alt=""
-              loading="lazy"
-            >
-          {%- else -%}
-            <img
-              src="{{ 'fashion-03.png' | asset_url }}"
-              width="auto"
-              height="auto"
-              alt="example"
-              loading="lazy"
-            >
-          {%- endif -%}
-        </div>
-      </div>
-    </div>
+    {% endfor %}
   </div>
-</section>
-
+</div>
+{% assign nav_range = section.settings.navigation_amount %}
 {% style %}
+  @media only screen and ( min-width: 1201px ) {
+  	{% if nav_range == 2 %}
+         .dawn-product-slider .carousel-cell {
+             width: calc(49% - 10px);
+         }
+  	{% elsif nav_range == 3 %}
+         .dawn-product-slider .carousel-cell {
+           width: calc(32% - 10px);
+         }
+  	{% elsif nav_range == 4 %}
+         .dawn-product-slider .carousel-cell {
+           width: calc(24% - 10px);
+          }
+  	{% endif %}
+     }
+     .flickity-page-dots .dot {
+     	background: {{ section.settings.navigation_color }};
+     }
+     .flickity-button-icon {
+     	color: {{ section.settings.navigation_color }};
+     }
 {% endstyle %}
-
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const carousel = document.querySelector('.fashion-carousel');
-    const arrowBtns = document.querySelectorAll('.fashion-button');
-    const firstCardWidth = carousel.querySelector('.fashion-card').offsetWidth;
-    let isDragging = false;
-    let startX, scrollLeft;
-
-    arrowBtns.forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const direction = btn.id === 'left' ? -1 : 1;
-        carousel.scrollLeft += direction * firstCardWidth;
-      });
-    });
-
-    carousel.addEventListener('mousedown', (e) => {
-      isDragging = true;
-      startX = e.pageX - carousel.offsetLeft;
-      scrollLeft = carousel.scrollLeft;
-    });
-
-    carousel.addEventListener('mousemove', (e) => {
-      if (!isDragging) return;
-      e.preventDefault();
-      const x = e.pageX - carousel.offsetLeft;
-      const dragDistance = x - startX;
-      carousel.scrollLeft = scrollLeft - dragDistance;
-    });
-
-    document.addEventListener('mouseup', () => {
-      isDragging = false;
+  var elem = document.querySelector('.dawn-product-slider .carousel');
+  var flkty = new Flickity( elem, {
+    contain: true,
+    imagesLoaded: true,
+    lazyLoad: 2,
+    wrapAround: true,
+    pageDots: false,
+  });
+  {% if request.design_mode %}
+  document.addEventListener("shopify:section:load", function(event) {
+    var elem = document.querySelector('.dawn-product-slider .carousel');
+    var flkty = new Flickity( elem, {
+      contain: true,
+      imagesLoaded: true,
+      lazyLoad: 2,
+      wrapAround: true,
+      pageDots: false,
     });
   });
+  {% endif %}
 </script>
-
 {% schema %}
 {
-  "name": "Spotlight",
+  "name": "Products slider",
   "settings": [
     {
+      "type": "range",
+      "id": "navigation_amount",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 3,
+      "label": "Change the number of cards in view"
+    },
+    {
+      "type": "color",
+      "id": "navigation_color",
+      "label": "Change color of the pagination|navigation|scrollbar"
+    },
+    {
       "type": "text",
-      "label": "Spotlight Header",
-      "id": "spotlight_header",
-      "default": "Fashion That Is Always Relevant"
-    },
+      "id": "title",
+      "default": "Products slider",
+      "label": "t:sections.featured-collection.settings.title.label"
+    }
+  ],
+  "blocks": [
     {
-      "type": "url",
-      "label": "Shop Link",
-      "id": "shop_link",
-      "default": "/collections/all"
-    },
-    {
-      "type": "image_picker",
-      "label": "Main Image",
-      "id": "main_image"
-    },
-    {
-      "type": "image_picker",
-      "label": "Spotlight Image Left",
-      "id": "spotlight_image_left"
-    },
-    {
-      "type": "image_picker",
-      "label": "Spotlight Image Right",
-      "id": "spotlight_image_right"
-    },
-    {
-      "type": "select",
-      "label": "Page Width",
-      "id": "page_width",
-      "options": [
+      "type": "card",
+      "name": "Product card",
+      "settings": [
         {
-          "value": "full-width",
-          "label": "Full Width"
-        },
-        {
-          "value": "fixed-width",
-          "label": "Fixed Width"
-        },
-        {
-          "value": "custom-width",
-          "label": "Custom Width"
+          "type": "product",
+          "id": "product_item",
+          "label": "Choose the product you want to displayed"
         }
-      ],
-      "default": "full-width"
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product slider",
+      "category": "Custom"
     }
   ]
 }

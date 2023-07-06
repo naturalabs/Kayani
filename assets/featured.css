@@ -132,6 +132,11 @@ section.featured {
   padding: 20px;
   font-size: 20px;
   z-index: 5;
+  /* display: none; */
+}
+
+.featured-details .show {
+  display: block;
 }
 
 .featured-ratings {

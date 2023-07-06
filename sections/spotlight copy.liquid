@@ -1,0 +1,279 @@
+{{ 'base.css' | asset_url | stylesheet_tag }}
+{{ 'spotlight.css' | asset_url | stylesheet_tag }}
+
+<section class="fashion">
+  {% comment %}
+    <div class="fashion-blur-right">
+      {% render 'blur-right' %}
+    </div>
+  {% endcomment %}
+
+  {% comment %} wrapper {% endcomment %}
+  <div class="mobile-fashion">
+    <h2>Looks You'll Love</h2>
+
+    <div class="fashion-button left" id="left">
+      {% render 'icon-left' %}
+    </div>
+
+    <ul class="fashion-carousel">
+      <li class="fashion-card">
+        <div class="fashion-image">
+          {%- if section.settings.image != blank -%}
+            {{ section.settings['fashion-image01'] | image_url }}
+          {%- else -%}
+            <img
+              src="{{ 'fashion-01.png' | asset_url }}"
+              width="468"
+              height="auto"
+              alt="example"
+              loading="lazy"
+            >
+          {%- endif -%}
+        </div>
+      </li>
+      <li class="fashion-card">
+        <div class="fashion-image">
+          {%- if section.settings.image != blank -%}
+            {{ section.settings['fashion-image01'] | image_url }}
+          {%- else -%}
+            <img
+              src="{{ 'fashion-02.png' | asset_url }}"
+              width="468"
+              height="auto"
+              alt="example"
+              loading="lazy"
+            >
+          {%- endif -%}
+        </div>
+      </li>
+      <li class="fashion-card">
+        <div class="fashion-image">
+          {%- if section.settings.image != blank -%}
+            {{ section.settings['fashion-image01'] | image_url }}
+          {%- else -%}
+            <img
+              src="{{ 'fashion-03.png' | asset_url }}"
+              width="468"
+              height="auto"
+              alt="example"
+              loading="lazy"
+            >
+          {%- endif -%}
+        </div>
+      </li>
+    </ul>
+    <div class="right fashion-button" id="right">
+      {% render 'icon-right' %}
+    </div>
+
+    <div class="fashion-button-wrapper">
+      <a href="{{ section.settings.button_link }}">
+        {% render 'icon-upright' %}
+      </a>
+      <p>Shop Now</p>
+    </div>
+  </div>
+
+  {% comment %} desktop {% endcomment %}
+
+  <div
+    class="
+      fashion-desktop  {% if section.settings.page_width == 'full-width' %}full-width
+      {% elsif section.settings.page_width == 'fixed-width' %}fixed-width
+      {% elsif section.settings.page_width == 'custom-width' %}custom-width
+      {% endif %}
+    "
+  >
+    <div class="fashion-image-container">
+      <div class="fashion-image">
+        {%- if section.settings.main_image != blank -%}
+          <img
+            src="{{ section.settings.main_image | image_url }}"
+            width="auto"
+            height="auto"
+            alt=""
+            loading="lazy"
+          >
+        {%- else -%}
+          <img
+            src="{{ 'fashion-01.png' | asset_url }}"
+            width="auto"
+            height="auto"
+            alt="example"
+            loading="lazy"
+          >
+        {%- endif -%}
+      </div>
+    </div>
+
+    <div class="fashion-text-container">
+      <div class="text-button">
+        <h2>Fashion That Is Always Relevant</h2>
+        {% comment %}
+          <div class="button-wrapper">
+            <button>
+              {% render 'icon-upright' %}
+            </button>
+            <p>Shop Now</p>
+          </div>
+        {% endcomment %}
+        <div class="fashion-button-wrapper">
+          <a href="{{ section.settings.button_link }}">
+            {% render 'icon-upright' %}
+          </a>
+          <p>Shop Now</p>
+        </div>
+      </div>
+
+      <div class="fashion-gallery">
+        <div class="image-left">
+          {%- if section.spotlight_image_left != blank -%}
+            <img
+              src="{{ section.spotlight_image_left | image_url }}"
+              width="auto"
+              height="auto"
+              alt=""
+              loading="lazy"
+            >
+          {%- else -%}
+            <img
+              src="{{ 'fashion-02.png' | asset_url }}"
+              width="auto"
+              height="auto"
+              alt="example"
+              loading="lazy"
+            >
+          {%- endif -%}
+        </div>
+        <div class="image-right">
+          {%- if section.spotlight_image_right != blank -%}
+            <img
+              src="{{ section.spotlight_image_right | image_url }}"
+              width="auto"
+              height="auto"
+              alt=""
+              loading="lazy"
+            >
+          {%- else -%}
+            <img
+              src="{{ 'fashion-03.png' | asset_url }}"
+              width="auto"
+              height="auto"
+              alt="example"
+              loading="lazy"
+            >
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% style %}
+{% endstyle %}
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const carousel = document.querySelector('.fashion-carousel');
+    const arrowBtns = document.querySelectorAll('.fashion-button');
+    const firstCardWidth = carousel.querySelector('.fashion-card').offsetWidth;
+    let isDragging = false;
+    let startX, scrollLeft;
+
+    arrowBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const direction = btn.id === 'left' ? -1 : 1;
+        carousel.scrollLeft += direction * firstCardWidth;
+      });
+    });
+
+    carousel.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      startX = e.pageX - carousel.offsetLeft;
+      scrollLeft = carousel.scrollLeft;
+    });
+
+    carousel.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      e.preventDefault();
+      const x = e.pageX - carousel.offsetLeft;
+      const dragDistance = x - startX;
+      carousel.scrollLeft = scrollLeft - dragDistance;
+    });
+
+    document.addEventListener('mouseup', () => {
+      isDragging = false;
+    });
+    carousel.addEventListener('scroll', () => {
+      if (carousel.scrollLeft <= 0) {
+        carousel.scrollLeft += scrollWidth;
+      } else if (carousel.scrollLeft >= scrollWidth - carousel.offsetWidth) {
+        carousel.scrollLeft -= scrollWidth;
+      }
+    });
+
+    // Adjust scroll position on window resize
+    window.addEventListener('resize', () => {
+      carousel.scrollLeft = Math.min(carousel.scrollLeft, scrollWidth - carousel.offsetWidth);
+    });
+
+    // Set initial scroll position
+    carousel.scrollLeft = scrollWidth - carousel.offsetWidth;
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Spotlight",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Spotlight Header",
+      "id": "spotlight_header",
+      "default": "Fashion That Is Always Relevant"
+    },
+    {
+      "type": "url",
+      "label": "Shop Link",
+      "id": "shop_link",
+      "default": "/collections/all"
+    },
+    {
+      "type": "image_picker",
+      "label": "Main Image",
+      "id": "main_image"
+    },
+    {
+      "type": "image_picker",
+      "label": "Spotlight Image Left",
+      "id": "spotlight_image_left"
+    },
+    {
+      "type": "image_picker",
+      "label": "Spotlight Image Right",
+      "id": "spotlight_image_right"
+    },
+    {
+      "type": "select",
+      "label": "Page Width",
+      "id": "page_width",
+      "options": [
+        {
+          "value": "full-width",
+          "label": "Full Width"
+        },
+        {
+          "value": "fixed-width",
+          "label": "Fixed Width"
+        },
+        {
+          "value": "custom-width",
+          "label": "Custom Width"
+        }
+      ],
+      "default": "full-width"
+    }
+  ]
+}
+{% endschema %}
