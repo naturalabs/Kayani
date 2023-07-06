@@ -67,6 +67,12 @@
     <div class="right fashion-button" id="right">
       {% render 'icon-right' %}
     </div>
+    <div class="fashion-button-wrapper">
+      <a href="{{ section.settings.button_link }}">
+        {% render 'icon-upright' %}
+      </a>
+      <p>Shop Now</p>
+    </div>
   </div>
 
   {% comment %} desktop {% endcomment %}
@@ -104,10 +110,10 @@
     <div class="fashion-text-container">
       <div class="text-button">
         <h2>Fashion That Is Always Relevant</h2>
-        <div class="button-wrapper">
-          <button>
+        <div class="fashion-button-wrapper">
+          <a href="{{ section.settings.button_link }}">
             {% render 'icon-upright' %}
-          </button>
+          </a>
           <p>Shop Now</p>
         </div>
       </div>
@@ -160,17 +166,32 @@
 {% endstyle %}
 
 <script defer>
-  document.addEventListener('DOMContentLoaded', function () {
+  function initializeCarousel() {
     const carousel = document.querySelector('.fashion-carousel');
     const arrowBtns = document.querySelectorAll('.fashion-button');
-    const firstCardWidth = carousel.querySelector('.fashion-card').offsetWidth;
     let isDragging = false;
     let startX, scrollLeft;
 
+    const updateCarouselSize = () => {
+      const firstCardWidth = carousel.querySelector('.fashion-card').offsetWidth;
+      carousel.style.scrollBehavior = 'auto';
+      carousel.scrollLeft = 0;
+      carousel.style.scrollBehavior = 'smooth';
+    };
+
+    const handleResize = () => {
+      updateCarouselSize();
+    };
+
+    const handleButtonClicked = (direction) => {
+      const firstCardWidth = carousel.querySelector('.fashion-card').offsetWidth;
+      carousel.scrollLeft += direction * firstCardWidth;
+    };
+
     arrowBtns.forEach((btn) => {
+      const direction = btn.id === 'left' ? -1 : 1;
       btn.addEventListener('click', () => {
-        const direction = btn.id === 'left' ? -1 : 1;
-        carousel.scrollLeft += direction * firstCardWidth;
+        handleButtonClicked(direction);
       });
     });
 
@@ -191,7 +212,12 @@
     document.addEventListener('mouseup', () => {
       isDragging = false;
     });
-  });
+
+    window.addEventListener('resize', handleResize);
+    updateCarouselSize();
+  }
+
+  document.addEventListener('DOMContentLoaded', initializeCarousel);
 </script>
 
 {% schema %}
