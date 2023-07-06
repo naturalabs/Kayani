@@ -209,6 +209,12 @@
       </a>
       <p>Shop Now</p>
     </div>
+    <div class="fashion-button-wrapper">
+      <a href="{{ section.settings.button_link }}">
+        {% render 'icon-upright' %}
+      </a>
+      <p>Shop Now</p>
+    </div>
   </div>
   {% comment %} Desktop {% endcomment %}
   <div
@@ -244,6 +250,7 @@
     <div class="fashion-text-container">
       <div class="text-button">
         <h2>Fashion That Is Always Relevant</h2>
+<<<<<<< HEAD
         {% comment %}
           <div class="button-wrapper">
             <button>
@@ -252,6 +259,8 @@
             <p>Shop Now</p>
           </div>
         {% endcomment %}
+=======
+>>>>>>> spotlight
         <div class="fashion-button-wrapper">
           <a href="{{ section.settings.button_link }}">
             {% render 'icon-upright' %}
@@ -304,6 +313,7 @@
   </div>
 </section>
 
+<<<<<<< HEAD
 <script>
   var elem = document.querySelector('.dawn-product-slider .carousel');
   var flkty = new Flickity( elem, {
@@ -325,6 +335,64 @@
     });
   });
   {% endif %}
+=======
+{% style %}
+{% endstyle %}
+
+<script defer>
+  function initializeCarousel() {
+    const carousel = document.querySelector('.fashion-carousel');
+    const arrowBtns = document.querySelectorAll('.fashion-button');
+    let isDragging = false;
+    let startX, scrollLeft;
+
+    const updateCarouselSize = () => {
+      const firstCardWidth = carousel.querySelector('.fashion-card').offsetWidth;
+      carousel.style.scrollBehavior = 'auto';
+      carousel.scrollLeft = 0;
+      carousel.style.scrollBehavior = 'smooth';
+    };
+
+    const handleResize = () => {
+      updateCarouselSize();
+    };
+
+    const handleButtonClicked = (direction) => {
+      const firstCardWidth = carousel.querySelector('.fashion-card').offsetWidth;
+      carousel.scrollLeft += direction * firstCardWidth;
+    };
+
+    arrowBtns.forEach((btn) => {
+      const direction = btn.id === 'left' ? -1 : 1;
+      btn.addEventListener('click', () => {
+        handleButtonClicked(direction);
+      });
+    });
+
+    carousel.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      startX = e.pageX - carousel.offsetLeft;
+      scrollLeft = carousel.scrollLeft;
+    });
+
+    carousel.addEventListener('mousemove', (e) => {
+      if (!isDragging) return;
+      e.preventDefault();
+      const x = e.pageX - carousel.offsetLeft;
+      const dragDistance = x - startX;
+      carousel.scrollLeft = scrollLeft - dragDistance;
+    });
+
+    document.addEventListener('mouseup', () => {
+      isDragging = false;
+    });
+
+    window.addEventListener('resize', handleResize);
+    updateCarouselSize();
+  }
+
+  document.addEventListener('DOMContentLoaded', initializeCarousel);
+>>>>>>> spotlight
 </script>
 
 {% schema %}

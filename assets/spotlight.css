@@ -77,8 +77,8 @@ section.fashion {
 .fashion-carousel.dragging .fashion-card {
   cursor: grab;
   -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  -moz-user-select: none;
+  user-select: none;
 }
 
 .fashion-carousel .fashion-card {
@@ -105,7 +105,7 @@ section.fashion {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   z-index: -1;
 }
 
@@ -123,13 +123,16 @@ section.fashion {
 }
 
 .fashion-button-wrapper a {
-  margin-bottom: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #646464;
-  width: 68px;
-  height: 68px;
+  border: 1px solid rgba(100, 100, 100, 0.5294117647);
+  color: #646464;
+  width: 70px;
+  height: 70px;
 }
 
 .fashion-button-wrapper a svg {
@@ -180,7 +183,7 @@ section.fashion {
     width: 100%;
     height: 100%;
     -o-object-fit: cover;
-       object-fit: cover;
+    object-fit: cover;
     z-index: -1;
   }
   .fashion-image-container img:nth-child(1) {
