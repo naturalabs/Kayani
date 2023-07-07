@@ -14,6 +14,7 @@ section.fashion {
   font-size: 30px;
   margin-bottom: 20px;
   text-align: center;
+  width: 330px;
 }
 
 .mobile-fashion .fashion-button {
@@ -86,7 +87,6 @@ section.fashion {
   scroll-snap-align: start;
   height: 528px;
   list-style: none;
-  background: #fff;
   cursor: pointer;
   /* padding-bottom: 15px; */
   flex-direction: column;
