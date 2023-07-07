@@ -1,0 +1,234 @@
+{{ 'section-main-page.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="collection">
+  <div class="collection-header">
+    <h1>Our Unique Collections</h1>
+  </div>
+  <div class="collection-container">
+    <div class="collection-card">
+      <h2>BESTSELLERS</h2>
+      <a href="#">VIEW ALL</a>
+
+      <div class="collection-card__image-container">
+        <div class="collection-card__image">
+          {%- if section.settings.highlight_image != blank -%}
+            <img
+              src="{{ section.settings.highlight_image | image_url }}"
+              width="auto"
+              height="auto"
+              alt=""
+              loading="lazy"
+            >
+          {%- else -%}
+            <img
+              src="{{ 'collection-bestseller.png' | asset_url }}"
+              width="auto"
+              height="auto"
+              alt="example"
+              loading="lazy"
+            >
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+    <div class="collection-card">
+      <h2>BESTSELLERS</h2>
+      <a href="#">VIEW ALL</a>
+
+      <div class="collection-card__image-container">
+        <div class="collection-card__image">
+          {%- if section.settings.highlight_image != blank -%}
+            <img
+              src="{{ section.settings.highlight_image | image_url }}"
+              width="auto"
+              height="auto"
+              alt=""
+              loading="lazy"
+            >
+          {%- else -%}
+            <img
+              src="{{ 'collection-new-arrivals.png' | asset_url }}"
+              width="auto"
+              height="auto"
+              alt="example"
+              loading="lazy"
+            >
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+    <div class="collection-card">
+      <h2>BESTSELLERS</h2>
+      <a href="#">VIEW ALL</a>
+
+      <div class="collection-card__image-container">
+        <div class="collection-card__image">
+          {%- if section.settings.highlight_image != blank -%}
+            <img
+              src="{{ section.settings.highlight_image | image_url }}"
+              width="auto"
+              height="auto"
+              alt=""
+              loading="lazy"
+            >
+          {%- else -%}
+            <img
+              src="{{ 'collection-dresses.png' | asset_url }}"
+              width="auto"
+              height="auto"
+              alt="example"
+              loading="lazy"
+            >
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .collection h1 {
+    width: 335px;
+    margin: 46px auto 35px;
+  }
+  .collection-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 50px;
+  }
+  .collection h1 {
+    font-family: Cardo;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 60px;
+    letter-spacing: -0.96px;
+    text-align: center;
+  }
+  .collection-card {
+    text-align: center;
+    background-color: white;
+    max-width: 375px;
+    padding: 40px 20px;
+  }
+  .collection-card h2 {
+    font-family: Cardo;
+    font-size: 28.161px;
+    line-height: 35.671px;
+    margin: 0;
+  }
+  .collection-card a {
+    font-family: Unna;
+    font-size: 18px;
+    line-height: 25px;
+    text-decoration: none;
+  }
+  .collection-card a:link,
+  .collection-card a:visited,
+  .collection-card a:active {
+    color: #b2967d;
+  }
+
+  .collection-card__image-container {
+    position: relative;
+    height: 410px;
+    width: 335px;
+    margin: 0 auto;
+  }
+
+  .collection-card__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  .collection-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+  }
+  @media (min-width: 500px) {
+    .collection {
+      padding: 100px 0 107px;
+    }
+    .collection,
+    .collection-header {
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+    .collection h1 {
+      width: 500px;
+      margin: 0;
+      margin-bottom: 17px;
+    }
+    .collection-container {
+      flex-direction: row;
+      max-width: 1920px;
+      margin: 0 auto;
+      justify-content: center;
+    }
+    .collection-card {
+      text-align: center;
+      background-color: white;
+      max-width: 500px;
+      padding: 40px 30px;
+    }
+    .collection-card__image-container {
+      position: relative;
+      height: 410px;
+      width: 410px;
+      margin: 0 auto;
+    }
+  }
+</style>
+{% schema %}
+{
+  "name": "t:sections.main-page.name",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ]
+}
+{% endschema %}
