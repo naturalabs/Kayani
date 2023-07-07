@@ -1,0 +1,229 @@
+{{ 'section-about-us.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="about-container  ">
+  <div class="about-banner">
+    <div class="mobile">
+      {%- if section.settings['about-us__banner-mobile'] != blank -%}
+        <img
+          src="{{ section.settings.about-us__banner-mobile | image_url }}"
+          width="auto"
+          height="auto"
+          alt=""
+          loading="lazy"
+        >
+      {%- else -%}
+        <img
+          src="{{ 'about-banner-mobile.png' | asset_url }}"
+          width="auto"
+          height="auto"
+          alt="example"
+          loading="lazy"
+        >
+      {%- endif -%}
+    </div>
+    <div class="desktop section-{{ section.id }}-padding">
+      {%- if section.settings['about-us__banner-desktop'] != blank -%}
+        <img
+          src="{{ section.settings.about-us__banner-desktop | image_url }}"
+          width="auto"
+          height="auto"
+          alt=""
+          loading="lazy"
+        >
+      {%- else -%}
+        <img
+          src="{{ 'about-banner-desktop.png' | asset_url }}"
+          width="auto"
+          height="auto"
+          alt="example"
+          loading="lazy"
+        >
+      {%- endif -%}
+    </div>
+  </div>
+
+  <div class="about-established">
+    <div class="about-established__image">
+      <div class="about-established__image-container">
+        {%- if section.settings.highlight_image != blank -%}
+          <img
+            src="{{ section.settings.highlight_image | image_url }}"
+            width="auto"
+            height="auto"
+            alt=""
+            loading="lazy"
+          >
+        {%- else -%}
+          <img
+            src="{{ 'about-established.png' | asset_url }}"
+            width="auto"
+            height="auto"
+            alt="example"
+            loading="lazy"
+          >
+        {%- endif -%}
+      </div>
+    </div>
+    <div class="about-established__text">
+      <h1 class="main-page-title page-title h0{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+        {{ section.settings.about_header }}
+      </h1>
+
+      <p>
+        Established in 2019, KAYANI is a distinctive fashion label founded by Sonena Kayani Rahber and Natalie Henriksen
+        through their collaborative enterprise, House of Nia. Boasting a decade of experience in the fashion realm, the
+        duo sought to fill a perceived void in the market by creating a brand that empowers women with a uniquely
+        stylish wardrobe.
+      </p>
+      <p>
+        Catering to the contemporary woman, KAYANI masterfully fuses romantic prints and colors, imbuing each design
+        with a blend of femininity and strength. The name 'Kayani' was specifically chosen for its regal, timeless, and
+        feminine allure, while the collection itself is crafted with love, joy, and a sense of fun.
+      </p>
+      <p>
+        Ultimately, KAYANI's mission is to offer women elegant and empowering attire that encourages self-confidence and
+        the expression of individuality.
+      </p>
+    </div>
+  </div>
+  <div class="about-creation">
+    <div class="about-creation__image">
+      <div class="about-creation__image-container">
+        {%- if section.settings.highlight_image != blank -%}
+          <img
+            src="{{ section.settings.highlight_image | image_url }}"
+            width="auto"
+            height="auto"
+            alt=""
+            loading="lazy"
+          >
+        {%- else -%}
+          <img
+            src="{{ 'about-creation.png' | asset_url }}"
+            width="auto"
+            height="auto"
+            alt="example"
+            loading="lazy"
+          >
+        {%- endif -%}
+      </div>
+    </div>
+    <div class="about-creation__text">
+      <p>
+        Kayani is the creation of two women with a love for fashion and a vision to inspire women around the world to
+        feel beautiful.
+      </p>
+    </div>
+  </div>
+
+  <div class="about-commitment">
+    <div class="about-commitment__image">
+      <div class="about-commitment__image-container">
+        {%- if section.settings.highlight_image != blank -%}
+          <img
+            src="{{ section.settings.highlight_image | image_url }}"
+            width="auto"
+            height="auto"
+            alt=""
+            loading="lazy"
+          >
+        {%- else -%}
+          <img
+            src="{{ 'about-commitment.png' | asset_url }}"
+            width="auto"
+            height="auto"
+            alt="example"
+            loading="lazy"
+          >
+        {%- endif -%}
+      </div>
+    </div>
+
+    <div class="about-commitment__text">
+      <div class="about-commitment__text-container">
+        <h2>Our Commitment</h2>
+        <p>
+          The community that #kayanigirls provide welcomes everyone - our family, friends, our team, our customers, our
+          photographers, models & social media followers. Everyone is united by the cause of supporting each other.
+          Togheter - we are one.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "About Us",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Header",
+      "id": "about_header",
+      "default": "Our heart"
+    },
+    {
+      "type": "richtext",
+      "label": "Established text",
+      "id": "about_text",
+      "default": "<p>Established in 2019, KAYANI is a distinctive fashion label founded by Sonena Kayani Rahber and Natalie Henriksen through their collaborative enterprise, House of Nia. Boasting a decade of experience in the fashion realm, the duo sought to fill a perceived void in the market by creating a brand that empowers women with a uniquely stylish wardrobe.<br> Catering to the contemporary woman, KAYANI masterfully fuses romantic prints and colors, imbuing each design with a blend of femininity and strength. The name 'Kayani' was specifically chosen for its regal, timeless, and feminine allure, while the collection itself is crafted with love, joy, and a sense of fun.<br>Ultimately, KAYANI's mission is to offer women elegant and empowering attire that encourages self-confidence and the expression of individuality. </p>"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    },
+    {
+      "type": "select",
+      "label": "Page Width",
+      "id": "page_width",
+      "options": [
+        {
+          "value": "full-width",
+          "label": "Full Width"
+        },
+        {
+          "value": "fixed-width",
+          "label": "Fixed Width"
+        },
+        {
+          "value": "custom-width",
+          "label": "Custom Width"
+        }
+      ],
+      "default": "full-width"
+    }
+  ]
+}
+{% endschema %}
