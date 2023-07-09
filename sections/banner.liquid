@@ -26,8 +26,8 @@
       "
     >
       <div class="banner__image-left">
-        {%- if section.settings.image != blank -%}
-          {{ section.settings.left_image | image_url }}
+        {%- if section.settings.left_image != blank -%}
+          {{ section.settings.left_image | image_url: width: 368 | image_tag }}
         {%- else -%}
           <img
             src="{{ 'banner-image-01.png' | asset_url }}"
@@ -40,8 +40,8 @@
       </div>
 
       <div class="banner__image-right">
-        {%- if section.settings.image != blank -%}
-          {{ section.settings.right_image | image_url }}
+        {%- if section.settings.right_image != blank -%}
+          {{ section.settings.right_image | image_url: width: 468 | image_tag }}
         {%- else -%}
           <img
             src="{{ 'banner-image-02.png' | asset_url }}"
