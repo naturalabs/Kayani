@@ -16,18 +16,18 @@
 
 <div class="collection">
   <div class="collection-header">
-    <h1>Our Unique Collections</h1>
+    <h1>{{ section.settings.collections_header }}</h1>
   </div>
   <div class="collection-container">
     <div class="collection-card">
-      <h2>BESTSELLERS</h2>
-      <a href="#">VIEW ALL</a>
+      <h2>{{ section.settings.bestseller_title | upcase }}</h2>
+      <a href="/collections/{{section.settings.bestseller_link}}">VIEW ALL</a>
 
       <div class="collection-card__image-container">
         <div class="collection-card__image">
-          {%- if section.settings.highlight_image != blank -%}
+          {%- if section.settings.bestsellers_image != blank -%}
             <img
-              src="{{ section.settings.highlight_image | image_url }}"
+              src="{{ section.settings.bestsellers_image | image_url }}"
               width="auto"
               height="auto"
               alt=""
@@ -46,14 +46,14 @@
       </div>
     </div>
     <div class="collection-card">
-      <h2>BESTSELLERS</h2>
-      <a href="#">VIEW ALL</a>
+      <h2>{{ section.settings.new_arrivals_title | upcase }}</h2>
+      <a href="/collections/{{section.settings.new_arrivals_link}}">VIEW ALL</a>
 
       <div class="collection-card__image-container">
         <div class="collection-card__image">
-          {%- if section.settings.highlight_image != blank -%}
+          {%- if section.settings.new_arrivals_image != blank -%}
             <img
-              src="{{ section.settings.highlight_image | image_url }}"
+              src="{{ section.settings.new_arrivals_image | image_url }}"
               width="auto"
               height="auto"
               alt=""
@@ -72,14 +72,14 @@
       </div>
     </div>
     <div class="collection-card">
-      <h2>BESTSELLERS</h2>
-      <a href="#">VIEW ALL</a>
+      <h2>{{ section.settings.dresses_title | upcase }}</h2>
+      <a href="/collections/{{section.settings.dresses_link}}">VIEW ALL</a>
 
       <div class="collection-card__image-container">
         <div class="collection-card__image">
-          {%- if section.settings.highlight_image != blank -%}
+          {%- if section.settings.dresses_image != blank -%}
             <img
-              src="{{ section.settings.highlight_image | image_url }}"
+              src="{{ section.settings.dresses_image | image_url }}"
               width="auto"
               height="auto"
               alt=""
@@ -102,14 +102,18 @@
 
 <style>
   .collection h1 {
-    width: 335px;
-    margin: 46px auto 35px;
+    // width: 335px;
+    //  margin: 46px auto 35px;
   }
   .collection-container {
+    //  display: flex;
+    // align-items: center;
+    // flex-direction: column;
+    // margin-bottom: 50px;
     display: flex;
-    align-items: center;
     flex-direction: column;
-    margin-bottom: 50px;
+    //grid-template-columns: 1fr;
+    // grid-gap: 20px;
   }
   .collection h1 {
     font-family: Cardo;
@@ -123,8 +127,9 @@
   .collection-card {
     text-align: center;
     background-color: white;
-    max-width: 375px;
+    width: 375px;
     padding: 40px 20px;
+    margin: 0 auto;
   }
   .collection-card h2 {
     font-family: Cardo;
@@ -147,7 +152,7 @@
   .collection-card__image-container {
     position: relative;
     height: 410px;
-    width: 335px;
+    width: min(95%, 335px);
     margin: 0 auto;
   }
 
@@ -165,13 +170,19 @@
     object-fit: cover;
     z-index: -1;
   }
-  @media (min-width: 500px) {
+  @media (min-width: 850px) {
     .collection {
       padding: 100px 0 107px;
     }
-    .collection,
+    .collection-container {
+      //grid-template-columns: repeat(auto-fit, minmax(335px, 1fr));
+      //grid-template-columns: repeat(auto-fit, minmax(335px, 1fr));
+      flex-direction: row;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
     .collection-header {
-      max-width: 1440px;
+      max-width: 1400px;
       margin: 0 auto;
     }
     .collection h1 {
@@ -179,23 +190,17 @@
       margin: 0;
       margin-bottom: 17px;
     }
-    .collection-container {
-      flex-direction: row;
-      max-width: 1920px;
-      margin: 0 auto;
-      justify-content: center;
-    }
+
     .collection-card {
       text-align: center;
       background-color: white;
-      max-width: 500px;
-      padding: 40px 30px;
+      width: 475px;
+      padding: 40px 0px;
+      margin: 0 auto;
     }
     .collection-card__image-container {
-      position: relative;
-      height: 410px;
-      width: 410px;
-      margin: 0 auto;
+      height: 490px;
+      width: min(95%, 410px);
     }
   }
 </style>
@@ -206,8 +211,58 @@
   "class": "section",
   "settings": [
     {
-      "type": "header",
-      "content": "t:sections.all.padding.section_padding_heading"
+      "type": "text",
+      "id": "collections_header",
+      "label": "Collections Header",
+      "default": "Our Unique Collections"
+    },
+    {
+      "type": "text",
+      "id": "bestseller_title",
+      "label": "Best Seller Title",
+      "default": "BestSellers"
+    },
+    {
+      "type": "collection",
+      "id": "bestseller_link",
+      "label": "Best Seller Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "bestseller_image",
+      "label": "Best Seller Image"
+    },
+    {
+      "type": "text",
+      "id": "new_arrivals_title",
+      "label": "New Arrivals Title",
+      "default": "New Arrivals"
+    },
+    {
+      "type": "collection",
+      "id": "new_arrivals_link",
+      "label": "New Arrivals Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "new_arrivals_image",
+      "label": "New Arrivals Image"
+    },
+    {
+      "type": "text",
+      "id": "dresses_title",
+      "label": "New Arrivals Title",
+      "default": "Dresses"
+    },
+    {
+      "type": "collection",
+      "id": "dresses_link",
+      "label": "Dresses Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "dresses_image",
+      "label": "Dresses Image"
     },
     {
       "type": "range",
