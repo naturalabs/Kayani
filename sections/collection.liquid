@@ -17,7 +17,7 @@
       <div class="card">
         <div class="card__image">
           {%- if section.settings.bestseller != blank -%}
-            {{ section.settings.bestseller | image_url }}
+            {{ section.settings.bestseller | image_url: width: 440 | image_tag }}
           {%- else -%}
             <img
               src="{{ 'hot-01.png' | asset_url }}"
@@ -36,7 +36,7 @@
       <div class="card">
         <div class="card__image">
           {%- if section.settings.new_arrivals != blank -%}
-            {{ section.settings.new_arrivals | image_url }}
+            {{ section.settings.new_arrivals | image_url: width: 440 | image_tag }}
           {%- else -%}
             <img
               src="{{ 'hot-02.png' | asset_url }}"
@@ -55,7 +55,7 @@
       <div class="card">
         <div class="card__image">
           {%- if section.settings.dress_collection != blank -%}
-            {{ section.settings.dress_collection | image_url }}
+            {{ section.settings.dress_collection | image_url: width: 440 | image_tag }}
           {%- else -%}
             <img
               src="{{ 'hot-03.png' | asset_url }}"
@@ -93,7 +93,7 @@
     {
       "type": "image_picker",
       "label": "New Arrival Image",
-      "id": "new_arrival"
+      "id": "new_arrivals"
     },
 
     {
