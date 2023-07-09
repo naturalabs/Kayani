@@ -123,9 +123,9 @@
 
       <div class="fashion-gallery">
         <div class="image-left">
-          {%- if section.spotlight_image_left != blank -%}
+          {%- if section.settings.spotlight_image_left != blank -%}
             <img
-              src="{{ section.spotlight_image_left | image_url }}"
+              src="{{ section.settings.spotlight_image_left | image_url }}"
               width="auto"
               height="auto"
               alt=""
@@ -142,9 +142,9 @@
           {%- endif -%}
         </div>
         <div class="image-right">
-          {%- if section.spotlight_image_right != blank -%}
+          {%- if section.settings.spotlight_image_right != blank -%}
             <img
-              src="{{ section.spotlight_image_right | image_url }}"
+              src="{{ section.settings.spotlight_image_right | image_url }}"
               width="auto"
               height="auto"
               alt=""
