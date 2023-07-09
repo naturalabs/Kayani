@@ -201,9 +201,9 @@
   <div class="about-established">
     <div class="about-established__image">
       <div class="about-established__image-container">
-        {%- if section.settings.highlight_image != blank -%}
+        {%- if section.settings.established_image != blank -%}
           <img
-            src="{{ section.settings.highlight_image | image_url }}"
+            src="{{ section.settings.established_image | image_url }}"
             width="auto"
             height="auto"
             alt=""
@@ -245,9 +245,9 @@
   <div class="about-creation">
     <div class="about-creation__image">
       <div class="about-creation__image-container">
-        {%- if section.settings.highlight_image != blank -%}
+        {%- if section.settings.creation_image != blank -%}
           <img
-            src="{{ section.settings.highlight_image | image_url }}"
+            src="{{ section.settings.creation_image | image_url }}"
             width="auto"
             height="auto"
             alt=""
@@ -275,9 +275,9 @@
   <div class="about-commitment">
     <div class="about-commitment__image">
       <div class="about-commitment__image-container">
-        {%- if section.settings.highlight_image != blank -%}
+        {%- if section.settings.commitment_image != blank -%}
           <img
-            src="{{ section.settings.highlight_image | image_url }}"
+            src="{{ section.settings.commitment_image | image_url }}"
             width="auto"
             height="auto"
             alt=""
@@ -315,6 +315,16 @@
   "class": "section",
   "settings": [
     {
+      "type": "image_picker",
+      "id": "about-us__banner-mobile",
+      "label": "Banner Image Mobile"
+    },
+    {
+      "type": "image_picker",
+      "id": "about-us__banner-desktop",
+      "label": "Banner Image Desktop"
+    },
+    {
       "type": "text",
       "label": "Header",
       "id": "about_header",
@@ -327,24 +337,38 @@
       "default": "<p>Established in 2019, KAYANI is a distinctive fashion label founded by Sonena Kayani Rahber and Natalie Henriksen through their collaborative enterprise, House of Nia. Boasting a decade of experience in the fashion realm, the duo sought to fill a perceived void in the market by creating a brand that empowers women with a uniquely stylish wardrobe.<br> Catering to the contemporary woman, KAYANI masterfully fuses romantic prints and colors, imbuing each design with a blend of femininity and strength. The name 'Kayani' was specifically chosen for its regal, timeless, and feminine allure, while the collection itself is crafted with love, joy, and a sense of fun.<br>Ultimately, KAYANI's mission is to offer women elegant and empowering attire that encourages self-confidence and the expression of individuality. </p>"
     },
     {
-      "type": "range",
-      "id": "padding_top",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_top",
-      "default": 36
+      "type": "image_picker",
+      "id": "established_image",
+      "label": "Established Image"
     },
     {
-      "type": "range",
-      "id": "padding_bottom",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_bottom",
-      "default": 36
+      "type": "image_picker",
+      "id": "creation_image",
+      "label": "Creation Image"
+    },
+    {
+      "type": "text",
+      "id": "creation_text",
+      "label": "Creation Text",
+      "default": "Kayani is the creation of two women with a love for fashion and a vision to inspire women around the world to feel beautiful. "
+    },
+    {
+      "type": "text",
+      "id": "commitment_header",
+      "label": "Commitment Header",
+      "default": "Our Commitment"
+    },
+    {
+      "type": "text",
+      "id": "commitment_text",
+      "label": "Commitment Text",
+      "default": "The community that #kayanigirls provide welcomes everyone - our family, friends, our team, our customers, our photographers, models & social media followers. Everyone is united by the cause of supporting each other. Together - we are one. "
+    },
+
+    {
+      "type": "image_picker",
+      "id": "commitment_image",
+      "label": "Commitment Image"
     },
     {
       "type": "select",
