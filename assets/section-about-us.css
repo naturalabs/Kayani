@@ -27,7 +27,7 @@
 .about-banner .desktop img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   z-index: -1;
 }
 .page-title {
@@ -48,6 +48,9 @@
   .about-banner {
     min-height: 606px;
     width: min(90%, 1440px);
+  }
+  .about-banner .desktop img {
+    object-fit: cover;
   }
 }
 
@@ -113,125 +116,6 @@
     line-height: 32px;
   }
   .about-established__text p {
-    font-family: Unna;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 32px;
-  }
-}
-
-// Creation
-
-.about-creation__text {
-  width: min(90%, 375px);
-  margin-inline: auto;
-}
-
-.about-creation__image {
-  width: min(90%, 375px);
-  margin-inline: auto;
-  position: relative;
-  min-height: 400px;
-}
-.about-creation__image-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
-.about-creation__image-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  z-index: -1;
-}
-
-@media (min-width: 900px) {
-  .about-creation {
-    width: min(90%, 1440px);
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin: 0 auto;
-  }
-  .about-creation__image {
-    min-height: 720px;
-    width: min(100%, 720px);
-  }
-  .about-creation__text {
-    padding-left: 40px;
-    display: flex;
-    align-items: center;
-    font-size: 48px;
-    line-height: 60px;
-    max-width: 680px;
-  }
-}
-
-// Commitment
-
-.about-commitment__text-container {
-  max-width: 375px;
-  margin-inline: auto;
-}
-
-.about-commitment__image {
-  width: min(90%, 375px);
-  margin-inline: auto;
-  position: relative;
-  min-height: 400px;
-}
-.about-commitment__image-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-
-.about-commitment__image-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  z-index: -1;
-}
-
-@media (min-width: 900px) {
-  .about-commitment {
-    width: min(90%, 1440px);
-    display: grid;
-    gap: 24px;
-    grid-template-columns: 1fr 1fr;
-    margin: 0 auto 80px;
-  }
-  .about-commitment__image {
-    min-height: 720px;
-    width: min(100%, 720px);
-    order: 2;
-  }
-  .about-commitment__text {
-    font-size: 48px;
-    line-height: 60px;
-    max-width: 680px;
-    order: 1;
-
-    display: flex;
-    align-items: center;
-  }
-
-  .about-commitment__text h2 {
-    font-family: Unna;
-    font-size: 48px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 60px;
-    letter-spacing: -0.96px;
-  }
-  .about-commitment__text p {
     font-family: Unna;
     font-size: 24px;
     font-style: normal;
