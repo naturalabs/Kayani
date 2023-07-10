@@ -4,7 +4,9 @@
 .mobile {
   display: block;
 }
-
+.about-container {
+  margin-bottom: 50px;
+}
 .about-banner {
   min-height: 518px;
   width: 100%;
