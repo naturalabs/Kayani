@@ -2,207 +2,41 @@
 
 <section class="featured">
   <div class="wrapper">
-    <h2>Looks You'll Love</h2>
+    <h2>{{ section.settings.featured_header }}</h2>
 
     <div class="left featured-button" id="left">
       {% render 'icon-left' %}
     </div>
     <ul class="carousel">
-      <li class="card">
-        <div class="featured-image">
-          {%- if section.settings.image != blank -%}
-            {{ section.settings['featured-image01'] | image_url }}
-          {%- else -%}
-            <img
-              src="{{ 'featured-image-01.png' | asset_url }}"
-              width="468"
-              height="auto"
-              alt="example"
-              loading="lazy"
-            >
-          {%- endif -%}
-        </div>
-        <div class="featured-details">
-          <p>Nadine belted dress - Regal Onyx</p>
-          <div class="featured-ratings">
-            <p>1.999,00 kr</p>
-            <div class="rating-container">
-              {% render 'icon-star' %}
-              {% render 'icon-star' %}
-              {% render 'icon-star' %}
-              {% render 'icon-star' %}
-              {% render 'icon-star' %}
+      {% for block in section.blocks %}
+        <li class="card">
+          <div class="featured-image">
+            {%- if block.settings.featured_image != blank -%}
+              {{ block.settings.featured_image | image_url }}
+            {%- else -%}
+              <img
+                src="{{ 'featured-image-01.png' | asset_url }}"
+                width="468"
+                height="auto"
+                alt="example"
+                loading="lazy"
+              >
+            {%- endif -%}
+          </div>
+          <div class="featured-details">
+            <p>{{ block.settings.featured_product_name }}</p>
+            <div class="featured-ratings">
+              <p>{{ block.settings.featured_product_price }}</p>
+              <div class="rating-container">
+                {% assign starRating = block.settings.star_rating %}
+                {% for i in (1..starRating) %}
+                  {% render 'icon-star' %}
+                {% endfor %}
+              </div>
             </div>
           </div>
-        </div>
-      </li>
-      <li class="card">
-        <div class="featured-image">
-          {%- if section.settings.image != blank -%}
-            {{ section.settings['featured-image02'] | image_url }}
-          {%- else -%}
-            <img
-              src="{{ 'featured-image-02.png' | asset_url }}"
-              width="468"
-              height="auto"
-              alt="example"
-              loading="lazy"
-            >
-          {%- endif -%}
-        </div>
-        <div class="featured-details">
-          <p>Nadine belted dress - Regal Onyx</p>
-          <div class="featured-ratings">
-            <p>1.999,00 kr</p>
-            <div class="rating-container">
-              {% render 'icon-star' %}
-              {% render 'icon-star' %}
-              {% render 'icon-star' %}
-              {% render 'icon-star' %}
-            </div>
-          </div>
-        </div>
-      </li>
-      <li class="card">
-        <div class="featured-image">
-          {%- if section.settings.image != blank -%}
-            {{ section.settings['featured-image01'] | image_url }}
-          {%- else -%}
-            <img
-              src="{{ 'featured-image-03.png' | asset_url }}"
-              width="468"
-              height="auto"
-              alt="example"
-              loading="lazy"
-            >
-          {%- endif -%}
-        </div>
-        <div class="featured-details">
-          <p>Nadine belted dress - Regal Onyx</p>
-          <div class="featured-ratings">
-            <p>1.999,00 kr</p>
-            <div class="rating-container">
-              {% render 'icon-star' %}
-              {% render 'icon-star' %}
-              {% render 'icon-star' %}
-              {% render 'icon-star' %}
-              {% render 'icon-star' %}
-            </div>
-          </div>
-        </div>
-      </li>
-      <li class="card">
-        <div class="featured-image">
-          {%- if section.settings.image != blank -%}
-            {{ section.settings['featured-image01'] | image_url }}
-          {%- else -%}
-            <img
-              src="{{ 'featured-image-01.png' | asset_url }}"
-              width="468"
-              height="auto"
-              alt="example"
-              loading="lazy"
-            >
-          {%- endif -%}
-        </div>
-        <div class="featured-details">
-          <p>Nadine belted dress - Regal Onyx</p>
-          <div class="featured-ratings">
-            <p>1.999,00 kr</p>
-            <div class="rating-container">
-              {% render 'icon-star' %}
-              {% render 'icon-star' %}
-              {% render 'icon-star' %}
-              {% render 'icon-star' %}
-              {% render 'icon-star' %}
-            </div>
-          </div>
-        </div>
-      </li>
-      <li class="card">
-        <div class="featured-image">
-          {%- if section.settings.image != blank -%}
-            {{ section.settings['featured-image02'] | image_url }}
-          {%- else -%}
-            <img
-              src="{{ 'featured-image-02.png' | asset_url }}"
-              width="468"
-              height="auto"
-              alt="example"
-              loading="lazy"
-            >
-          {%- endif -%}
-        </div>
-        <div class="featured-details">
-          <p>Nadine belted dress - Regal Onyx</p>
-          <div class="featured-ratings">
-            <p>1.999,00 kr</p>
-            <div class="rating-container">
-              {% render 'icon-star' %}
-              {% render 'icon-star' %}
-              {% render 'icon-star' %}
-              {% render 'icon-star' %}
-              {% render 'icon-star' %}
-            </div>
-          </div>
-        </div>
-      </li>
-      <li class="card">
-        <div class="featured-image">
-          {%- if section.settings.image != blank -%}
-            {{ section.settings['featured-image03'] | image_url }}
-          {%- else -%}
-            <img
-              src="{{ 'featured-image-03.png' | asset_url }}"
-              width="468"
-              height="auto"
-              alt="example"
-              loading="lazy"
-            >
-          {%- endif -%}
-        </div>
-        <div class="featured-details">
-          <p>Nadine belted dress - Regal Onyx</p>
-          <div class="featured-ratings">
-            <p>1.999,00 kr</p>
-            <div class="rating-container">
-              {% render 'icon-star' %}
-              {% render 'icon-star' %}
-              {% render 'icon-star' %}
-              {% render 'icon-star' %}
-              {% render 'icon-star' %}
-            </div>
-          </div>
-        </div>
-      </li>
-      <li class="card">
-        <div class="featured-image">
-          {%- if section.settings.image != blank -%}
-            {{ section.settings['featured-image01'] | image_url }}
-          {%- else -%}
-            <img
-              src="{{ 'featured-image-01.png' | asset_url }}"
-              width="468"
-              height="auto"
-              alt="example"
-              loading="lazy"
-            >
-          {%- endif -%}
-        </div>
-        <div class="featured-details">
-          <p>Nadine belted dress - Regal Onyx</p>
-          <div class="featured-ratings">
-            <p>1.999,00 kr</p>
-            <div class="rating-container">
-              {% render 'icon-star' %}
-              {% render 'icon-star' %}
-              {% render 'icon-star' %}
-              {% render 'icon-star' %}
-              {% render 'icon-star' %}
-            </div>
-          </div>
-        </div>
-      </li>
+        </li>
+      {% endfor %}
     </ul>
     {% comment %} <i id="right" class="fa-solid fa-angle-right"></i> {% endcomment %}
     <div class="right featured-button" id="right">
@@ -324,6 +158,48 @@
 {% schema %}
 {
   "name": "Featured",
-  "settings": []
+  "settings": [
+    {
+      "type": "text",
+      "id": "featured_header",
+      "label": "Featured Heading",
+      "default": "Looks You'll Love"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Featured Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "featured_image",
+          "label": "Featured Card Image"
+        },
+        {
+          "type": "text",
+          "id": "featured_product_name",
+          "label": "Featured Product Name",
+          "default": "Nadine belted dress - Regal Onyx"
+        },
+        {
+          "type": "text",
+          "id": "featured_product_price",
+          "label": "Featured Product Price",
+          "default": "1.999,00 kr"
+        },
+
+        {
+          "type": "range",
+          "id": "star_rating",
+          "label": "Star Rating",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "default": 5
+        }
+      ]
+    }
+  ]
 }
 {% endschema %}
