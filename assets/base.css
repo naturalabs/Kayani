@@ -2182,13 +2182,7 @@ product-info .loading-overlay:not(.hidden) ~ *,
 
 .announcement-bar,
 .announcement-bar__announcement {
-  color: rgb(var(--color-foreground));
-  width: 100%;
-  height: 50px;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  align-content: center;
+  height: 25px;
 }
 
 .announcement-bar .slider--everywhere {
@@ -2232,6 +2226,16 @@ product-info .loading-overlay:not(.hidden) ~ *,
 }
 
 @media screen and (min-width: 990px) {
+  .announcement-bar,
+  .announcement-bar__announcement {
+    color: rgb(var(--color-foreground));
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: center;
+  }
   body:has(.section-header .header:not(.drawer-menu)) .utility-bar .page-width {
     padding-left: 5rem;
     padding-right: 5rem;

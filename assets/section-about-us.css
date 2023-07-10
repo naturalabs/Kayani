@@ -8,10 +8,10 @@
   margin-bottom: 50px;
 }
 .about-banner {
-  min-height: 518px;
+  min-height: 300px;
   width: 100%;
   position: relative;
-  margin: 0 auto 50px;
+  margin: 0 auto 40px;
 }
 .about-banner .mobile,
 .about-banner .desktop {
@@ -73,11 +73,11 @@
   line-height: 25px;
 }
 .about-established__image {
-  width: min(90%, 375px);
+  width: min(90%, 270px);
   margin-inline: auto;
   position: relative;
-  min-height: 607px;
-  margin-bottom: 10px;
+  min-height: 400px;
+  margin-bottom: 20px;
 }
 
 .about-established__image-container {
