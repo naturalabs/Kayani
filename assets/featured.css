@@ -134,7 +134,6 @@ section.featured {
   z-index: 5;
   /* display: none; */
 }
-
 .featured-details .show {
   display: block;
 }
@@ -151,8 +150,22 @@ section.featured {
   letter-spacing: -2%;
   line-height: 34px;
 }
+@media (min-width: 500px) {
+  .featured-details {
+    font-size: 16px;
+  }
+  .featured-ratings p {
+    font-size: 16px;
+  }
+}
 
 @media screen and (min-width: 900px) {
+  .featured-details {
+    font-size: 20px;
+  }
+  .featured-ratings p {
+    font-size: 24px;
+  }
   section.featured {
     padding: 156px 0 164px;
   }
@@ -189,14 +202,8 @@ section.featured {
   }
   .wrapper {
     width: min(90%, 1800px);
-    /* padding: 156px 0 164px; */
   }
   .wrapper .carousel {
     grid-auto-columns: calc(25% - 12px);
   }
 }
-/* @media screen and (max-width: 600px) {
-  .wrapper .carousel {
-    grid-auto-columns: 100%;
-  }
-}  */
