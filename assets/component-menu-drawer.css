@@ -29,7 +29,7 @@ menu-drawer > details[open] > summary::before {
   position: absolute;
   transform: translateX(-100%);
   visibility: hidden;
-  z-index: 3;
+  z-index: 10;
   left: 0;
   top: 100%;
   width: 100%;
@@ -89,7 +89,7 @@ details[open].menu-opening > .menu-drawer__submenu {
   height: 100%;
 }
 
-.menu-drawer__navigation {
+nav .menu-drawer__navigation {
   padding: 3rem 0;
 }
 
@@ -254,7 +254,7 @@ details[open].menu-opening > .menu-drawer__submenu {
 
 .menu-drawer .list-social {
   justify-content: flex-start;
-  margin-left: -1.25rem
+  margin-left: -1.25rem;
 }
 
 .menu-drawer .list-social:empty {

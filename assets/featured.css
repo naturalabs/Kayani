@@ -18,6 +18,9 @@ section.featured {
   position: relative;
 }
 
+.carousel {
+  position: relative;
+}
 /* icon wrapper */
 .wrapper .featured-button {
   top: 50%;
@@ -35,7 +38,7 @@ section.featured {
   opacity: 0.7;
   outline: #646464;
   padding: 0;
-  z-index: 5;
+  z-index: 1;
 }
 .wrapper .featured-button svg {
   width: 36px;
@@ -131,7 +134,7 @@ section.featured {
   width: 100%;
   padding: 20px;
   font-size: 20px;
-  z-index: 5;
+  z-index: 0;
   /* display: none; */
 }
 
@@ -177,6 +180,7 @@ section.featured {
   .wrapper .featured-button {
     top: -7%;
     position: absolute;
+    z-index: 0;
   }
   /* positioning */
   .wrapper .featured-button.left {

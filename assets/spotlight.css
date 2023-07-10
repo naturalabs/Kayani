@@ -33,7 +33,7 @@ section.fashion {
   opacity: 0.7;
   outline: #646464;
   padding: 0;
-  z-index: 5;
+  z-index: 1;
 }
 .mobile-fashion .fashion-button svg {
   width: 36px;
