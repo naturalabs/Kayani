@@ -154,7 +154,23 @@
       }
 {%- endstyle -%}
 
-<div class="about-container  ">
+<div class="about-container">
+  <div class="blur-top svg">
+    {%- render 'blur-right' -%}
+  </div>
+  <div class="blur-mid svg">
+    {%- render 'blur-left' -%}
+  </div>
+  <div class="blur-bottom svg">
+    {%- render 'blur-right' -%}
+  </div>
+  <div class="floral-left svg">
+    {%- render 'floral-left' -%}
+  </div>
+  <div class="floral-right svg">
+    {%- render 'floral-right' -%}
+  </div>
+
   <div class="about-banner">
     <div class="mobile">
       {%- if section.settings['about-us__banner-mobile'] != blank -%}
@@ -219,7 +235,7 @@
       </div>
     </div>
     <div class="about-established__text">
-      <h1 class="main-page-title page-title h0{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+      <h1 class="main-page-title ">
         {{ section.settings.about_header }}
       </h1>
 

@@ -7,6 +7,9 @@
 .about-container {
   margin-bottom: 50px;
 }
+.about-container .svg {
+  display: none;
+}
 .about-banner {
   min-height: 300px;
   width: 100%;
@@ -38,6 +41,7 @@
 
 .main-page-title {
   margin-bottom: 3rem;
+  font-size: 30px;
 }
 
 @media screen and (min-width: 750px) {
@@ -47,6 +51,36 @@
   .mobile {
     display: none;
   }
+  .about-container {
+    position: relative;
+  }
+  .about-container .svg {
+    position: absolute;
+    display: block;
+    z-index: -1;
+  }
+
+  .about-container .blur-top {
+    top: 0;
+    right: 0;
+  }
+  .about-container .blur-mid {
+    top: 20%;
+    left: 0;
+  }
+  .about-container .blur-bottom {
+    top: 40%;
+    right: 0;
+  }
+  .about-container .floral-right {
+    bottom: 25%;
+    right: 0;
+  }
+  .about-container .floral-left {
+    bottom: -10%;
+    left: 0;
+  }
+
   .about-banner {
     min-height: 606px;
     width: min(90%, 1440px);
