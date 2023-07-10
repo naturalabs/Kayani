@@ -134,6 +134,7 @@ section.featured {
   z-index: 5;
   /* display: none; */
 }
+
 .featured-details .show {
   display: block;
 }
@@ -146,26 +147,14 @@ section.featured {
 }
 
 .featured-ratings p {
-  font-size: 24px;
-  letter-spacing: -2%;
-  line-height: 34px;
-}
-@media (min-width: 500px) {
-  .featured-details {
-    font-size: 16px;
-  }
-  .featured-ratings p {
-    font-size: 16px;
-  }
+  font-family: Unna;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 38px;
 }
 
 @media screen and (min-width: 900px) {
-  .featured-details {
-    font-size: 20px;
-  }
-  .featured-ratings p {
-    font-size: 24px;
-  }
   section.featured {
     padding: 156px 0 164px;
   }
