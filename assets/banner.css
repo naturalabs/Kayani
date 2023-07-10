@@ -10,7 +10,9 @@ section.banner {
 .banner {
   color: #1e1e1e;
 }
-.banner__ellipse, .banner__blur-right, .banner__blur-left {
+.banner__ellipse,
+.banner__blur-right,
+.banner__blur-left {
   display: none;
 }
 .banner__container {
@@ -20,7 +22,7 @@ section.banner {
   display: grid;
   grid-gap: 1rem;
   gap: 1rem;
-  grid-template-areas: "header" "images" "text";
+  grid-template-areas: 'header' 'images' 'text';
   position: relative;
 }
 .banner__header {
@@ -37,7 +39,7 @@ section.banner {
   align-items: flex-end;
   justify-content: space-between;
   gap: 6px;
-  width: min(95%, 300px);
+  width: min(95%, 370px);
   margin-bottom: 37px;
   margin-left: auto;
   margin-right: auto;
@@ -90,7 +92,7 @@ section.banner {
     /* width: min(90%, 1626px); */
     grid-template-columns: 1fr 1.1fr;
     gap: 1rem;
-    grid-template-areas: "header images" "text images";
+    grid-template-areas: 'header images' 'text images';
   }
   .banner .banner__ellipse {
     display: block;
@@ -124,7 +126,7 @@ section.banner {
     width: min(90%, 1626px);
     grid-template-columns: 1fr 1.1fr;
     gap: 1rem;
-    grid-template-areas: "header images" "text images";
+    grid-template-areas: 'header images' 'text images';
   }
   .banner .banner__header {
     max-width: 650px;

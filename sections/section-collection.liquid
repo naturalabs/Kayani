@@ -102,13 +102,20 @@
 
 <style>
   .collection {
-    margin: 50px auto;
+    margin-bottom: 50px;
   }
   .collection-container {
     display: flex;
     flex-direction: column;
+    max-width: 375px;
+    box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.15);
+    margin-inline: auto;
   }
-  .collection h1 {
+  .collection-header {
+    max-width: 370px;
+    margin: 0 auto;
+  }
+  .collection-header h1 {
     font-family: Cardo;
     font-size: 48px;
     font-style: normal;
@@ -163,9 +170,10 @@
     object-fit: cover;
     z-index: -1;
   }
-  @media (min-width: 850px) {
+  @media (min-width: 700px) {
     .collection {
-      padding: 100px 0 107px;
+      padding-top: 100px;
+      margin-bottom: 107px;
     }
     .collection-container {
       //grid-template-columns: repeat(auto-fit, minmax(335px, 1fr));
@@ -176,12 +184,13 @@
     }
     .collection-header {
       max-width: 1400px;
-      margin: 0 auto;
+      margin-bottom: 30px;
     }
     .collection h1 {
-      width: 500px;
       margin: 0;
       margin-bottom: 17px;
+      font-size: 72px;
+      text-align: left;
     }
 
     .collection-card {
