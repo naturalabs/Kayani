@@ -97,6 +97,9 @@
 }
 
 @media (min-width: 900px) {
+  .about-container {
+    margin: 50px auto 80px;
+  }
   .about-established {
     width: min(95%, 1440px);
 
