@@ -12,7 +12,7 @@
         <li class="card">
           <div class="featured-image">
             {%- if block.settings.featured_image != blank -%}
-              {{ block.settings.featured_image | image_url }}
+              {{ block.settings.featured_image | image_url: width: 400 | image_tag }}
             {%- else -%}
               <img
                 src="{{ 'featured-image-01.png' | asset_url }}"
