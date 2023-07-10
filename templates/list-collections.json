@@ -3,11 +3,10 @@
     "main": {
       "type": "section-collection",
       "settings": {
-        "title": "Collections",
-        "sort": "alphabetical",
-        "image_ratio": "square"
       }
     }
   },
-  "order": ["main"]
+  "order": [
+    "main"
+  ]
 }
