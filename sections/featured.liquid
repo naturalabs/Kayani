@@ -1,6 +1,13 @@
 {{ 'featured.css' | asset_url | stylesheet_tag }}
 
-<section class="featured">
+<section
+  class="
+    featured {% if section.settings.page_width == 'full-width' %}full-width
+    {% elsif section.settings.page_width == 'fixed-width' %}fixed-width
+    {% elsif section.settings.page_width == 'custom-width' %}custom-width
+    {% endif %}
+  "
+>
   <div class="wrapper">
     <h2>{{ section.settings.featured_header }}</h2>
 
@@ -164,6 +171,26 @@
       "id": "featured_header",
       "label": "Featured Heading",
       "default": "Looks You'll Love"
+    },
+    {
+      "type": "select",
+      "label": "Page Width",
+      "id": "page_width",
+      "options": [
+        {
+          "value": "full-width",
+          "label": "Full Width"
+        },
+        {
+          "value": "fixed-width",
+          "label": "Fixed Width"
+        },
+        {
+          "value": "custom-width",
+          "label": "Custom Width"
+        }
+      ],
+      "default": "custom-width"
     }
   ],
   "blocks": [
