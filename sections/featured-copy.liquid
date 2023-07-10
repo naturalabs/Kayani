@@ -20,38 +20,12 @@
     <div class="left featured-button" id="left">
       {% render 'icon-left' %}
     </div>
+
     <ul class="carousel">
-      {%- for product in collections[section.settings.featured_collection].products -%}
-        <li class="card">
-          <div class="featured-image">
-            {%- if product.featured_media.preview_image != blank -%}
-              {{ product.featured_media.preview_image | image_url: width: 400 | image_tag }}
-            {%- else -%}
-              <img
-                src="{{ 'featured-image-01.png' | asset_url }}"
-                width="468"
-                height="auto"
-                alt="example"
-                loading="lazy"
-              >
-            {%- endif -%}
-          </div>
-          <div class="featured-details">
-            <p>{{ product.title }}</p>
-            <div class="featured-ratings">
-              <p>{{ product.price | money }}</p>
-              <div class="rating-container">
-                {% assign starRating = block.settings.star_rating %}
-                {% for i in (1..starRating) %}
-                  {% render 'icon-star' %}
-                {% endfor %}
-              </div>
-            </div>
-          </div>
-        </li>
-      {% endfor %}
+      {%- for collection in collections[section.settings.collection] -%}
+        {{ collection.title }}
+      {%- endfor -%}
     </ul>
-    {% comment %} <i id="right" class="fa-solid fa-angle-right"></i> {% endcomment %}
     <div class="right featured-button" id="right">
       {% render 'icon-right' %}
     </div>
@@ -173,15 +147,15 @@
   "name": "Featured",
   "settings": [
     {
+      "type": "collection",
+      "id": "featured_collection",
+      "label": "Collection"
+    },
+    {
       "type": "text",
       "id": "featured_header",
       "label": "Featured Heading",
       "default": "Looks You'll Love"
-    },
-    {
-      "type": "collection",
-      "id": "featured_collection",
-      "label": "Collection"
     },
     {
       "type": "select",
@@ -204,10 +178,58 @@
       "default": "custom-width"
     }
   ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Featured Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "featured_image",
+          "label": "Featured Card Image"
+        },
+        {
+          "type": "text",
+          "id": "featured_product_name",
+          "label": "Featured Product Name",
+          "default": "Nadine belted dress - Regal Onyx"
+        },
+        {
+          "type": "text",
+          "id": "featured_product_price",
+          "label": "Featured Product Price",
+          "default": "1.999,00 kr"
+        },
+
+        {
+          "type": "range",
+          "id": "star_rating",
+          "label": "Star Rating",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "default": 5
+        }
+      ]
+    }
+  ],
   "presets": [
     {
       "name": "Featured",
-      "category": "Collections"
+      "blocks": [
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        }
+      ]
     }
   ]
 }
