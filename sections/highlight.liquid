@@ -1,4 +1,4 @@
-<section class="trending">
+<section class="trending ">
   <div class="trending-image">
     {%- if section.settings.highlight_image != blank -%}
       <img
@@ -36,11 +36,15 @@
     background-color: #d5d5d7;
     padding-bottom: 40px;
   }
-  .trending-image {
-    height: 390px;
-    width: auto;
-    overflow: hidden;
+  .trending-image-container {
     position: relative;
+    height: 390px;
+
+    width: auto;
+    margin: 0 auto;
+  }
+  .trending-image {
+    overflow: hidden;
   }
 
   .trending-image img {
@@ -111,13 +115,19 @@
   }
   @media (min-width: 800px) {
     section.trending {
-      position: relative;
-      min-height: 860px;
       width: 100%;
       background-color: transparent;
       display: flex;
       align-items: center;
       justify-content: flex-end;
+      margin: 0 auto;
+      position: relative;
+      height: 690px;
+    }
+    .trending-image-container {
+      // position: relative;
+      // height: 690px;
+      // width: 1448px;
     }
     .trending-image {
       position: absolute;
@@ -128,6 +138,12 @@
       overflow: hidden;
       z-index: -1;
     }
+    .trending-image img {
+      object-fit: cover;
+      margin: 0 auto;
+      object-position: center top;
+    }
+
     .trending-text-container {
       background-color: transparent;
       color: var(--clr-primary-white);
@@ -135,7 +151,7 @@
       display: flex;
       flex-direction: column;
       margin-inline: unset;
-      margin-top: 130px;
+      margin-top: 14%;
       margin-right: clamp(50px, 10vw, 244px);
     }
     .trending .button-wrapper {

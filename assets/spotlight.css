@@ -85,7 +85,8 @@ section.fashion {
 .fashion-carousel .fashion-card {
   position: relative;
   scroll-snap-align: start;
-  height: 528px;
+  height: 500px;
+  /* height: 528px; */
   list-style: none;
   cursor: pointer;
   /* padding-bottom: 15px; */
