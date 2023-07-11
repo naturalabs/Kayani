@@ -40,12 +40,13 @@
             <p>{{ product.title }}</p>
             <div class="featured-ratings">
               <p>{{ product.price | money }}</p>
-              <div class="rating-container">
-                {% assign starRating = block.settings.star_rating %}
-                {% for i in (1..starRating) %}
+              {% if product.ratings > 0 %}
+                {% for i in (1..product.ratings) %}
                   {% render 'icon-star' %}
                 {% endfor %}
-              </div>
+              {% else %}
+                No ratings yet
+              {% endif %}
             </div>
           </div>
         </li>

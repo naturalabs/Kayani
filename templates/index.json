@@ -5,7 +5,7 @@
       "settings": {
         "header": "Open Your World To Kayani",
         "text": "Let's make your summer travel story an unforgettable one",
-        "shop_link": "shopify:\/\/collections\/all",
+        "shop_link": "shopify://collections/all",
         "page_width": "custom-width"
       }
     },
@@ -29,59 +29,7 @@
     },
     "featured": {
       "type": "featured",
-      "blocks": {
-        "ababebf7-f260-4cb2-9b92-0f1d54366ad8": {
-          "type": "image",
-          "settings": {
-            "featured_image": "shopify:\/\/shop_images\/featured-image-01.png",
-            "featured_product_name": "Nadine belted dress - Regal Onyx",
-            "featured_product_price": "1.999,00 kr",
-            "star_rating": 5
-          }
-        },
-        "31836612-d6d6-458a-8654-bb4966da125a": {
-          "type": "image",
-          "settings": {
-            "featured_image": "shopify:\/\/shop_images\/featured-image-02.png",
-            "featured_product_name": "Nadine belted dress - Regal Onyx",
-            "featured_product_price": "1.999,00 kr",
-            "star_rating": 4
-          }
-        },
-        "28a0e825-daba-467e-a190-8e67adcb10b2": {
-          "type": "image",
-          "settings": {
-            "featured_image": "shopify:\/\/shop_images\/featured-image-03.png",
-            "featured_product_name": "Nadine belted dress - Regal Onyx",
-            "featured_product_price": "1.999,00 kr",
-            "star_rating": 5
-          }
-        },
-        "0be847dc-6e86-4a0f-b4ca-75798a7ec517": {
-          "type": "image",
-          "settings": {
-            "featured_product_name": "Nadine belted dress - Regal Onyx",
-            "featured_product_price": "1.999,00 kr",
-            "star_rating": 5
-          }
-        },
-        "17193832-8fd3-44c9-b202-200bb19d6dee": {
-          "type": "image",
-          "settings": {
-            "featured_image": "shopify:\/\/shop_images\/featured-image-01.png",
-            "featured_product_name": "Nadine belted dress - Regal Onyx",
-            "featured_product_price": "1.999,00 kr",
-            "star_rating": 4
-          }
-        }
-      },
-      "block_order": [
-        "ababebf7-f260-4cb2-9b92-0f1d54366ad8",
-        "31836612-d6d6-458a-8654-bb4966da125a",
-        "28a0e825-daba-467e-a190-8e67adcb10b2",
-        "0be847dc-6e86-4a0f-b4ca-75798a7ec517",
-        "17193832-8fd3-44c9-b202-200bb19d6dee"
-      ],
+
       "settings": {
         "featured_header": "Looks You'll Love",
         "page_width": "custom-width"
@@ -91,7 +39,7 @@
       "type": "spotlight",
       "settings": {
         "spotlight_header": "Fashion That Is Always Relevant",
-        "shop_link": "shopify:\/\/collections\/all",
+        "shop_link": "shopify://collections/all",
         "page_width": "full-width"
       }
     },
@@ -104,12 +52,5 @@
       }
     }
   },
-  "order": [
-    "section_banner",
-    "collection",
-    "highlight",
-    "featured",
-    "spotlight",
-    "instagram"
-  ]
+  "order": ["section_banner", "collection", "highlight", "featured", "spotlight", "instagram"]
 }
