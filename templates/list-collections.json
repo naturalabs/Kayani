@@ -1,12 +1,1 @@
-{
-  "sections": {
-    "main": {
-      "type": "section-collection",
-      "settings": {
-      }
-    }
-  },
-  "order": [
-    "main"
-  ]
-}
+{"sections":{"main":{"type":"section-collection","settings":{"collections_header":"Our Unique Collections","bestseller_title":"BestSellers","bestseller_link":"bestsellers","new_arrivals_title":"New Arrivals","new_arrivals_link":"new-arrivals","dresses_title":"Dresses","dresses_link":"dresses","padding_top":36,"padding_bottom":36}}},"order":["main"]}

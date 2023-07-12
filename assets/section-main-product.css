@@ -1389,8 +1389,12 @@ a.product__text {
 /* Product-thumbnail snippet */
 
 .product-media-container {
-  --aspect-ratio: var(--preview-ratio);
+/*   --aspect-ratio: var(--preview-ratio); */
+  --aspect-ratio: 0.6;
+  
+/*   --ratio-percent: calc(1 / var(--aspect-ratio) * 100%); */
   --ratio-percent: calc(1 / var(--aspect-ratio) * 100%);
+  
   position: relative;
   width: 100%;
   max-width: calc(100% - calc(var(--media-border-width) * 2));

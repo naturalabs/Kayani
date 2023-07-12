@@ -25,7 +25,7 @@
         <li class="card">
           <div class="featured-image">
             {%- if product.featured_media.preview_image != blank -%}
-              {{ product.featured_media.preview_image | image_url: width: 400 | image_tag }}
+              {{ product.featured_media.preview_image | image_url: width: 800 | image_tag }}
             {%- else -%}
               <img
                 src="{{ 'featured-image-01.png' | asset_url }}"
@@ -37,15 +37,13 @@
             {%- endif -%}
           </div>
           <div class="featured-details">
-            <p>{{ product.title }}</p>
+            <p style="line-height:1em">{{ product.title }}</p>
             <div class="featured-ratings">
               <p>{{ product.price | money }}</p>
               {% if product.ratings > 0 %}
                 {% for i in (1..product.ratings) %}
                   {% render 'icon-star' %}
                 {% endfor %}
-              {% else %}
-                No ratings yet
               {% endif %}
             </div>
           </div>

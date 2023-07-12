@@ -4,7 +4,8 @@ section.banner {
 
 @media (min-width: 900px) {
   section.banner {
-    padding: 90px 0 230px;
+    // padding: 90px 0 230px;
+    padding: 90px 0 120px;
   }
 }
 .banner {
